@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Recipe</title>
+</head>
+<body>
+    <section id="add_recipe_form">
+        <form action="#" method="post">
+                <label for="recipe_title_add">Recipe Title:</label>
+                <input type="text" name="add" id="recipe_title_add" placeholder="Title" required>
+        
+                <label for="recipe_tags_add">Tags:</label>
+                <textarea name="tags" id="recipe_tags_add" cols="30" rows="3" placeholder="Enter #tags" required></textarea>
+                
+                <h1>Ingredients</h1>
+
+                <div>
+                    <input type="text" name="ingredients[]" id="add_ingredient_1" class="" required>
+                    <button id="delete_ingredient_1">Delete</button>
+                </div>
+                <button>Add ingredient</button>
+
+                <h1>How to make</h1>
+                <div>
+                    <textarea type="text" name="how_to_steps[]" id="add_how_to_step_1" required></textarea>
+                    <button id="delete_how_to_step_1">Delete</button>
+                </div>
+                <button>Add Step</button>
+                
+                <button type="submit" id="submit_recipe">Submit Recipe</button>
+            </form>
+    </section>
+</body>
+</html>
