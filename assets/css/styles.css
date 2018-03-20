@@ -698,19 +698,19 @@
 
 /* Sidebar & search bar */
 
-	#search form {
+	.search form {
 		text-decoration: none;
 		position: relative;
 	}
 
-		#search form:before {
+		.search form:before {
 			font-family: 'FontAwesome';
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
 		}
 
-		#search form:before {
+		.search form:before {
 			transform: scaleX(-1);
 			color: #7f888f;
 			content: '\f002';
@@ -727,7 +727,7 @@
 			width: 2em;
 		}
 
-		#search form input[type="text"] {
+		.search form input[type="text"] {
 			padding-right: 2.75em;
 		}
 
@@ -1043,7 +1043,7 @@
 
 				#menu ul a.opener:hover:before, #menu ul span.opener:hover:before {
 					color: #f56a6a;
-        }
+        		}
 
 				#menu ul a.opener.drop:before, #menu ul span.opener.drop:before {
 					color: #f56a6a;
