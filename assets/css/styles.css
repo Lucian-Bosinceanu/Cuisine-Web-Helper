@@ -847,7 +847,7 @@
 		flex-wrap: wrap;
 		align-items: flex-end;
 		border-bottom: solid 5px #f56a6a;
-		padding: 6em 0 1em 0;
+		padding: 5em 0 1em 0;
 		position: relative;
 	}
 
@@ -857,7 +857,7 @@
 		}
 
 		#header .title {
-			flex-grow: 1;
+			flex-grow: 2;
 			border-bottom: 0;
 			color: inherit;
 			font-family: "Roboto Slab", serif;
@@ -869,18 +869,6 @@
 			text-align: right;
 			text-decoration: none;
 			color: #f56a6a;
-		}
-
-		@media screen and (max-width: 1680px) {
-
-			#header {
-				padding-top: 5em;
-			}
-
-				#header .title {
-					flex-grow: 2;
-				}
-
 		}
 
 		@media screen and (max-width: 736px) {
