@@ -741,9 +741,14 @@
 		font-size: 0.9em;
 		position: relative;
 		width: 26em;
-		margin-left: -23em;
+		margin-left: -24em;
 		transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 	}
+
+		#sidebar > button {
+			float: right;
+			margin: 2em -14.5em 0 0;
+		}
 
 		#sidebar:hover {
 			margin-left: 0em;
