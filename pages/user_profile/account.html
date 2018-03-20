@@ -17,6 +17,8 @@
                 <header id="header">
                     <h1 class="title"><strong>Account</strong> &amp; Preferences</h1>
                     <ul class="login">
+                        <li><a href="../../logged-index.html">Home</a></li>
+                        <li><a href="../logged-articles.html">Articles</a></li>
                         <li><a href="my_recipes.html">My recipes</a></li>
                         <li><a href="favourites_recipes.html">My favorites</a></li>
                         <li><a href="made_recipes.html">Made recipes</a></li>
@@ -41,9 +43,9 @@
                 </section>
 
                 <section class="profile_content">
-                    <form id="preferences-form">
+                    <form id="food-restrictions-form">
             
-                        <p>Select your food restrictions:</p>
+                        <strong><p>Select your food restrictions:</p></strong>
             
                             <input type="checkbox" id="none-restriction-checkbox" name="food_restrictions[]" value="none">
                             <label for="none-restriction-checkbox">none</label>                 
@@ -72,7 +74,13 @@
                             <input type="checkbox" id="fast-restriction-checkbox" name="food_restrictions[]" value="fast">
                             <label for="fast-restriction-checkbox">fast</label> 
             
-                        <p>Select your food life style:</p>
+                    </form>
+                </section>
+
+                <section class="profile_content">
+                    <form id="food-lifestyle-form">
+                        
+                        <strong><p>Select your food life style:</p></strong>
                         
                             <input type="checkbox" id="none-lifestyle-checkbox" name="life_style[]" value="none">
                             <label for="none-lifestyle-checkbox">none</label>  
@@ -92,7 +100,6 @@
                             <button id="lifestyle-selection-button" type="submit">Update</button>
             
                     </form>
-            
                 </section>
             </div>
         </div>
