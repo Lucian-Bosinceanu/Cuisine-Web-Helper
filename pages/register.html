@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
+
 <body>
-    <section id="register_form">
-        <form action="#" method="post">
-                <label for="username_create_input">Username:</label>
-                <input type="text" name="username" id="username_create_input" placeholder="Username" required>
-        
-                <label for="password_create_input">Password:</label>
-                <input type="password" name="password" id="password_create_input" placeholder="Password" required>
-        
-                <label for="email_create_input">Email:</label>
-                <input type="email" name="email" id="email_create_input" required>
-        
-                <button type="submit" id="register_button">Register</button>
-            </form>
-    </section>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner login">
+                <a href="../index.html">&lt; return to Home</a>
+
+                <header id="header">
+                    <h1 class="title"><strong>Register</strong></h1>
+                </header>
+
+                <section id="login_form">
+                    <form action="#" method="post">
+                        <label for="username_create_input">Username:</label>
+                        <input type="text" name="username" id="username_create_input" placeholder="username" required>
+                
+                        <label for="password_create_input">Password:</label>
+                        <input type="password" name="password" id="password_create_input" placeholder="********" required>
+                
+                        <label for="email_create_input">Email:</label>
+                        <input type="email" name="email" id="email_create_input" placeholder="user@site.com" required>
+                
+                        <a href="../logged-index.html" class="button">Register</a>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

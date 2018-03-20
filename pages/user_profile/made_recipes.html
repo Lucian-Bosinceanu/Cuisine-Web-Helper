@@ -1,35 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<!DOCTYPE HTML>
+<html>
+<head> 
+	<title>Made recipes</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../../assets/css/styles.css" />
+
+	<script src="../../assets/js/jquery-3.3.1.min.js"></script>
+	<script src="../../assets/js/main.js"></script>
 </head>
+
 <body>
-    <div class="profile_side-nav_wrapper">
-        <nav class="profile_side-nav">
-            
-            <a href="preferences.html">Preferences</a>
-            
-            <button>Recipes</button>
-            <div class="dropdown-container">
-                    <a href="favourites_recipes.html">Favourites</a>
-                    <a href="made_recipes.html">Made recipes</a>
-                    <a href="my_recipes.html">My recipes</a>
+	<div id="wrapper">
+		<div id="main">
+			<div class="inner">
+				<header id="header">
+					<h1 class="title"><strong>Made</strong> recipes</h1>
+					<ul class="login">
+						<li><a href="my_recipes.html">My recipes</a></li>
+						<li><a href="favourites_recipes.html">My favorites</a></li>
+						<li><a href="made_recipes.html">Made recipes</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="account.html">Account</a></li>
+						<li><a href="../../index.html">Logout</a></li>
+					</ul>
+				</header>
+    
+                <section class="profile_content">
+                    <div class="posts">
+                        <article>
+                            <a href="../logged-recipe.html" class="image"><img src="https://savoriurbane.com/wp-content/uploads/2014/05/Cornuri-cu-branza-sau-rahat-9.jpg" alt="" /></a>
+                            <h3>Cake 1</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <ul class="actions">
+                                <li><a href="../logged-recipe.html" class="button">More</a></li>
+                                <li><a href="#" class="button">Report</a></li>
+                                <li><a href="#" class="button">Add to Favorites</a></li>
+                            </ul>
+                        </article>
+                        <article>
+                            <a href="../logged-recipe.html" class="image"><img src="https://www.bucataras.ro/uploads/modules/news/59098/656x440_prajitura-cu-rahat-nuca-si-glazura-de-ciocolata-311391.jpg" alt="" /></a>
+                            <h3>Cake 2</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <ul class="actions">
+                                <li><a href="../logged-recipe.html" class="button">More</a></li>
+                                <li><a href="#" class="button">Report</a></li>
+                                <li><a href="#" class="button">Add to Favorites</a></li>
+                            </ul>
+                        </article>
+                        <article>
+                            <a href="../logged-recipe.html" class="image"><img src="https://savoriurbane.com/wp-content/uploads/2014/05/Cornuri-cu-branza-sau-rahat-9.jpg" alt="" /></a>
+                            <h3>Tempus ullamcorper</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <ul class="actions">
+                                <li><a href="../logged-recipe.html" class="button">More</a></li>
+                                <li><a href="#" class="button">Report</a></li>
+                                <li><a href="#" class="button">Add to Favorites</a></li>
+                            </ul>
+                        </article>
+                        <article>
+                            <a href="../logged-recipe.html" class="image"><img src="https://savoriurbane.com/wp-content/uploads/2014/05/Cornuri-cu-branza-sau-rahat-9.jpg" alt="" /></a>
+                            <h3>Sed etiam facilis</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <ul class="actions">
+                                <li><a href="../logged-recipe.html" class="button">More</a></li>
+                                <li><a href="#" class="button">Report</a></li>
+                                <li><a href="#" class="button">Add to Favorites</a></li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
             </div>
-            
-            <a href="account.html">Account</a>
-            <a href="./index.html">Log out</a>
-        </nav>
+        </div>
+
+        <div id="sidebar">
+            <div class="inner">
+
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <nav id="menu">
+                    <header class="subtitle">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="../../logged-index.html">Home</a></li>
+                        <li>
+                            <span class="opener">Lifestyle</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="vegetarian" name="vegetarian">
+                                    <label for="vegetarian">Vegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="vegan" name="vegan">
+                                    <label for="vegan">Vegan</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="omnivorus" name="omnivorus">
+                                    <label for="omnivorus">Omnivorus</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Required time</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="less-then-60-min" name="less-then-60-min">
+                                    <label for="less-then-60-min">&lt; 60 min</label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section>
+                    <header class="subtitle">
+                        <h2>Articles</h2>
+                    </header>
+                    <div class="articles">
+                        <article>
+                            <a href="https://www.retete-gustoase.ro" class="image" target="_blank"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>5 things you can do with potatoes</p>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>How to be vegan 101</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="#" class="button">More</a></li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
     </div>
-    
-    <section class="profile_content">
-        <h1>Made recipes</h1>
-    
-        <!-- aici ar trebui bagate niste retete ca cele de la search, cu posibilitatea de a sterge-->
-
-    </section>
-
 </body>
 </html>

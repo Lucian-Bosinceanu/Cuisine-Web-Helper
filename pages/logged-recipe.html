@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Recipe</title>
+    <title>Recipe</title>
     <link rel="stylesheet" href="../assets/css/styles.css" />
 
     <script src="../assets/js/jquery-3.3.1.min.js"></script>
 	<script src="../assets/js/main.js"></script>
 </head>
-
 <body>
     <div id="wrapper">
         <div id="main">
             <div class="inner">
                 <header id="header">
-                    <h1 class="title"><strong>Add</strong> recipe</h1>
+                    <h1 class="title"><strong>Recipe</strong> viewer</h1>
                     <ul class="login">
                         <li><a href="user_profile/my_recipes.html">My recipes</a></li>
                         <li><a href="user_profile/favourites_recipes.html">My favorites</a></li>
@@ -26,47 +25,59 @@
                     </ul>
                 </header>
 
-                    <section class="recipe-section">
-                        <div class="content">
-                            <label for="recipe-title-add">Recipe Title:</label>
-                            <input type="text" name="add" id="recipe-title-add" placeholder="Title" required>
+                <section class="recipe-section">
+                    <div class="content">
+                        <h1>Potato recipe</h1>
 
-                            <label for="recipe-tags-add">Tags:</label>
-                            <textarea name="tags" id="recipe-tags-add" placeholder="Enter #tags" required></textarea>
-                        </div>
-                    </section>
+                        <button class="recipe_favourite_button">Add favourite</button>
+                        <button class="recipe_imadethis_button">I made this</button>
+                        <button class="recipe_report_button">Report</button>  
 
-                    <section class="recipe-section">
-                        <div class="content">
-                            <h3>Ingredients</h3>
-                            <div class="ingredient">
-                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                                <button id="delete-ingredient-1">Delete</button>
-                            </div>
-                            <div class="ingredient">
-                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                                <button id="delete-ingredient-1">Delete</button>
-                            </div>
-                            <div class="ingredient">
-                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                                <button id="delete-ingredient-1">Delete</button>
-                            </div>
-                            <button>Add ingredient</button>
-                        </div>
-                    </section>
+                            <ul class="tags">
+                                <li><strong>Tags:</strong></li>
+                                <li>#vegan</li>
+                                <li>#grill</li>
+                                <li>#potato</li>
+                            </ul>
 
-                    <section class="recipe-section">
-                        <div class="content">
-                            <h3>How to make</h3>
-                            <div class="ingredient">
-                                <textarea name="how-to-steps[]" id="add-how-to-step-1" required></textarea>
-                                <button id="delete-how-to-step-1">Delete</button>
-                            </div>
-                            <button>Add step</button>
-                        </div>
-                    </section>
-
-                    <a href="user_profile/my_recipes.html" class="button">Submit recipe</a>
+                        <ul>
+                            <li>
+                                <p><strong>Rating:</strong> 4.5/5</p>
+                            </li>
+                            <li>
+                                <p><strong>Difficulty:</strong> 2/5</p>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <span class="image">
+                        <img src="../assets/img/potato.jpg" alt="potato" class="recipe_picture"> 
+                    </span>
+                </section>
+                
+                <section class="recipe-section">
+                    <div class="content">
+                        <h2>Ingredients</h2>
+                        
+                        <ul class="recipe_ingredients_list">
+                            <li>500g potatoes</li>
+                            <li>salt</li>
+                            <li>ingredient 2</li>
+                            <li>ingredient 4</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="recipe-section">
+                    <div class="content">
+                        <h2>How to make</h2>
+                        <ol class="recipe_howto_steps">
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                        </ol>
+                    </div>
+                </section>
             </div>
         </div>
 

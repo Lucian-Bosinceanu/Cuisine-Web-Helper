@@ -3,57 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recipe</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+	<script src="../assets/js/main.js"></script>
 </head>
 <body>
-    <article>
-        
-        <section class="recipe_metadata">
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header id="header">
+                    <h1 class="title"><strong>Recipe</strong> viewer</h1>
+                    <ul class="login">
+						<li><a href="register.html">Register</a></li>
+						<li><a href="login.html">Login</a></li>
+                    </ul>
+                </header>
 
-            <h1>Recipe Title</h1>
+                <section class="recipe-section">
+                    <div class="content">
+                        <h1>Potato recipe</h1>  
 
-            <button class="recipe_favourite_button">Add favourite</button>
-            <button class="recipe_imadethis_button">I made this</button>
-            <button class="recipe_report_button">Report</button>
+                            <ul class="tags">
+                                <li><strong>Tags:</strong></li>
+                                <li>#vegan</li>
+                                <li>#grill</li>
+                                <li>#potato</li>
+                            </ul>
 
-            <img src="../img/potato.jpg" alt="potato" class="recipe_picture">            
-
-            <b>Tags:</b>
-            <ul class="recipe_metadata_tags_list">
-                <li>#vegan</li>
-                <li>#grill</li>
-                <li>#potato</li>
-            </ul>
-
-            <b> Rating: </b> 
-                <p>4.5/5</p>
-            
-            <b> Difficulty: </b>  
-                <p>2/5</p>
+                        <ul>
+                            <li>
+                                <p><strong>Rating:</strong> 4.5/5</p>
+                            </li>
+                            <li>
+                                <p><strong>Difficulty:</strong> 2/5</p>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <span class="image">
+                        <img src="../assets/img/potato.jpg" alt="potato" class="recipe_picture"> 
+                    </span>
+                </section>
                 
-        </section>
-        
-        <section class="recipe_ingredients">
-            <h2>Ingredients</h2>
-            
-            <ul class="recipe_ingredients_list">
-                <li>500g potatoes</li>
-                <li>salt</li>
-                <li>ingredient 2</li>
-                <li>ingredient 4</li>
-            </ul>
+                <section class="recipe-section">
+                    <div class="content">
+                        <h2>Ingredients</h2>
+                        
+                        <ul class="recipe_ingredients_list">
+                            <li>500g potatoes</li>
+                            <li>salt</li>
+                            <li>ingredient 2</li>
+                            <li>ingredient 4</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="recipe-section">
+                    <div class="content">
+                        <h2>How to make</h2>
+                        <ol class="recipe_howto_steps">
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                        </ol>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-        </section>
-        
-        <section class="recipe_howto">
-            <h2>How to make</h2>
-            <ul class="recipe_howto_steps">
-                <li>1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
-                <li>2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
-                <li>3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
-            </ul>
-        </section>
-    </article>
+        <div id="sidebar">
+            <div class="inner">
+
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <nav id="menu">
+                    <header class="subtitle">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li>
+                            <span class="opener">Lifestyle</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="vegetarian" name="vegetarian">
+                                    <label for="vegetarian">Vegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="vegan" name="vegan">
+                                    <label for="vegan">Vegan</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="omnivorus" name="omnivorus">
+                                    <label for="omnivorus">Omnivorus</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Required time</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="less-then-60-min" name="less-then-60-min">
+                                    <label for="less-then-60-min">&lt; 60 min</label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section>
+                    <header class="subtitle">
+                        <h2>Articles</h2>
+                    </header>
+                    <div class="articles">
+                        <article>
+                            <a href="https://www.retete-gustoase.ro" class="image" target="_blank"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>5 things you can do with potatoes</p>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>How to be vegan 101</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="#" class="button">More</a></li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
