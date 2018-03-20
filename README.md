@@ -10,7 +10,7 @@ It also features user content creation so that everyone can add new recipes, man
 ## Team Description
 
 1. Bosînceanu Lucian-Andrei
-2. Cobzac Șerban
+2. Cobzac Șerban Andrei
 3. Medvichi Adrian-Ștefan
 
 Supervisor: Păvăloi Alexandru
