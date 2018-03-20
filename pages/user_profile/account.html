@@ -17,6 +17,8 @@
                 <header id="header">
                     <h1 class="title"><strong>Account</strong> &amp; Preferences</h1>
                     <ul class="login">
+                        <li><a href="../../logged-index.html">Home</a></li>
+                        <li><a href="../logged-articles.html">Articles</a></li>
                         <li><a href="my_recipes.html">My recipes</a></li>
                         <li><a href="favourites_recipes.html">My favorites</a></li>
                         <li><a href="made_recipes.html">Made recipes</a></li>
@@ -26,94 +28,128 @@
                     </ul>
                 </header>
     
-                <section id="change-account-info">
-                    <form action="#" method="post">
-                        <label for="change-old-username">Change username:</label>
-                        <input type="text" name="old-username" id="change-old-username" placeholder="current username" required>
-                        <input type="text" name="new-username" id="change-new-username" placeholder="new username" disabled="disabled">
-                
-                        <label for="change-old-password">Change password:</label>
-                        <input type="password" name="old-password" id="change-old-password" placeholder="old password" required>
-                        <input type="password" name="new-password" id="change-new-password" placeholder="new password" disabled="disabled">
-                
-                        <button type="submit" id="submit-changes-button">Submit changes</button>
-                    </form>
+                <section class="recipe-section">
+                    <div class="content">
+                        <form action="#" method="post">
+                            <label for="change-old-username">Change username:</label>
+                            <input type="text" name="old-username" id="change-old-username" placeholder="current username" required>
+                            <input type="text" name="new-username" id="change-new-username" placeholder="new username" disabled="disabled">
+                    
+                            <label for="change-old-password">Change password:</label>
+                            <input type="password" name="old-password" id="change-old-password" placeholder="old password" required>
+                            <input type="password" name="new-password" id="change-new-password" placeholder="new password" disabled="disabled">
+                    
+                            <button type="submit" id="submit-changes-button">Submit changes</button>
+                        </form>
+                    </div>
                 </section>
 
-                <section class="profile_content">
-                    <form id="preferences-form">
-            
-                        <p>Select your food restrictions:</p>
-            
-                            <input type="checkbox" id="none-restriction-checkbox" name="food_restrictions[]" value="none">
-                            <label for="none-restriction-checkbox">none</label>                 
-            
-                            <input type="checkbox" id="peanut-restriction-checkbox" name="food_restrictions[]" value="peanut">
-                            <label for="peanut-restriction-checkbox">peanut</label> 
+                <section class="recipe-section">
+                    <div class="content">
+                        <form id="food-restrictions-form">
+                            <strong><p>Select your food restrictions:</p></strong>
+                
+                                <input type="checkbox" id="none-restriction-checkbox" name="food_restrictions[]" value="none">
+                                <label for="none-restriction-checkbox">none</label>                 
+                
+                                <input type="checkbox" id="peanut-restriction-checkbox" name="food_restrictions[]" value="peanut">
+                                <label for="peanut-restriction-checkbox">peanut</label> 
+                                
+                                <input type="checkbox" id="milk-restriction-checkbox" name="food_restrictions[]" value="milk">
+                                <label for="milk-restriction-checkbox">milk</label> 
+                
+                                <input type="checkbox" id="eggs-restriction-checkbox" name="food_restrictions[]" value="eggs">
+                                <label for="eggs-restriction-checkbox">eggs</label> 
+                
+                                <input type="checkbox" id="wheat-restriction-checkbox" name="food_restrictions[]" value="wheat">
+                                <label for="wheat-restriction-checkbox">wheat</label> 
+                
+                                <input type="checkbox" id="soy-restriction-checkbox" name="food_restrictions[]" value="soy">
+                                <label for="soy-restriction-checkbox">soy</label>
+                                
+                                <input type="checkbox" id="fish-restriction-checkbox" name="food_restrictions[]" value="fish">
+                                <label for="fish-restriction-checkbox">fish</label> 
                             
-                            <input type="checkbox" id="milk-restriction-checkbox" name="food_restrictions[]" value="milk">
-                            <label for="milk-restriction-checkbox">milk</label> 
-            
-                            <input type="checkbox" id="eggs-restriction-checkbox" name="food_restrictions[]" value="eggs">
-                            <label for="eggs-restriction-checkbox">eggs</label> 
-            
-                            <input type="checkbox" id="wheat-restriction-checkbox" name="food_restrictions[]" value="wheat">
-                            <label for="wheat-restriction-checkbox">wheat</label> 
-            
-                            <input type="checkbox" id="soy-restriction-checkbox" name="food_restrictions[]" value="soy">
-                            <label for="soy-restriction-checkbox">soy</label>
+                                <input type="checkbox" id="shellfish-restriction-checkbox" name="food_restrictions[]" value="shellfish">
+                                <label for="shellfish-restriction-checkbox">shellfish</label> 
+                
+                                <input type="checkbox" id="fast-restriction-checkbox" name="food_restrictions[]" value="fast">
+                                <label for="fast-restriction-checkbox">fast</label> 
+                
+                        </form>
+                    </div>
+                </section>
+
+                <section class="recipe-section">
+                    <div class="content">
+                        <form id="food-lifestyle-form">
                             
-                            <input type="checkbox" id="fish-restriction-checkbox" name="food_restrictions[]" value="fish">
-                            <label for="fish-restriction-checkbox">fish</label> 
-                        
-                            <input type="checkbox" id="shellfish-restriction-checkbox" name="food_restrictions[]" value="shellfish">
-                            <label for="shellfish-restriction-checkbox">shellfish</label> 
-            
-                            <input type="checkbox" id="fast-restriction-checkbox" name="food_restrictions[]" value="fast">
-                            <label for="fast-restriction-checkbox">fast</label> 
-            
-                        <p>Select your food life style:</p>
-                        
-                            <input type="checkbox" id="none-lifestyle-checkbox" name="life_style[]" value="none">
-                            <label for="none-lifestyle-checkbox">none</label>  
-            
-                            <input type="checkbox" id="vegan-lifestyle-checkbox" name="life_style[]" value="veganism">
-                            <label for="veganism-lifestyle-checkbox">veganism</label>
-            
-                            <input type="checkbox" id="paleolithic-lifestyle-checkbox" name="life_style[]" value="paleolithic">
-                            <label for="paleolithic-lifestyle-checkbox">paleolithic</label>
-            
-                            <input type="checkbox" id="vegetarianism-lifestyle-checkbox" name="life_style[]" value="vegetarianism">
-                            <label for="vegetarianism-lifestyle-checkbox">vegetarianism</label>
+                            <strong><p>Select your food life style:</p></strong>
                             
-                            <input type="checkbox" id="slowfood-lifestyle-checkbox" name="life_style[]" value="slowfood">
-                            <label for="slowfood-lifestyle-checkbox">slow food movement</label>
-                            <br>
-                            <button id="lifestyle-selection-button" type="submit">Update</button>
-            
-                    </form>
-            
+                                <input type="checkbox" id="none-lifestyle-checkbox" name="life_style[]" value="none">
+                                <label for="none-lifestyle-checkbox">none</label>  
+                
+                                <input type="checkbox" id="veganism-lifestyle-checkbox" name="life_style[]" value="veganism">
+                                <label for="veganism-lifestyle-checkbox">veganism</label>
+                
+                                <input type="checkbox" id="paleolithic-lifestyle-checkbox" name="life_style[]" value="paleolithic">
+                                <label for="paleolithic-lifestyle-checkbox">paleolithic</label>
+                
+                                <input type="checkbox" id="vegetarianism-lifestyle-checkbox" name="life_style[]" value="vegetarianism">
+                                <label for="vegetarianism-lifestyle-checkbox">vegetarianism</label>
+                                
+                                <input type="checkbox" id="slowfood-lifestyle-checkbox" name="life_style[]" value="slowfood">
+                                <label for="slowfood-lifestyle-checkbox">slow food movement</label>
+                
+                        </form>
+                    </div>
+                </section>
+
+                <section class="recipe-section">
+                    <div class="content">
+                        <button id="update-pref-button" type="submit">Update</button>
+                    </div>
                 </section>
             </div>
         </div>
 
         <div id="sidebar">
-            <button id="menu-button">Menu</button>
-            
+            <button id="search-button" onclick="toggleSidebar()">Search</button>
+
             <div class="inner">
 
-                <section id="search" class="alt">
+                <section id="search">
+                    <header class="subtitle">
+                        <h2>Search by title</h2>
+                    </header>
+
                     <form method="post" action="#">
-                        <input type="text" name="query" id="query" placeholder="Search" />
+                        <input type="text" name="recipe-search" id="recipe-search" placeholder="e.g. pizza" />
                     </form>
                 </section>
 
                 <nav id="menu">
                     <header class="subtitle">
-                        <h2>Menu</h2>
+                        <h2>Search by tags</h2>
                     </header>
+
+                    <form method="post" action="#">
+                        <input type="text" name="tag-search" id="tag-search" placeholder="e.g. salami" />
+                    </form>
+
                     <ul>
-                        <li><a href="../../logged-index.html">Home</a></li>
+                        <li>
+                            <input type="checkbox" id="pineapple" name="pineapple" checked>
+                            <label for="pineapple">Pineapple</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="salami" name="salami" checked>
+                            <label for="salami">Salami</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="potatoes" name="potatoes" checked>
+                            <label for="potatoes">Potaotes</label>
+                        </li>
                         <li>
                             <span class="opener">Lifestyle</span>
                             <ul>
@@ -143,25 +179,15 @@
                     </ul>
                 </nav>
 
-                <section>
+                <section id="search" class="alt">
                     <header class="subtitle">
-                        <h2>Articles</h2>
+                        <h2>Search article</h2>
                     </header>
-                    <div class="articles">
-                        <article>
-                            <a href="https://www.retete-gustoase.ro" class="image" target="_blank"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
-                            <p>5 things you can do with potatoes</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
-                            <p>How to be vegan 101</p>
-                        </article>
-                    </div>
-                    <ul class="actions">
-                        <li><a href="#" class="button">More</a></li>
-                    </ul>
-                </section>
 
+                    <form method="post" action="#">
+                        <input type="text" name="recipe-search" id="recipe-search" placeholder="e.g. 5 ways to.." />
+                    </form>
+                </section>
             </div>
         </div>
     </div>

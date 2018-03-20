@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 
 @font-face {
@@ -748,7 +747,7 @@
 			margin: 2em -17em 0 0;
 		}
 
-		#sidebar:hover {
+		#sidebar.visible {
 			margin-left: 0em;
 		}
 
@@ -866,7 +865,7 @@
 		}
 
 		#header .login {
-			flex-grow: 3;
+			flex-grow: 5;
 			text-align: right;
 			text-decoration: none;
 			color: #f56a6a;
