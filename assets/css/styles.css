@@ -745,12 +745,12 @@
 		transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 	}
 
-		#sidebar > button#menu-button {
+		#sidebar > button#search-menu-button {
 			float: right;
 			margin: 2em -14.5em 0 0;
 		}
 
-		#sidebar:hover {
+		#sidebar.visible {
 			margin-left: 0em;
 		}
 
@@ -787,7 +787,7 @@
 				width: 24em;
 			}
 
-				#sidebar > button#menu-button {
+				#sidebar > button#search-menu-button {
 					margin: 2em -14.5em 0 0;
 				}
 
@@ -816,7 +816,7 @@
 				z-index: 10000;
 			}
 
-				#sidebar > button#menu-button {
+				#sidebar > button#search-menu-button {
 					margin: 2em -13em 0 0;
 				}
 
@@ -840,7 +840,7 @@
 		}
 
 		@media screen and (max-width: 736px) {
-			#sidebar > button#menu-button {
+			#sidebar > button#search-search-menu-button {
 				margin: 3em -10.5em 0 0;
 			}
 		}
