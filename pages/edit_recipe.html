@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+	<script src="../assets/js/main.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header id="header">
+                    <h1 class="title"><strong>Edit</strong> recipe</h1>
+                    <ul class="login">
+                        <li><a href="../logged-index.html">Home</a></li>
+                        <li><a href="logged-articles.html">Articles</a></li>
+                        <li><a href="user_profile/my_recipes.html">My recipes</a></li>
+                        <li><a href="user_profile/favourites_recipes.html">My favorites</a></li>
+                        <li><a href="user_profile/made_recipes.html">Made recipes</a></li>
+                        <li><a href="user_profile/profile.html">Profile</a></li>
+                        <li><a href="user_profile/account.html">Account</a></li>
+                        <li><a href="../index.html">Logout</a></li>
+                    </ul>
+                </header>
+
+                    <section class="recipe-section">
+                        <div class="content">
+                            <label for="recipe-title-add">Recipe Title:</label>
+                            <input type="text" name="add" id="recipe-title-add" placeholder="Enter recipe title" required>
+                            
+                            <label for="recipe-tags-add">Tags:</label>
+                            <textarea name="tags" id="recipe-tags-add" placeholder="Enter #tags" required></textarea>
+                        
+                            <label for="recipe-time-add">Time to make:</label>
+                            <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
+
+                            <label>Image:</label>
+                            <button id="recipe-upload-button">Upload    </button>
+                        </div>
+                    </section>
+
+                    <section class="recipe-section">
+                        <div class="content">
+                            <h3>Ingredients</h3>
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
+                                <button id="delete-ingredient-1">Delete</button>
+                            </div>
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
+                                <button id="delete-ingredient-1">Delete</button>
+                            </div>
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
+                                <button id="delete-ingredient-1">Delete</button>
+                            </div>
+                            <button>Add ingredient</button>
+                        </div>
+                    </section>
+
+                    <section class="recipe-section">
+                        <div class="content">
+                            <h3>How to make</h3>
+                            <div class="ingredient">
+                                <textarea name="how-to-steps[]" id="add-how-to-step-1" required></textarea>
+                                <button id="delete-how-to-step-1">Delete</button>
+                            </div>
+                            <button>Add step</button>
+                        </div>
+                    </section>
+
+                    <a href="user_profile/my_recipes.html" class="button">Update</a>
+            </div>
+        </div>
+
+        <div id="sidebar">
+            <button id="menu-button">Menu</button>
+            
+            <div class="inner">
+
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <nav id="menu">
+                    <header class="subtitle">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="../logged-index.html">Home</a></li>
+                        <li>
+                            <span class="opener">Lifestyle</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="vegetarian" name="vegetarian">
+                                    <label for="vegetarian">Vegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="vegan" name="vegan">
+                                    <label for="vegan">Vegan</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="omnivorus" name="omnivorus">
+                                    <label for="omnivorus">Omnivorus</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Required time</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="less-then-60-min" name="less-then-60-min">
+                                    <label for="less-then-60-min">&lt; 60 min</label>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section>
+                    <header class="subtitle">
+                        <h2>Articles</h2>
+                    </header>
+                    <div class="articles">
+                        <article>
+                            <a href="https://www.retete-gustoase.ro" class="image" target="_blank"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>5 things you can do with potatoes</p>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="https://www2.retete-gustoase.ro/img/auto_resized/db/recipe_article/036/619/446853l-100x100-bmm-97cfd058.jpg" alt="" /></a>
+                            <p>How to be vegan 101</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="#" class="button">More</a></li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
