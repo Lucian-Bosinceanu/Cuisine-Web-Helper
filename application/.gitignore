@@ -1,5 +1,5 @@
 vendor/*
 .idea/*
-app/CuisineHelper/Library/Http/View/Views/cache/*
+storage/app/view/cache/*
 
-!app/CuisineHelper/Library/Http/View/Views/cache/.gitkeep
+!storage/app/view/cache/.gitkeep
