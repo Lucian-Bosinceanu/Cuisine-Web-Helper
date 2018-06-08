@@ -1,21 +1,21 @@
 <?php
 
-namespace CuisineHelper\Http\Controllers\Recipe;
+namespace CuisineHelper\Http\Controllers;
 
 use CuisineHelper\Library\Http\Controller\BaseController;
 
 class RecipeController extends BaseController {
 
     public function index() {
-
+        return view('recipes.index');
     }
 
     public function show() {
-        return view('recipe');
+        return view('recipes.show');
     }
 
     public function create() {
-        return view('addRecipe');
+        return view('recipes.create');
     }
 
     public function store() {
@@ -23,7 +23,7 @@ class RecipeController extends BaseController {
     }
 
     public function edit() {
-        return view('editRecipe');
+        return view('recipes.edit');
     }
 
     public function update() {

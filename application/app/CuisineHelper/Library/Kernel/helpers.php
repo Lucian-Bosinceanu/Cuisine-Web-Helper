@@ -39,7 +39,7 @@ if ( ! function_exists( 'css' ) ) {
      * @return string
      */
     function css( $name = '' ) {
-        return DEFAULT_CSS_PATH . $name;
+        return $name ? DEFAULT_CSS_PATH . $name . '.css' : '';
     }
 }
 
@@ -52,6 +52,6 @@ if ( ! function_exists( 'js' ) ) {
      * @return string
      */
     function js( $name = '' ) {
-        return DEFAULT_JS_PATH . $name;
+        return $name ? DEFAULT_JS_PATH . $name . '.js' : '';
     }
 }
