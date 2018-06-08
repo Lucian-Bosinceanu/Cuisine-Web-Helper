@@ -8,6 +8,16 @@ function toggleSidebar() {
             sidebar.classList.add("visible");
 }
 
+function toggleMenu() {
+
+    var sidebar = document.getElementById("sidebar-menu");
+
+    if (sidebar.className.indexOf("visible") >= 0)
+            sidebar.classList.remove("visible");
+            else
+            sidebar.classList.add("visible");
+}
+
 function toggleDropdown(id) {
 
     var element = document.getElementById(id);

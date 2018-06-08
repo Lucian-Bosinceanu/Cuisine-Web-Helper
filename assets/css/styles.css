@@ -423,6 +423,10 @@
 			opacity: 0.25;
 		}
 
+	.pref-button {
+		display: block;
+		margin-top: 3vh;
+	}
 /* Sidebar articles */
 
 	.articles article {
@@ -840,6 +844,119 @@
 			}
 		}
 
+/* Sidebar Menu */
+
+	#sidebar-menu {
+		display: none;
+		flex-grow: 0;
+		flex-shrink: 0;
+		background-color: #f5f6f7;
+		font-size: 0.9em;
+		position: relative;
+		width: 26em;
+		margin-right: -26em;
+		transition: margin-right 0.5s ease, box-shadow 0.5s ease;
+	}
+
+		#sidebar-menu > #menu-button {
+			float: left;
+			margin: 2em 0 0 -17em;
+		}
+
+		#sidebar-menu.visible {
+			margin-right: 0em;
+		}
+
+		#sidebar-menu h2 {
+			font-size: 1.38889em;
+		}
+
+		#sidebar-menu > .inner {
+			padding: 2.22222em 2.22222em 2.44444em 2.22222em ;
+			position: relative;
+			width: 26em;
+		}
+
+			#sidebar-menu > .inner > * {
+				border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+				margin: 0 0 3.5em 0;
+				padding: 0 0 3.5em 0;
+			}
+
+				#sidebar-menu > .inner > * > :last-child {
+					margin-bottom: 0;
+				}
+
+				#sidebar-menu > .inner > *:last-child {
+					border-bottom: 0;
+					margin-bottom: 0;
+					padding-bottom: 0;
+				}
+
+		@media screen and (max-width: 1680px) {
+
+			#sidebar-menu {
+				width: 24em;
+			}
+
+				#sidebar-menu > button#menu-button {
+					margin: 2em 0 0 -16em;
+				}
+
+				#sidebar-menu > .inner {
+					padding: 1.66667em 1.66667em 1.33333em 1.66667em ;
+					width: 24em;
+					-webkit-overflow-scrolling: touch;
+					height: 100%;
+					right: 0;
+					overflow-x: hidden;
+					position: absolute;
+					top: 0;
+				}
+
+		}
+
+		@media screen and (max-width: 1280px) {
+
+			#sidebar-menu {
+				box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.175);
+				display: initial;
+				height: 100%;
+				right: 0;
+				position: fixed;
+				top: 0;
+				z-index: 10000;
+			}
+
+				#sidebar-menu > button#menu-button {
+					margin: 2em 0 0 -17em;
+				}
+
+				#sidebar-menu > .inner {
+					-webkit-overflow-scrolling: touch;
+					height: 100%;
+					right: 0;
+					overflow-x: hidden;
+					overflow-y: scroll;
+					position: absolute;
+					top: 0;
+				}
+
+					#sidebar-menu > .inner:after {
+						content: '';
+						display: block;
+						height: 4em;
+						width: 100%;
+					}
+
+		}
+
+		@media screen and (max-width: 736px) {
+			#sidebar-menu > button#menu-button {
+				margin: 3em 0 0 -14em;
+			}
+		}
+
 /* Page header */
 
 	#header {
@@ -871,6 +988,20 @@
 			color: #f56a6a;
 		}
 
+		@media screen and (max-width: 1280px) {
+			#header {
+				padding: 2em 0 1em 0;
+			}
+
+				#header .title {
+					text-align: center;
+				}
+
+				#header .login {
+					display: none;
+				}	
+		}
+
 		@media screen and (max-width: 736px) {
 
 			#header {
@@ -882,9 +1013,6 @@
 					font-size: 1.425em;
 					margin: 0;
 				}
-
-				
-
 		}
 
 /* Recipe section */
