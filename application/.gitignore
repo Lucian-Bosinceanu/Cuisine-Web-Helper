@@ -1,0 +1,5 @@
+vendor/*
+.idea/*
+storage/app/view/cache/*
+
+!storage/app/view/cache/.gitkeep
