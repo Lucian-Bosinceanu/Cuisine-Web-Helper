@@ -7,7 +7,7 @@ use \Klein\Klein as Klein;
 class Router {
 
     static  $_router         = null;
-    private $routeFile       = 'Routes';
+    private $routeFile       = ROOTPATH . 'app/CuisineHelper/Http/Routes';
     private $ext             = 'php';
     private $klein           = null;
     private $controllersPath = "\\CuisineHelper\\Http\\Controllers\\";

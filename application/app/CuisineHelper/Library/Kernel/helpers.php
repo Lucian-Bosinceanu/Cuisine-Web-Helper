@@ -29,3 +29,29 @@ if ( ! function_exists( 'view' ) ) {
         return View::View( $name, $params );
     }
 }
+
+if ( ! function_exists( 'css' ) ) {
+
+    /**
+     * @param string $name The name of the View to be loaded
+     * @param array  $params The map of parameters sent to View
+     *
+     * @return string
+     */
+    function css( $name = '' ) {
+        return DEFAULT_CSS_PATH . $name;
+    }
+}
+
+if ( ! function_exists( 'js' ) ) {
+
+    /**
+     * @param string $name The name of the View to be loaded
+     * @param array  $params The map of parameters sent to View
+     *
+     * @return string
+     */
+    function js( $name = '' ) {
+        return DEFAULT_JS_PATH . $name;
+    }
+}
