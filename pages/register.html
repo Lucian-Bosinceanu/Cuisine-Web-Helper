@@ -17,8 +17,8 @@
                     <h1 class="title"><strong>Register</strong></h1>
                 </header>
 
-                <section id="login_form">
-                    <form action="#" method="post">
+                <section>
+                    <form action="#" method="POST" id="register-form">
                         <label for="username_create_input">Username:</label>
                         <input type="text" name="username" id="username_create_input" placeholder="username" required>
                 
@@ -28,7 +28,8 @@
                         <label for="email_create_input">Email:</label>
                         <input type="email" name="email" id="email_create_input" placeholder="user@site.com" required>
                 
-                        <a href="../logged-index.html" class="button">Register</a>
+                        <!-- <a href="../logged-index.html" class="button" type="submit">Register</a> -->
+                        <button type="submit" formmethod="POST" form="register-form">Register</button>
                     </form>
                 </section>
             </div>
