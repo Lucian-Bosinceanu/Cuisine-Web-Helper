@@ -15,6 +15,56 @@ class Router {
     private function __construct() {
     }
 
+    /**
+     * If $callback is callable, just pass it
+     * otherwise, the format should be "Controller@Method"
+     *
+     * @param                 $method   The HTTP verb GET, POST etc...
+     * @param                 $path     The path of the request
+     * @param callable|String $callback The callback or the controller's action
+     *
+     * @return \CuisineHelper\Library\Router\Router|null
+     * @throws \Exception
+     */
+    public static function route( $method, $path, $callback ) {
+        try {
+            $router = Router::getInstance();
+            $klein  = $router->klein;
+            if ( is_callable( $callback ) ) {
+                $klein->respond( $method, $path, $callback );
+            } else {
+                $result = explode( "@", $callback );
+                if ( is_array( $result ) && count( $result ) == 2 ) {
+                    $controller = str_replace( '/', '\\', $result[0] );
+                    $class      = $router->controllersPath . $controller;
+                    if ( ! class_exists( ucfirst( $class ) ) ) {
+                        throw new \Exception( "Controller <b>{$controller}</b> not found!" );
+                    }
+                    $klein->respond( $method, $path, [ new $class(), $result[1] ] );
+                }
+            }
+        } catch ( \Exception $ex ) {
+            print $ex->getMessage();
+            exit;
+        }
+
+        return $router;
+    }
+
+    /**
+     * Get singleton instance
+     *
+     * @return \CuisineHelper\Library\Router\Router|null
+     */
+    public static function getInstance() {
+        if ( ! isset( self::$_router ) ) {
+            self::$_router = new Router();
+            self::$_router->boot();
+        }
+
+        return self::$_router;
+    }
+
     private function boot() {
         if ( $this->klein == null ) {
             $this->klein = new Klein();
@@ -50,53 +100,6 @@ class Router {
             }
             $router->response()->body( $message );
         } );
-    }
-
-    /**
-     * If $callback is callable, just pass it
-     * otherwise, the format should be "Controller@Method"
-     * @param                 $method   The HTTP verb GET, POST etc...
-     * @param                 $path     The path of the request
-     * @param callable|String $callback The callback or the controller's action
-     *
-     * @return \CuisineHelper\Library\Router\Router|null
-     * @throws \Exception
-     */
-    public static function route( $method, $path, $callback ) {
-        try {
-            $router = Router::getInstance();
-            $klein  = $router->klein;
-            if ( is_callable( $callback ) ) {
-                $klein->respond( $method, $path, $callback );
-            } else {
-                $result = explode( "@", $callback );
-                if ( is_array( $result ) && count( $result ) == 2 ) {
-                    $class = $router->controllersPath . $result[0];
-                    if ( ! class_exists( ucfirst( $class ) ) ) {
-                        throw new \Exception( "Controller not found!" );
-                    }
-                    $klein->respond( $method, $path, [ new $class(), $result[1] ] );
-                }
-            }
-        } catch (\Exception $ex) {
-            print $ex->getMessage();
-            exit;
-        }
-        return $router;
-    }
-
-    /**
-     * Get singleton instance
-     *
-     * @return \CuisineHelper\Library\Router\Router|null
-     */
-    public static function getInstance() {
-        if ( ! isset( self::$_router ) ) {
-            self::$_router = new Router();
-            self::$_router->boot();
-        }
-
-        return self::$_router;
     }
 
     public static function get() {

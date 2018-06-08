@@ -9,7 +9,7 @@ use CuisineHelper\Library\Http\Controller\BaseController;
 class IndexController extends BaseController {
 
     public function index(Request $request, Response $response) {
-        return view('login');
+        return view('login', ['var' => '123']);
     }
 
     public function admin($req, Response $res) {

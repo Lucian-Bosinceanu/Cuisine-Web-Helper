@@ -1,7 +1,6 @@
 {
   "require": {
     "klein/klein": "2.1.*",
-    "twig/twig": "^2.0",
     "philo/laravel-blade": "3.*"
   },
   "autoload": {

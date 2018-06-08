@@ -14,6 +14,7 @@ return [
         'blade' => [
             'path'  => DEFAULT_VIEW_PATH,
             'cache' => DEFAULT_VIEW_CACHE_PATH,
+            'error_view' => DEFAULT_VIEW_PATH . '/defaults/error_view'
         ]
     ]
 ];
