@@ -3,6 +3,7 @@
 namespace CuisineHelper\Http\Models;
 
 use \Model;
+use CuisineHelper\Http\Models\User;
 
 /**
  * @property int    $id
@@ -14,6 +15,10 @@ use \Model;
  */
 class Article extends Model {
 
+    public static $_table_use_short_name = true;
     public static $_table = 'articles';
 
+    public function getUser() {
+        return $this->belongs_to('User','user_id','id');
+    }
 }

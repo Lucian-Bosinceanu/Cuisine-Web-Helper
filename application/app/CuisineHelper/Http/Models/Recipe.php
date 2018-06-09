@@ -9,7 +9,7 @@ use \Model;
  * @property string $title
  * @property int $difficulty
  * @property int $time
- * @property string instructions
+ * @property string $instructions
  * @property $image
  */
 class Recipe extends Model {
