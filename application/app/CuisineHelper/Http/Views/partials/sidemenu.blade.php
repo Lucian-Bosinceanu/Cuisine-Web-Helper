@@ -1,11 +1,22 @@
+@php
+$logged = 0;
+@endphp
 <div id="sidebar-menu">
     <button id="menu-button" onclick="toggleMenu()">Menu</button>
     <div class="inner">
         <ul class="sidebar-login">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="pages/articles.html">Articles</a></li>
-            <li><a href="pages/register.html">Register</a></li>
-            <li><a href="pages/login.html">Login</a></li>
+            <li><a href="{{ route("recipes.index") }}">Home</a></li>
+            <li><a href="{{ route("articles.index") }}">Articles</a></li>
+            @if (!$logged)
+                <li><a href="{{ route("auth.register") }}">Register</a></li>
+                <li><a href="{{ route("auth.login") }}">Login</a></li>
+            @else
+                <li><a href="#">My recipes</a></li>
+                <li><a href="#">My favorites</a></li>
+                <li><a href="#">Made recipes</a></li>
+                <li><a href="{{ route("user.profile") }}">Profile</a></li>
+                <li><a href="{{ route("user.account") }}">Account</a></li>
+            @endif
         </ul>
     </div>
 </div>

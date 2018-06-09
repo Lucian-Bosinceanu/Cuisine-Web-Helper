@@ -8,7 +8,6 @@
 
 @section('content')
 	@include('partials.sidemenu')
-
     <div id="main">
 		<div class="inner">
 			<header id="header">

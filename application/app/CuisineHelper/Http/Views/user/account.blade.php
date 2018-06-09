@@ -7,12 +7,12 @@
 @endsection
 
 @section('content')
-    @include('partials.logged-sidemenu')
+    @include('partials.sidemenu')
     <div id="main">
         <div class="inner">
             <header id="header">
                 <h1 class="title"><strong>Account</strong> &amp; Preferences</h1>
-                @include('partials.logged-menu')
+                @include('partials.menu')
             </header>
 
             <section class="recipe-section">

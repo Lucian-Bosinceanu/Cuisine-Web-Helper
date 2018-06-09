@@ -9,6 +9,10 @@
 </head>
 <body>
     <div id="wrapper">
+        @php
+        $logged = 0;
+        @endphp
+        
         @yield('content')
     </div>
 </body>
