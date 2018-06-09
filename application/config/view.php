@@ -1,20 +1,20 @@
 <?php
 return [
-    'engine' => 'blade',
+    'engine'  => 'blade',
     'options' => [
         'twig'  => [
-            'path'       => [ ROOTPATH . 'app/CuisineHelper/Http/Views', ROOTPATH . 'app/CuisineHelper/Library/Http/View/Views/DefaultViews' ],
+            'path'       => [ base_path() . 'app/CuisineHelper/Http/Views', base_path() . 'app/CuisineHelper/Library/Http/View/Views/DefaultViews' ],
             'error_view' => 'error_view.html',
             'options'    => [
-                'cache'       => DEFAULT_VIEW_CACHE_PATH,
+                'cache'       => base_path() . "storage/app/view/cache",
                 'auto_reload' => true,
                 'debug'       => true
             ]
         ],
         'blade' => [
-            'path'  => DEFAULT_VIEW_PATH,
-            'cache' => DEFAULT_VIEW_CACHE_PATH,
-            'error_view' => DEFAULT_VIEW_PATH . '/defaults/error_view'
+            'path'       => base_path() . "app/CuisineHelper/Http/Views",
+            'cache'      => base_path() . "storage/app/view/cache",
+            'error_view' => base_path() . "app/CuisineHelper/Http/Views/defaults/error_view"
         ]
     ]
 ];

@@ -1,7 +1,15 @@
 <?php
 
 use CuisineHelper\Library\Http\View\View as View;
+use CuisineHelper\Library\Router\Router;
 
+if ( ! function_exists( 'base_path' ) ) {
+
+    function base_path() {
+        $rootPath = ROOTPATH;
+        return str_replace('/public', '/', $rootPath);
+    }
+}
 
 if ( ! function_exists( 'config' ) ) {
 
@@ -12,7 +20,7 @@ if ( ! function_exists( 'config' ) ) {
         if ( $config == '' ) {
             return;
         }
-        $path = ROOTPATH . "/config/{$config}.php";
+        $path = base_path() . "config/{$config}.php";
         if ( ! file_exists( $path ) ) {
             return [];
         }
@@ -34,28 +42,68 @@ if ( ! function_exists( 'view' ) ) {
     }
 }
 
+if ( ! function_exists( 'asset' ) ) {
+
+    /**
+     * @param string $name The path of the asset file
+     *
+     * @return string The path to the file
+     */
+    function asset( $name = '' ) {
+        $config = config( 'asset' )['asset'] ?? "/";
+
+        return $name ? $config . $name : '';
+    }
+}
+
 if ( ! function_exists( 'css' ) ) {
 
     /**
-     * @param string $name   The name of the View to be loaded
-     * @param array  $params The map of parameters sent to View
+     * @param string $name   The path of the css file
      *
-     * @return string
+     * @return string The path to the file
      */
     function css( $name = '' ) {
-        return $name ? DEFAULT_CSS_PATH . $name . '.css' : '';
+        $config = config( 'asset' )['css'] ?? "/";
+        return $name ? $config . $name . '.css' : '';
     }
 }
 
 if ( ! function_exists( 'js' ) ) {
 
     /**
-     * @param string $name   The name of the View to be loaded
-     * @param array  $params The map of parameters sent to View
+     * @param string $name The path of the javascript file
      *
-     * @return string
+     * @return string The path to the file
      */
     function js( $name = '' ) {
-        return $name ? DEFAULT_JS_PATH . $name . '.js' : '';
+        $config = config( 'asset' )['js'] ?? "/";
+        return $name ? $config . $name . '.js' : '';
+    }
+}
+
+if ( ! function_exists( 'img' ) ) {
+
+    /**
+     * @param string $name The path of the image file
+     *
+     * @return string The path to the file
+     */
+    function img( $name = '' ) {
+        $config = config( 'asset' )['img'] ?? "/";
+
+        return $name ? $config . $name : '';
+    }
+}
+
+if ( ! function_exists( 'route' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function route( $name = '' ) {
+        return $name ? Router::getInstance()->getKlein()->getPathFor($name) : '/';
     }
 }

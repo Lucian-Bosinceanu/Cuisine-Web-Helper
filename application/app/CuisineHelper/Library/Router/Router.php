@@ -7,7 +7,6 @@ use \Klein\Klein as Klein;
 class Router {
 
     static  $_router         = null;
-    private $routeFile       = ROOTPATH . 'app/CuisineHelper/Http/Routes';
     private $ext             = 'php';
     private $klein           = null;
     private $controllersPath = "\\CuisineHelper\\Http\\Controllers\\";
@@ -23,7 +22,7 @@ class Router {
      * @param                 $path     The path of the request
      * @param callable|String $callback The callback or the controller's action
      *
-     * @return \CuisineHelper\Library\Router\Router|null
+     * @return \Klein\Route|null
      * @throws \Exception
      */
     public static function route( $method, $path, $callback ) {
@@ -40,7 +39,7 @@ class Router {
                     if ( ! class_exists( ucfirst( $class ) ) ) {
                         throw new \Exception( "Controller <b>{$controller}</b> not found!" );
                     }
-                    $klein->respond( $method, $path, [ new $class(), $result[1] ] );
+                    $route = $klein->respond( $method, $path, [ new $class(), $result[1] ] );
                 }
             }
         } catch ( \Exception $ex ) {
@@ -48,7 +47,7 @@ class Router {
             exit;
         }
 
-        return $router;
+        return $route;
     }
 
     /**
@@ -79,7 +78,8 @@ class Router {
      */
     protected function addRoutes() {
         try {
-            require "{$this->routeFile}.{$this->ext}";
+            $path = base_path() . 'app/CuisineHelper/Http/Routes';
+            require "{$path}.{$this->ext}";
         } catch ( \Exception $ex ) {
             print $ex->getMessage();
             exit;
@@ -108,6 +108,10 @@ class Router {
 
     public static function post() {
 
+    }
+
+    public function getKlein() {
+        return $this->klein;
     }
 
     private function __clone() {
