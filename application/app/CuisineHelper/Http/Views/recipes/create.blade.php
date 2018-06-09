@@ -27,8 +27,12 @@
                         <label for="recipe-time-add">Time to make:</label>
                         <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
 
-                        <label>Image:</label>
-                        <button id="recipe-upload-button">Upload</button>
+                        <label for="image-upload" class="button">Choose image to upload (PNG, JPG)</label>
+                        <input type="file" id="image-upload" name="image-upload" accept=".jpg, .jpeg, .png">
+                        <div class="preview">
+                            <p>No files currently selected for upload</p>
+                        </div>
+                        <!-- <button id="recipe-upload-button">Upload</button> -->
                     </div>
                 </section>
 

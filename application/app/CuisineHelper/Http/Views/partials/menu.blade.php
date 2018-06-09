@@ -1,3 +1,6 @@
+@php
+$logged = 0;
+@endphp
 <ul class="login">
     <li><a href="{{ route("recipes.index") }}">Home</a></li>
     <li><a href="{{ route("articles.index") }}">Articles</a></li>

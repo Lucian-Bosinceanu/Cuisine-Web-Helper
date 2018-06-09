@@ -423,6 +423,10 @@
 			opacity: 0.25;
 		}
 
+	input[type="file"] {
+		display: none;	
+	}
+
 	.pref-button {
 		display: block;
 		margin-top: 3vh;
