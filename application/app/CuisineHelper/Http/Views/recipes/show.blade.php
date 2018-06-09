@@ -2,6 +2,10 @@
 
 @section('title', 'Recipe viewer')
 
+@section('head')
+    <script src="{{ js('main') }}"></script>
+@endsection
+
 @section('content')
     @include('partials.sidemenu')
     <div id="main">
@@ -68,6 +72,4 @@
             </section>
         </div>
     </div>
-
-    @include('partials.search')
 @endsection

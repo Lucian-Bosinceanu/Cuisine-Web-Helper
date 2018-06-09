@@ -14,7 +14,7 @@ return [
         'blade' => [
             'path'       => base_path() . "app/CuisineHelper/Http/Views",
             'cache'      => base_path() . "storage/app/view/cache",
-            'error_view' => base_path() . "app/CuisineHelper/Http/Views/defaults/error_view"
+            'error_view' => "defaults.error_view"
         ]
     ]
 ];

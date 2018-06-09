@@ -12,7 +12,7 @@
     <div id="main">
 		<div class="inner">
 			<header id="header">
-				<h1 class="title"><strong>Featured</strong> recipes</h1>
+				<h1 class="title"><strong>Recipes</strong></h1>
 				@include('partials.menu')
 			</header>
 

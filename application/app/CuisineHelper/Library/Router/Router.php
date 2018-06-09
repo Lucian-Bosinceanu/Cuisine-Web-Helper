@@ -102,12 +102,12 @@ class Router {
         } );
     }
 
-    public static function get() {
-
+    public static function get($method, $callback) {
+        return self::route('get', $method, $callback);
     }
 
-    public static function post() {
-
+    public static function post($method, $callback) {
+        return self::route('post', $method, $callback);
     }
 
     public function getKlein() {

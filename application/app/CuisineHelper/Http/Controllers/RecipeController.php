@@ -13,7 +13,7 @@ class RecipeController extends BaseController {
         //print_r(css('styles')); exit;
 
         $user = User::find_one(0);
-        print_r($articles = $user->getArticles());
+        // print_r($articles = $user->getArticles());
         //print_r($articles);
         return view('recipes.index', ['recipes' => $recipes]);
     }
