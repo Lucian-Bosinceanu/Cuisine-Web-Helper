@@ -15,7 +15,7 @@
                 @include('partials.menu')
             </header>
 
-            <form action="{{ route("recipes.store") }}" method="POST" id="recipe-form">
+            <form action="{{ route("recipes.store") }}" method="POST" id="recipe-form" enctype="multipart/form-data">
                 <section class="recipe-section">
                     <div class="content">
                         <label for="recipe-title-add">Recipe Title:</label>
