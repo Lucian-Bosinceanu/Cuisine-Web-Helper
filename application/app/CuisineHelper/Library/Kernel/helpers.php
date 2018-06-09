@@ -25,7 +25,7 @@ if ( ! function_exists( 'config' ) ) {
             return [];
         }
 
-        return require_once $path;
+        return require $path;
     }
 }
 
