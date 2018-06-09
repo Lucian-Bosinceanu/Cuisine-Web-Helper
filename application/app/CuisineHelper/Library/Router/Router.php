@@ -93,6 +93,7 @@ class Router {
         $this->klein->onHttpError( function( $code, $router ) {
             switch ( $code ) {
                 case 404:
+                case 405:
                     $message = "Page not found!";
                     break;
                 default:
@@ -108,6 +109,10 @@ class Router {
 
     public static function post($method, $callback) {
         return self::route('post', $method, $callback);
+    }
+
+    public static function delete($method, $callback) {
+        return self::route('delete', $method, $callback);
     }
 
     public function getKlein() {
