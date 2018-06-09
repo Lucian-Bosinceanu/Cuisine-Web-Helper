@@ -13,10 +13,10 @@ class RecipeController extends BaseController {
         $recipes = Recipe::findMany();
         //print_r(css('styles')); exit;
 
-        $recipe = Recipe::find_one(1);
+        /*$recipe = Recipe::find_one(1);
         $ingredients = $recipe->getIngredients()->findMany();
         print_r($ingredients);
-        exit;
+        exit;*/
         //print_r($articles);
         return view('recipes.index', ['recipes' => $recipes]);
     }
