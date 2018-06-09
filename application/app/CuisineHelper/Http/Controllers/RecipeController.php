@@ -13,9 +13,9 @@ class RecipeController extends BaseController {
         $recipes = Recipe::findMany();
         //print_r(css('styles')); exit;
 
-        $user = User::find_one(0);
-        $articles = $user->getArticles()->findMany();
-        print_r($articles);
+        $recipe = Recipe::find_one(1);
+        $ingredients = $recipe->getIngredients()->findMany();
+        print_r($ingredients);
         exit;
         //print_r($articles);
         return view('recipes.index', ['recipes' => $recipes]);

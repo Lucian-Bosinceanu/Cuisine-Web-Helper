@@ -1,6 +1,6 @@
 <?php
 
-namespace CuisineHelper\Http\Models;
+namespace CuisineHelper\Http\Models\ManyToMany;
 
 use \Model;
 
