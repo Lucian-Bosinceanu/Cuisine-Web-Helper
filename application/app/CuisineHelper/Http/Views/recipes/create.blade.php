@@ -23,8 +23,15 @@
                         <label for="recipe-time-add">Time to make:</label>
                         <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
 
-                        <label for="difficulty-add">Difficulty:</label>
-                        <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea>
+                        <label>Difficulty:</label>
+                        <!-- <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea> -->
+                        <select name="difficulty" id="difficulty-add">
+                            <option value="1">Very easy</option>
+                            <option value="2">Easy</option>
+                            <option value="3">Medium</option>
+                            <option value="4">Hard</option>
+                            <option value="5">Very hard</option>
+                        </select>
 
                         <label for="image-upload" id="image-upload-button" class="button">
                             <span>Choose image to upload (PNG, JPG)</span>
@@ -37,12 +44,6 @@
                 <section class="recipe-section">
                     <div class="content">
                         <h3>Ingredients</h3>
-                        <div class="ingredient">
-                            <label for="ingredient-name-1">Ingredient name | Quantity</label>
-                            <input type="text" name="ingredients[]" id="ingredient-name-1" class="" required>
-                            <input type="text" name="quantity[]" id="ingredient-quantity-1" class="" required>
-                            <button class="delete-button" type="button">Delete</button>
-                        </div>
                         <button id="add-ingredients-button" type="button">Add ingredient</button>
                     </div>
                 </section>
@@ -50,10 +51,6 @@
                 <section class="recipe-section">
                     <div class="content">
                         <h3>How to make</h3>
-                        <div class="ingredient">
-                            <textarea name="how-to-steps[]" id="add-how-to-step-1" required></textarea>
-                            <button class="delete-button" type="button">Delete</button>
-                        </div>
                         <button id="add-step-button" type="button">Add step</button>
                     </div>
                 </section>

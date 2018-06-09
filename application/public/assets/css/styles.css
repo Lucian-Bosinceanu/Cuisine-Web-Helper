@@ -35,7 +35,7 @@
 
 /* For text */
 
-	body, input, textarea {
+	body, input, textarea, select {
 		color: #51565a;
 		font-family: "Open Sans", sans-serif;
 		font-size: 13pt;
@@ -45,7 +45,7 @@
 
 		@media screen and (max-width: 1680px) {
 
-			body, input, textarea {
+			body, input, textarea, select {
 				font-size: 11pt;
 			}
 
@@ -53,7 +53,7 @@
 
 		@media screen and (max-width: 1280px) {
 
-			body, input, textarea {
+			body, input, textarea, select {
 				font-size: 10pt;
 			}
 
@@ -61,7 +61,7 @@
 
 		@media screen and (max-width: 360px) {
 
-			body, input, textarea {
+			body, input, textarea, select {
 				font-size: 9pt;
 			}
 
@@ -154,7 +154,7 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
-	textarea {
+	textarea, select {
 		appearance: none;
 		background: #ffffff;
 		border-radius: 0.375em;
