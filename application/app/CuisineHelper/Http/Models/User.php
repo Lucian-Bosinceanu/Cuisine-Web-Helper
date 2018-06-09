@@ -17,6 +17,6 @@ class User extends Model {
     public static $_table_use_short_name = true;
 
     public function getArticles() {
-        return $this->has_many('Article','user_id','id');
+        return $this->has_many( MODELPATH . 'Article','user_id','id');
     }
 }

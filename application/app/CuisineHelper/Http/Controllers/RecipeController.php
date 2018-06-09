@@ -5,6 +5,7 @@ namespace CuisineHelper\Http\Controllers;
 use CuisineHelper\Library\Http\Controller\BaseController;
 use CuisineHelper\Http\Models\Recipe;
 use CuisineHelper\Http\Models\User;
+use CuisineHelper\Http\Models\Article;
 
 class RecipeController extends BaseController {
 
@@ -13,7 +14,9 @@ class RecipeController extends BaseController {
         //print_r(css('styles')); exit;
 
         $user = User::find_one(0);
-        print_r($articles = $user->getArticles());
+        $articles = $user->getArticles()->findMany();
+        print_r($articles);
+        exit;
         //print_r($articles);
         return view('recipes.index', ['recipes' => $recipes]);
     }
