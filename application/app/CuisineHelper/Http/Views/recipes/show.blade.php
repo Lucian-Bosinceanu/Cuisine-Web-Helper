@@ -8,7 +8,7 @@
                 <header id="header">
                     <h1 class="title"><strong>Recipe</strong> viewer</h1>
                     <ul class="login">
-                        <li><a href="{{ route('recipe.index') }}">Home</a></li>
+                        <li><a href="{{ route('recipe.show', ['id' => 2]) }}">Home</a></li>
                         <li><a href="articles.html">Articles</a></li>
 						<li><a href="register.html">Register</a></li>
 						<li><a href="login.html">Login</a></li>

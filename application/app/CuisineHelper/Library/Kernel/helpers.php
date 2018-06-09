@@ -25,7 +25,7 @@ if ( ! function_exists( 'config' ) ) {
             return [];
         }
 
-        return require_once $path;
+        return require $path;
     }
 }
 
@@ -103,7 +103,12 @@ if ( ! function_exists( 'route' ) ) {
      *
      * @return string The path of the route
      */
-    function route( $name = '' ) {
-        return $name ? Router::getInstance()->getKlein()->getPathFor($name) : '/';
+    function route( $name = '', $params = [] ) {
+        if (!$name) return '/';
+        $route = Router::getInstance()->getKlein()->getPathFor($name, $params);
+        if (strpos($route, '[') === false) {
+            return $route;
+        }
+        return '/';
     }
 }
