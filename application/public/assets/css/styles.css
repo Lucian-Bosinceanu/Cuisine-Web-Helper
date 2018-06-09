@@ -858,6 +858,16 @@
 		transition: margin-right 0.5s ease, box-shadow 0.5s ease;
 	}
 
+		#sidebar-menu ul li {
+			padding: 10px;
+			font-size: 1.4em;
+		}
+		
+		#sidebar-menu ul {
+			text-align: center;
+			list-style-type: none;
+		}
+
 		#sidebar-menu > #menu-button {
 			float: left;
 			margin: 2em 0 0 -17em;
@@ -929,7 +939,7 @@
 			}
 
 				#sidebar-menu > button#menu-button {
-					margin: 2em 0 0 -17em;
+					margin: 2em 0 0 -16em;
 				}
 
 				#sidebar-menu > .inner {
@@ -937,7 +947,7 @@
 					height: 100%;
 					right: 0;
 					overflow-x: hidden;
-					overflow-y: scroll;
+					overflow-y: auto;
 					position: absolute;
 					top: 0;
 				}
@@ -953,7 +963,7 @@
 
 		@media screen and (max-width: 736px) {
 			#sidebar-menu > button#menu-button {
-				margin: 3em 0 0 -14em;
+				margin: 3em 0 0 -13em;
 			}
 		}
 
@@ -1005,7 +1015,7 @@
 		@media screen and (max-width: 736px) {
 
 			#header {
-				padding-top: 6.5em;
+				padding-top: 3em;
 			}
 
 				#header .title {

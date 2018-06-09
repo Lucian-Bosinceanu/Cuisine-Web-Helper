@@ -17,10 +17,6 @@ class RecipeController extends BaseController {
         $articles = $user->getArticles()->findMany();
         print_r($articles);
         exit;
-        //$article = Article::where('id', 1)->findOne();
-        //print_r($article->title);
-        //exit;
-        //print_r($articles = $user->getArticles());
         //print_r($articles);
         return view('recipes.index', ['recipes' => $recipes]);
     }

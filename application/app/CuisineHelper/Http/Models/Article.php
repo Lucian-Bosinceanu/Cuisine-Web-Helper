@@ -18,6 +18,6 @@ class Article extends Model {
     public static $_table = 'articles';
 
     public function getUser() {
-        return $this->belongs_to('User','user_id','id');
+        return $this->belongs_to( MODELPATH . 'User','user_id','id');
     }
 }
