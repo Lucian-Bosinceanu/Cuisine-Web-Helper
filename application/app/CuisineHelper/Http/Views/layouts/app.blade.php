@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ css('styles') }}"/>
+    <script src="{{ js('lib/jquery-3.3.1.min') }}"></script>
+    <script src="{{ js('main') }}"></script>
     @yield('head')
 </head>
 <body>
     <div id="wrapper">
-        @php
-        $logged = 0;
-        @endphp
-        
         @yield('content')
     </div>
 </body>

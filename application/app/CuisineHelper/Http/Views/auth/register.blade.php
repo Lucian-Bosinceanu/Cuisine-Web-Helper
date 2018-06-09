@@ -5,7 +5,7 @@
 @section('content')
     <div id="main">
         <div class="inner login">
-            <a href="../index.html">&lt; return to Home</a>
+            <a href="{{ route("recipes.index") }}">&lt; return to Home</a>
 
             <header id="header">
                 <h1 class="title"><strong>Register</strong></h1>

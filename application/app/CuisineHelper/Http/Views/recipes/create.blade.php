@@ -2,10 +2,6 @@
 
 @section('title', 'Add recipe')
 
-@section('head')
-    <script src="{{ js('main') }}"></script>
-@endsection
-
 @section('content')
     @include('partials.sidemenu')
     <div id="main">
@@ -27,11 +23,13 @@
                         <label for="recipe-time-add">Time to make:</label>
                         <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
 
-                        <label for="image-upload" class="button">Choose image to upload (PNG, JPG)</label>
+                        <label for="difficulty-add">Difficulty:</label>
+                        <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea>
+
+                        <label for="image-upload" id="image-upload-button" class="button">
+                            <span>Choose image to upload (PNG, JPG)</span>
+                        </label>
                         <input type="file" id="image-upload" name="image-upload" accept=".jpg, .jpeg, .png">
-                        <div class="preview">
-                            <p>No files currently selected for upload</p>
-                        </div>
                         <!-- <button id="recipe-upload-button">Upload</button> -->
                     </div>
                 </section>
@@ -40,18 +38,12 @@
                     <div class="content">
                         <h3>Ingredients</h3>
                         <div class="ingredient">
-                            <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                            <button id="delete-ingredient-1">Delete</button>
+                            <label for="ingredient-name-1">Ingredient name | Quantity</label>
+                            <input type="text" name="ingredients[]" id="ingredient-name-1" class="" required>
+                            <input type="text" name="quantity[]" id="ingredient-quantity-1" class="" required>
+                            <button class="delete-button" type="button">Delete</button>
                         </div>
-                        <div class="ingredient">
-                            <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                            <button id="delete-ingredient-1">Delete</button>
-                        </div>
-                        <div class="ingredient">
-                            <input type="text" name="ingredients[]" id="add-ingredient-1" class="" required>
-                            <button id="delete-ingredient-1">Delete</button>
-                        </div>
-                        <button id="add-ingredients-button">Add ingredient</button>
+                        <button id="add-ingredients-button" type="button">Add ingredient</button>
                     </div>
                 </section>
 
@@ -60,9 +52,9 @@
                         <h3>How to make</h3>
                         <div class="ingredient">
                             <textarea name="how-to-steps[]" id="add-how-to-step-1" required></textarea>
-                            <button id="delete-how-to-step-1">Delete</button>
+                            <button class="delete-button" type="button">Delete</button>
                         </div>
-                        <button id="add-step-button">Add step</button>
+                        <button id="add-step-button" type="button">Add step</button>
                     </div>
                 </section>
 

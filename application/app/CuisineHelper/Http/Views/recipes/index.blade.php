@@ -60,6 +60,24 @@ $logged = 0;
 							<li><a href="pages/recipe.html" class="button">More</a></li>
 						</ul>
 					</article>
+					<article>
+						<a href="pages/recipe.html" class="image"><img src="https://www.seriouseats.com/recipes/images/2016/01/20160206-fried-rice-food-lab-68-1500x1125.jpg"
+																		alt=""/></a>
+						<h3>Sed etiam facilis</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="pages/recipe.html" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="pages/recipe.html" class="image"><img src="https://www.seriouseats.com/recipes/images/2016/01/20160206-fried-rice-food-lab-68-1500x1125.jpg"
+																		alt=""/></a>
+						<h3>Sed etiam facilis</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="pages/recipe.html" class="button">More</a></li>
+						</ul>
+					</article>
 				</div>
 			</section>
 		</div>

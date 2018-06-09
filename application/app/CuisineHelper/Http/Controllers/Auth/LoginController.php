@@ -7,7 +7,7 @@ use CuisineHelper\Library\Http\Controller\BaseController;
 class LoginController extends BaseController {
 
     public function index() {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login() {

@@ -431,6 +431,10 @@
 		display: block;
 		margin-top: 3vh;
 	}
+
+	#image-upload-button {
+		margin-top: 2em;
+	}
 /* Sidebar articles */
 
 	.articles article {
@@ -1059,13 +1063,12 @@
 
 			
 			.recipe-section .content .ingredient > input {
-				width: 60%;
+				width: 43%;
 				display: inline-block;
 			}
 
 			.recipe-section .content .ingredient > textarea {
-				width: 60%;
-				height: 4em;
+				width: 86%;
 				display: inline-block;
 			}
 
