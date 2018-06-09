@@ -16,7 +16,7 @@
 
             <section class="recipe-section">
                 <div class="content">
-                    <h1>Potato recipe</h1>
+                    <h1>{{$recipe->title}}</h1>
 
                         <ul class="tags">
                             <li><strong>Tags:</strong></li>
@@ -26,23 +26,23 @@
                         </ul>
 
                     <ul>
-                        <li>
+                        <!--<li>
                             <p><strong>Rating:</strong> 4.5/5</p>
-                        </li>
+                        </li> -->
                         <li>
-                            <p><strong>Difficulty:</strong> 2/5</p>
+                            <p><strong>Difficulty:</strong> {{$recipe->dificulty}}/5</p>
                         </li>
 
                         <li>
                             <p>
-                                <strong>Time to make:</strong> 30 min
+                                <strong>Time to make:</strong> {{$recipe->time}} min
                             </p>
                         </li>
                     </ul>
 
                 </div>
                 <span class="image">
-                    <img src="../assets/img/potato.jpg" alt="potato" class="recipe_picture">
+                    <img src="{{$recipe->image}}" alt="potato" class="recipe_picture">
                 </span>
             </section>
 

@@ -12,7 +12,7 @@
         </header>
 
         <section>
-            <form action="#" method="post" id="login-form">
+            <form action="{{ route('auth.login') }}" method="post" id="login-form">
                 <label for="username-email-login-input">Username or Email:</label>
                 <input type="text" name="username-email" id="username-email-login-input" placeholder="user@site.com" required>
 
