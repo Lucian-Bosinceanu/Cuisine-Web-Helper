@@ -3,7 +3,6 @@
 @section('title', 'Account and Preferences')
 
 @section('head')
-    <script src="{{ js('main') }}"></script>
 @endsection
 
 @section('content')

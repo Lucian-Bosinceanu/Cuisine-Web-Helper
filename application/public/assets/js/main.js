@@ -1,34 +1,33 @@
-function toggleSidebar() {
-
-    var sidebar = document.getElementById("sidebar");
-
-    if (sidebar.className.indexOf("visible") >= 0)
-        sidebar.classList.remove("visible");
-    else
-        sidebar.classList.add("visible");
-}
-
-function toggleMenu() {
-
-    var sidebar = document.getElementById("sidebar-menu");
-
-    if (sidebar.className.indexOf("visible") >= 0)
-        sidebar.classList.remove("visible");
-    else
-        sidebar.classList.add("visible");
-}
-
-function toggleDropdown(id) {
-
-    var element = document.getElementById(id);
-
-    if (element.className.indexOf("drop") >= 0)
-        element.classList.remove("drop");
-    else
-        element.classList.add("drop");
-}
-
 $(document).ready(function() {
+    $("#search-button").on("click", function() {
+        if ($("#sidebar").hasClass("visible")) {
+            $("#sidebar").removeClass("visible");
+            $("#sidebar-menu").toggle();
+        }
+        else {
+            $("#sidebar").addClass("visible");
+            $("#sidebar-menu").toggle();
+        }
+    });
+    $("#menu-button").on("click", function() {
+        if ($("#sidebar-menu").hasClass("visible")) {
+            $("#sidebar-menu").removeClass("visible");
+            $("#sidebar").toggle();
+        }
+        else {
+            $("#sidebar-menu").addClass("visible");
+            $("#sidebar").toggle();
+        }
+    });
+    $(".opener").on("click", function() {
+        if ($(this).hasClass("drop")) {
+            $(this).removeClass("drop");
+        }
+        else {
+            $(this).addClass("drop");
+        }
+    });
+
     var input = document.getElementById("image-upload");
     var label	 = input.previousElementSibling,
         labelVal = label.innerHTML;
@@ -46,7 +45,7 @@ $(document).ready(function() {
     $(".delete-button").on("click", function() {
         $(this).parent().remove();
     });
-    $("#add-ingredients-button").on("click", function(){
+    $("#add-ingredients-button").on("click", function() {
         $(this).before(`
             <div class="ingredient">
                 <label for="ingredient-name-1">Ingredient name | Quantity</label>
@@ -70,13 +69,11 @@ $(document).ready(function() {
         $(".delete-button").on("click", function() {
             $(this).parent().remove();
         });
-        $("textarea").on("keydown", function(){
-            // $(this).css({"height": "auto"});
-            $(this).css("height", `${this.scrollHeight+2}px`);
+        $("textarea").on("keydown", function() {
+            $(this).css("height", `${this.scrollHeight + 2}px`);
         });
     });
-    $("textarea").on("keydown", function(){
-        // $(this).css({"height": "auto"});
-        $(this).css("height", `${this.scrollHeight+2}px`);
+    $("textarea").on("keydown", function() {
+        $(this).css("height", `${this.scrollHeight + 2}px`);
     });
 });

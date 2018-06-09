@@ -2,7 +2,7 @@
 $logged = 0;
 @endphp
 <div id="sidebar-menu">
-    <button id="menu-button" onclick="toggleMenu()">Menu</button>
+    <button id="menu-button">Menu</button>
     <div class="inner">
         <ul class="sidebar-login">
             <li><a href="{{ route("recipes.index") }}">Home</a></li>

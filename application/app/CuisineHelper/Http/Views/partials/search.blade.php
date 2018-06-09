@@ -1,5 +1,5 @@
 <div id="sidebar">
-    <button id="search-button" onclick="toggleSidebar()">Search</button>
+    <button id="search-button">Search</button>
 
     <div class="inner">
 
@@ -36,7 +36,7 @@
                     <label for="potatoes">Potaotes</label>
                 </li>
                 <li>
-                    <span id="opener1" class="opener" onclick="toggleDropdown('opener1')">Lifestyle</span>
+                    <span id="opener1" class="opener">Lifestyle</span>
                     <ul>
                         <li>
                             <input type="checkbox" id="vegetarian" name="vegetarian">
@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li>
-                    <span id="opener2" class="opener" onclick="toggleDropdown('opener2')">Required time</span>
+                    <span id="opener2" class="opener">Required time</span>
                     <ul>
                         <li>
                             <input type="checkbox" id="less-then-60-min" name="less-then-60-min">

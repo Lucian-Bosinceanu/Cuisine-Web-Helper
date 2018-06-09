@@ -3,7 +3,6 @@
 @section('title', 'Edit recipe')
 
 @section('head')
-    <script src="{{ js('main') }}"></script>
 @endsection
 
 @section('content')
