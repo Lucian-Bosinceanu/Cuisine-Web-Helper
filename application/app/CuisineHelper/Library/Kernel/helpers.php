@@ -112,3 +112,16 @@ if ( ! function_exists( 'route' ) ) {
         return '/';
     }
 }
+
+if ( ! function_exists( 'env' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function env( $name = '', $default = '' ) {
+        $var = getenv($name);
+        return $var == '' ? $default : $var;
+    }
+}

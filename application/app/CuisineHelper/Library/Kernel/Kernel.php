@@ -5,6 +5,7 @@ namespace CuisineHelper\Library\Kernel;
 use CuisineHelper\Library\Http\Model\ParisModel;
 use CuisineHelper\Library\Router\Router as Router;
 use CuisineHelper\Library\Http\View\ViewEngine as ViewEngine;
+use Dotenv\Dotenv;
 
 class Kernel {
 
@@ -12,9 +13,11 @@ class Kernel {
     private $config     = [];
     private $router     = null;
     private $viewEngine = null;
+    private $dotenv = null;
 
     private function __construct() {
         $this->boot();
+        $this->dotenv     = (new Dotenv(base_path()))->load();
         $this->viewEngine = ViewEngine::getInstance();
         $this->database   = ParisModel::getInstance();
         $this->router     = Router::getInstance();
