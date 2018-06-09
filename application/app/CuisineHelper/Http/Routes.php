@@ -6,10 +6,10 @@ use CuisineHelper\Library\Router\Router as Router;
 Router::get("/", "RecipeController@index")->setName('recipes.index');
 Router::get("/recipes/create", "RecipeController@create")->setName('recipes.create');
 Router::get("/recipes/[i:id]", "RecipeController@show")->setName('recipes.show');
-Router::get("/recipes/[i:id]", "RecipeController@edit")->setName('recipes.edit');
-Router::post("/recipes/store", "RecipeController@store")->setName('recipes.store');
-Router::post("/recipes/[i:id]", "RecipeController@update")->setName('recipes.update');
-Router::delete("/recipes", "RecipeController@delete")->setName('recipes.delete');
+Router::get("/recipes/[i:id]/edit", "RecipeController@edit")->setName('recipes.edit');
+Router::post("/recipes", "RecipeController@store")->setName('recipes.store');
+Router::post("/recipes/[i:id]/update", "RecipeController@update")->setName('recipes.update');
+Router::delete("/recipes/[i:id]", "RecipeController@delete")->setName('recipes.delete');
 
 // Articles
 Router::get("/articles", "Article/ArticleController@index")->setName("articles.index");
