@@ -7,6 +7,16 @@
 @endsection
 
 @section('content')
+	@php
+	$index = 1;
+	@endphp
+	<div>
+		<h3>THIS IS A TEST, TEMPORARY</h3>
+		@foreach($recipes as $recipe)
+			<h5>Recipe Title #{{ $index++ }}: {{$recipe->title}}</h5>
+		@endforeach
+	</div>
+
     <div id="main">
 			<div class="inner">
 				<header id="header">

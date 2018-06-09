@@ -2,6 +2,7 @@
 
 namespace CuisineHelper\Library\Kernel;
 
+use CuisineHelper\Library\Http\Model\ParisModel;
 use CuisineHelper\Library\Router\Router as Router;
 use CuisineHelper\Library\Http\View\ViewEngine as ViewEngine;
 
@@ -14,8 +15,9 @@ class Kernel {
 
     private function __construct() {
         $this->boot();
-        $this->router     = Router::getInstance();
         $this->viewEngine = ViewEngine::getInstance();
+        $this->database   = ParisModel::getInstance();
+        $this->router     = Router::getInstance();
     }
 
     private function boot() {

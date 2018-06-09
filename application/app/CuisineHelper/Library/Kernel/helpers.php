@@ -12,15 +12,19 @@ if ( ! function_exists( 'config' ) ) {
         if ( $config == '' ) {
             return;
         }
+        $path = ROOTPATH . "/config/{$config}.php";
+        if ( ! file_exists( $path ) ) {
+            return [];
+        }
 
-        return require_once ROOTPATH . "/config/{$config}.php";
+        return require_once $path;
     }
 }
 
 if ( ! function_exists( 'view' ) ) {
 
     /**
-     * @param string $name The name of the View to be loaded
+     * @param string $name   The name of the View to be loaded
      * @param array  $params The map of parameters sent to View
      *
      * @return string
@@ -33,7 +37,7 @@ if ( ! function_exists( 'view' ) ) {
 if ( ! function_exists( 'css' ) ) {
 
     /**
-     * @param string $name The name of the View to be loaded
+     * @param string $name   The name of the View to be loaded
      * @param array  $params The map of parameters sent to View
      *
      * @return string
@@ -46,7 +50,7 @@ if ( ! function_exists( 'css' ) ) {
 if ( ! function_exists( 'js' ) ) {
 
     /**
-     * @param string $name The name of the View to be loaded
+     * @param string $name   The name of the View to be loaded
      * @param array  $params The map of parameters sent to View
      *
      * @return string

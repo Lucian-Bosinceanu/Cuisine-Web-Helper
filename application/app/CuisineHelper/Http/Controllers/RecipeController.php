@@ -3,11 +3,13 @@
 namespace CuisineHelper\Http\Controllers;
 
 use CuisineHelper\Library\Http\Controller\BaseController;
+use CuisineHelper\Http\Models\Recipe;
 
 class RecipeController extends BaseController {
 
     public function index() {
-        return view('recipes.index');
+        $recipes = Recipe::findMany();
+        return view('recipes.index', ['recipes' => $recipes]);
     }
 
     public function show() {
