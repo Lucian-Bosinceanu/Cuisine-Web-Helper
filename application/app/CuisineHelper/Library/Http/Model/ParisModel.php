@@ -3,6 +3,7 @@
 namespace CuisineHelper\Library\Http\Model;
 
 use ORM as Database;
+use \Model;
 
 class ParisModel {
 
@@ -37,6 +38,9 @@ class ParisModel {
             Database::configure( "mysql:host={$config['host']};dbname={$config['db_name']}" );
             Database::configure( 'username', $config['username'] );
             Database::configure( 'password', $config['password'] );
+            Model::$short_table_names = true;
+            //Model::$auto_prefix_models = 'CuisineHelper\Http\Models\\';
+            
         } catch ( \Error $err ) {
             print "Database configuration error!";
             exit;

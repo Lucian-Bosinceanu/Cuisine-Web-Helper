@@ -12,4 +12,8 @@ use \Model;
 class Auth extends Model {
 
     public static $_table = 'auth_tokens';
+
+    public function getUser() {
+        return $this->belongs_to(MODELPATH . 'User', 'user_id', 'id');
+    }
 }
