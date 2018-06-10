@@ -8,7 +8,6 @@ use CuisineHelper\Http\Models\Article;
 class ArticleController extends BaseController {
     public function index($request) {
         $articles = Article::findMany();
-        print_r($request->cookies());
         return view('articles.index', ['articles' => $articles]);
     }
 
