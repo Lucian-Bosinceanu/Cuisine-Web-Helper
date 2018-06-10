@@ -2,6 +2,7 @@
 
 namespace CuisineHelper\Http\Models;
 
+use CuisineHelper\Http\Models\ManyToMany\IngredientRecipe;
 use \Model;
 
 /**
@@ -45,20 +46,30 @@ class Recipe extends Model {
     }
 
     public function getTagNames() {
-        $tags = $this->getTags();
+        $tags = $this->getTags()->findMany();
         $tagList[] = null;
-        foreach ($tags as $tag) 
-            array_push($tagList,$tag->name);
         
+        foreach ($tags as $tag) 
+                array_push($tagList,$tag->name);
+        array_shift($tagList);
         return $tagList;
     }
 
     public function getIngredientNames() {
-        $ingredients = $this->getTags();
+        $ingredients = $this->getIngredients()->findMany();
         $ingredientList[] = null;
         foreach ($ingredients as $ingredient) 
-            array_push($ingredientList,$ingredient->name);
-        
+            {
+                $ingredientQuantity = IngredientRecipe::where(['recipe_id' => $this->id,'ingredient_id' => $ingredient->id])->findOne()->quantity;
+                array_push($ingredientList,$ingredientQuantity . ' ' . $ingredient->name);
+            }    
         return $ingredientList;
     }
+
+    public function getInstructionList() {
+        $instructions = explode('##', $this->instructions);
+        array_pop($instructions);
+        return $instructions;
+    }
+    
 }
