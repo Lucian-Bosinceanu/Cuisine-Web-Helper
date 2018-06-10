@@ -71,5 +71,12 @@ class Recipe extends Model {
         array_pop($instructions);
         return $instructions;
     }
+
+    public function getImageSourceLink() {
+        $imgUrl = base64_encode(file_get_contents($this->image));
+        $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
+        $imageSrc = "data:image/" . $type . " ;base64," . $imgUrl;
+        return $imageSrc;
+    }
     
 }

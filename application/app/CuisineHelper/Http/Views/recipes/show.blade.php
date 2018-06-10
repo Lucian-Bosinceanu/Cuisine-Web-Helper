@@ -43,12 +43,7 @@
 
                 </div>
                 <span class="image">
-                @php
-                    $imgUrl = base64_encode(file_get_contents($recipe->image));
-                    $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
-                    $url = "data:image/" . $type . " ;base64," . $imgUrl;
-                @endphp
-                    <img src="{{ $url }}" alt="potato" class="recipe_picture">
+                    <img src="{{ $image }}" alt="potato" class="recipe_picture">
                 </span>
             </section>
 
