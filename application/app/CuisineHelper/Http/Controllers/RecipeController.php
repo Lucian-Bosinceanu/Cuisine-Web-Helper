@@ -13,8 +13,10 @@ use CuisineHelper\Http\Models\Auth;
 class RecipeController extends BaseController {
 
     public function index($request) {
-        $recipes = Recipe::findMany();
+        $recipes = Recipe::order_by_desc('created_at')->offset(0)->limit(5)->findMany();
         //print_r($request->cookies());
+        //print_r($recipes);
+        //exit;
         return view('recipes.index', ['recipes' => $recipes]);  
     }
 
@@ -29,11 +31,11 @@ class RecipeController extends BaseController {
         $ingredients = $recipe->getIngredientNames();        
         $instructions = $recipe->getInstructionList();
         $difficulty = $difficulties[$recipe->dificulty];
-
+        $imageSrc = $recipe->getImageSourceLink();
         //print_r($ingredients->findMany());
         //exit;
 
-        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty]);
+        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty, 'image' => $imageSrc]);
     }
 
     public function create() {
@@ -107,6 +109,7 @@ class RecipeController extends BaseController {
         $params = $request->paramsPost()->all();
         
         unlink($recipe->image);
+        $createdAtDB = $recipe->created_at;
 
         $recipeTitle = $params['add'];
         $dificulty = $params['difficulty'];
@@ -138,6 +141,11 @@ class RecipeController extends BaseController {
         $recipe->time = $time;
         $recipe->instructions = $instructions;
         $recipe->image = $imagePath;
+        
+        if ($createdAtDB == null)
+            $recipe->created_at = time();
+            else
+            $recipe->created_at = $createdAtDB;
         
         $recipe->save();
 
