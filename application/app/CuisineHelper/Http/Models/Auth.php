@@ -47,6 +47,11 @@ class Auth extends Model {
         return self::checkAuthenticated();
     }
 
+    public static function checkAdmin() {
+        $user = self::user();
+        return $user ? (bool) $user->is_admin : false;
+    }
+
     public static function getLoginCookie() {
         return json_decode(Router::request()->cookies()->get(self::$loginCookieName), true);
     }

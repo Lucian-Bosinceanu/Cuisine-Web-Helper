@@ -166,6 +166,18 @@ if ( ! function_exists( 'isAuth' ) ) {
     }
 }
 
+if ( ! function_exists( 'isAdmin' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function isAdmin() {
+        return Auth::checkAdmin();
+    }
+}
+
 if ( ! function_exists( 'redirect' ) ) {
 
     /**

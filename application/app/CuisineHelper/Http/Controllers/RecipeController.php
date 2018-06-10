@@ -12,7 +12,7 @@ use CuisineHelper\Http\Models\Auth;
 
 class RecipeController extends BaseController {
 
-    public function index($request) {
+    public function index() {
         $recipes = Recipe::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         $tags = Tag::findArray();
         $index = 0;
@@ -44,8 +44,9 @@ class RecipeController extends BaseController {
     }
 
     public function create() {
-        return view('recipes.create');
-    }
+        $operation = "Add";
+        return view('recipes.create', ['operation' => $operation]);
+    } 
 
     public function store($request) {
         $params = $request->paramsPost()->all();
@@ -68,6 +69,7 @@ class RecipeController extends BaseController {
 
     public function edit($request) {
         $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
+        $operation = "Edit";
         $recipeId = $request->paramsNamed()->get('id');
 
         $recipe = Recipe::findOne($recipeId);
@@ -75,10 +77,15 @@ class RecipeController extends BaseController {
         $tags = $recipe->getTagNames();    
         $ingredients = $recipe->getIngredientNames();        
         $instructions = $recipe->getInstructionList();
-        $difficulty = $difficulties[$recipe->dificulty];
+        $difficulty = $recipe->dificulty;
         $imageSrc = $recipe->getImageSourceLink();
 
-        return view('recipes.create', ['recipe' => $recipe]);
+        $tagString = "";
+
+        foreach($tags as $tag) 
+            $tagString .= $tag . ' ';
+
+        return view('recipes.create', ['ingredients' => $ingredients,'instructions' => $instructions,'operation' => $operation,'recipe' => $recipe, 'tagString' => $tagString, 'difficulty' => $difficulty]);
     }
 
     public function update($request) {
@@ -125,7 +132,7 @@ class RecipeController extends BaseController {
         $params = $request->paramsPost()->all();
         
         if ($recipe->image != null)
-            unlink($recipe->image);
+            unlink($recipe->getImagePath());
         
         $createdAtDB = $recipe->created_at;
 
@@ -153,7 +160,6 @@ class RecipeController extends BaseController {
         if ($anotherSameRecipe)
             return null;
 
-        move_uploaded_file($imageTmpName,$imagePath);
         $recipe->title = $recipeTitle;
         $recipe->dificulty = $dificulty;
         $recipe->time = $time;
@@ -166,6 +172,7 @@ class RecipeController extends BaseController {
             $recipe->created_at = $createdAtDB;
         
         $recipe->save();
+        move_uploaded_file($imageTmpName,$imagePath);
 
         return $recipe;
     }

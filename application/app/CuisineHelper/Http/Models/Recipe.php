@@ -58,11 +58,15 @@ class Recipe extends Model {
     public function getIngredientNames() {
         $ingredients = $this->getIngredients()->findMany();
         $ingredientList[] = null;
+        $count = 0;
         foreach ($ingredients as $ingredient) 
             {
                 $ingredientQuantity = IngredientRecipe::where(['recipe_id' => $this->id,'ingredient_id' => $ingredient->id])->findOne()->quantity;
-                array_push($ingredientList,$ingredientQuantity . ' ' . $ingredient->name);
+                $ingredientList[$count] = array($ingredient->name, $ingredientQuantity);
+                //array_push($ingredientList[$count],$ingredientQuantity, $ingredient->name);
+                $count += 1;
             }    
+
         return $ingredientList;
     }
 

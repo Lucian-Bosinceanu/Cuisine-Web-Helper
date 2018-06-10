@@ -4,7 +4,9 @@ use CuisineHelper\Library\Router\Router as Router;
 
 // Recipes
 Router::get("/", "RecipeController@index")->setName('recipes.index');
-Router::get("/recipes/create", "RecipeController@create")->setName('recipes.create');
+Router::get("/recipes/create", "RecipeController@create", [ 'middleware' =>
+[ 'CheckAuth', 'CheckAdmin']
+])->setName('recipes.create');
 Router::get("/recipes/[i:id]", "RecipeController@show")->setName('recipes.show');
 Router::get("/recipes/[i:id]/edit", "RecipeController@edit")->setName('recipes.edit');
 Router::post("/recipes", "RecipeController@store")->setName('recipes.store');

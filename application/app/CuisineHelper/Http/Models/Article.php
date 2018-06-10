@@ -20,4 +20,15 @@ class Article extends Model {
     public function getUser() {
         return $this->belongs_to( MODELPATH . 'User','user_id','id');
     }
+
+    public function getImageSourceLink() {
+        $imgUrl = base64_encode(file_get_contents( config('app')['imagepath'] . $this->image));
+        $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
+        $imageSrc = "data:image/" . $type . " ;base64," . $imgUrl;
+        return $imageSrc;
+    }
+
+    public function getImagePath() {
+        return config('app')['imagepath'] . $this->image;
+    }
 }
