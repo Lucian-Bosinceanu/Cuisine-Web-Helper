@@ -22,4 +22,4 @@ Router::post("/login", "Auth/LoginController@login")->setName('auth.login');
 Router::get("/logout", "Auth/LoginController@logout")->setName('auth.logout');
 
 // User
-// Router::get("/account", "User/UserController@account")->setName('user.account');
+Router::get("/account", "UserController@account")->setName('user.account');
