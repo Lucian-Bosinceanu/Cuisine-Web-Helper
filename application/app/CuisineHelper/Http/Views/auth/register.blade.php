@@ -26,6 +26,9 @@
                     <button type="submit" formmethod="POST" form="register-form">Register</button>
                 </form>
             </section>
+            @if ($has_error)
+                <p style="font-size: 18px; color:#f56a6a;">{{ $error_message }}</p>
+            @endif
         </div>
     </div>
 @endsection

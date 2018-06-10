@@ -2,8 +2,9 @@
 
 namespace CuisineHelper\Http\Models;
 
+use CuisineHelper\Http\Models\ModelExceptions\User\DuplicateEmail;
+use CuisineHelper\Http\Models\ModelExceptions\User\DuplicateUsername;
 use \Model;
-use CuisineHelper\Http\Models\Article;
 
 /**
  * @property int    $id
@@ -14,6 +15,17 @@ use CuisineHelper\Http\Models\Article;
 class User extends Model {
 
     public static $_table = 'users';
+
+    public static function createOrFail( $params = '' ) {
+        if (User::where('username', $params['username'])->findOne()) {
+            throw new DuplicateUsername('Username already exists');
+        }
+        if ( User::where( 'email', $params['email'] )->findOne() ) {
+            throw new DuplicateEmail('Email already exists');
+        }
+        $params['password'] = hash( 'sha512', $params['password'] );
+        return User::create( $params )->save();
+    }
 
     public function getArticles() {
         return $this->has_many( MODELPATH . 'Article','user_id','id');

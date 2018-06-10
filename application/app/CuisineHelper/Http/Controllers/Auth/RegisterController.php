@@ -2,20 +2,29 @@
 
 namespace CuisineHelper\Http\Controllers\Auth;
 
+use CuisineHelper\Http\Models\ModelExceptions\User\DuplicateEmail;
+use CuisineHelper\Http\Models\ModelExceptions\User\DuplicateUsername;
 use CuisineHelper\Library\Http\Controller\BaseController;
 
 use CuisineHelper\Http\Models\User;
-use CuisineHelper\Http\Models\Auth;
 
 class RegisterController extends BaseController {
+
     public function index() {
-        return view("auth.register");
+        return view( "auth.register" );
     }
 
-    public function register($request, $response) {
+    public function register( $request, $response ) {
         $params = $request->paramsPost()->all();
-        $params['password'] = hash('sha512', $params['password']);
-        $user = User::create($params)->save();
-        return $response->redirect(route('recipes.index'));
+        try {
+            User::createOrFail( $params );
+        } catch ( DuplicateEmail | DuplicateUsername $e ) {
+            unset( $params['password'] );
+            $message = $e instanceof DuplicateEmail ? 'Email' : 'Username';
+
+            return error_view( 'auth.register', $params, $message . ' already exists!' );
+        }
+
+        return $response->redirect( route( 'recipes.index' ) );
     }
 }

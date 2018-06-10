@@ -38,7 +38,21 @@ if ( ! function_exists( 'view' ) ) {
      * @return string
      */
     function view( $name = '', $params = [] ) {
-        return View::View( $name, $params );
+        return View::View( $name, array_merge($params, ['has_error' => 0]) );
+    }
+}
+
+if ( ! function_exists( 'error_view' ) ) {
+
+    /**
+     * @param string $name   The name of the error View to be loaded
+     * @param array  $params The map of parameters sent to View
+     *
+     * @return string
+     */
+    function error_view( $name = '', $params = [], $errMsg = '' ) {
+        $newParams = array_merge($params, ['has_error' => 1, 'error_message' => $errMsg]);
+        return View::View( $name, $newParams );
     }
 }
 
