@@ -2,5 +2,6 @@
 return [
     "environment" => "development",
     "debug" => true,
-    "maintenance" => false
+    "maintenance" => false,
+    'imagepath' => base_path() . 'storage/app/img/'
 ];

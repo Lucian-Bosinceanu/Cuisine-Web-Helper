@@ -15,6 +15,10 @@ Router::delete("/recipes/[i:id]", "RecipeController@delete")->setName('recipes.d
 
 // Articles
 Router::get("/articles", "Article/ArticleController@index")->setName("articles.index");
+Router::get("/articles/create", "Article/ArticleController@create")->setName("articles.create");
+Router::post("/articles", "Article/ArticleController@store")->setName('articles.store');
+Router::post("/articles/[i:id]/update", "Article/ArticleController@update")->setName('articles.update');
+Router::delete("/articles/[i:id]", "Article/ArticleController@delete")->setName('articles.delete');
 
 // Auth
 Router::get("/login", "Auth/LoginController@index")->setName('auth.login_index');
@@ -24,4 +28,4 @@ Router::post("/login", "Auth/LoginController@login")->setName('auth.login');
 Router::get("/logout", "Auth/LoginController@logout")->setName('auth.logout');
 
 // User
-// Router::get("/account", "User/UserController@account")->setName('user.account');
+Router::get("/account", "UserController@account")->setName('user.account');
