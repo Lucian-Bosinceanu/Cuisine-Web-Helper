@@ -13,9 +13,12 @@ use CuisineHelper\Http\Models\Auth;
 class RecipeController extends BaseController {
 
     public function index($request) {
-        $recipes = Recipe::order_by_desc('created_at')->offset(0)->limit(15)->findMany();
+        $recipes = Recipe::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         //print_r($request->cookies());
         
+        print_r(Recipe::exportRSS());
+        exit;
+
         return view('recipes.index', ['recipes' => $recipes]);  
     }
 
@@ -144,7 +147,7 @@ class RecipeController extends BaseController {
         $recipe->image = $imageName;
         
         if ($createdAtDB == null)
-            $recipe->created_at = time();
+            $recipe->created_at = date("D, d M y H:i:s O");
             else
             $recipe->created_at = $createdAtDB;
         
