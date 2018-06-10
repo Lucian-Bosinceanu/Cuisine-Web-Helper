@@ -97,7 +97,7 @@ EOT;
         <item>
             <title>{$recipe->title}</title>
             <link>http://localhost/recipes/{$recipe->id}</link>
-            <guid>{$recipe->id}</guid>
+            <guid>http://localhost/recipes/{$recipe->id}</guid>
             <pubDate>{$recipe->created_at}</pubDate>
         </item>
 EOT;
