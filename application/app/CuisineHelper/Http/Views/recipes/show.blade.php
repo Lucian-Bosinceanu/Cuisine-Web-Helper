@@ -31,7 +31,7 @@
                             <p><strong>Rating:</strong> 4.5/5</p>
                         </li> -->
                         <li>
-                            <p><strong>Difficulty:</strong> {{$recipe->dificulty}}/5</p>
+                            <p><strong>Difficulty:</strong> {{$difficulty}}</p>
                         </li>
 
                         <li>
@@ -43,7 +43,12 @@
 
                 </div>
                 <span class="image">
-                    <img src="data:image/png;base64,<?php echo base64_encode(file_get_contents("{{$recipe->image}}")) ?>" alt="potato" class="recipe_picture">
+                @php
+                    $imgUrl = base64_encode(file_get_contents($recipe->image));
+                    $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
+                    $url = "data:image/" . $type . " ;base64," . $imgUrl;
+                @endphp
+                    <img src="{{ $url }}" alt="potato" class="recipe_picture">
                 </span>
             </section>
 
@@ -52,10 +57,9 @@
                     <h2>Ingredients</h2>
 
                     <ul class="recipe_ingredients_list">
-                        <li>500g potatoes</li>
-                        <li>salt</li>
-                        <li>ingredient 2</li>
-                        <li>ingredient 4</li>
+                        @foreach ($ingredients as $ingredient)
+                            <li> {{$ingredient}} </li>
+                        @endforeach
                     </ul>
                 </div>
             </section>

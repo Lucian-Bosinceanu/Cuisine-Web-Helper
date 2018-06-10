@@ -14,23 +14,26 @@ class RecipeController extends BaseController {
 
     public function index($request) {
         $recipes = Recipe::findMany();
-        print_r($request->cookies());
+        //print_r($request->cookies());
         return view('recipes.index', ['recipes' => $recipes]);  
     }
 
     public function show($request) {
-        print_r($request->cookies());
+        //print_r($request->cookies());
+        $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
         $recipeId = $request->paramsNamed()->get('id');
 
         $recipe = Recipe::findOne($recipeId);
-        $tags = RecipeTag::where('recipe_id',$recipe->id)->findMany();//$recipe->getTagNames();    
-        $ingredients = $recipe->getIngredients();
-        $instructions = explode('##', $recipe->instructions);
         
-        //print_r($recipe);
+        $tags = $recipe->getTagNames();    
+        $ingredients = $recipe->getIngredientNames();        
+        $instructions = $recipe->getInstructionList();
+        $difficulty = $difficulties[$recipe->dificulty];
+
+        //print_r($ingredients->findMany());
         //exit;
 
-        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions]);
+        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty]);
     }
 
     public function create() {
