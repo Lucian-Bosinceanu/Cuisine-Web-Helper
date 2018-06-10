@@ -16,7 +16,7 @@ class LoginController extends BaseController {
     public function login( $request, $response ) {
         $params = $request->paramsPost()->all();
         try {
-            $user = User::getUser( $params );
+            $user = User::getUser( $params['username-email'] );
         } catch ( UserNotFound $e ) {
             unset( $params['password'] );
 

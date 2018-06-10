@@ -8,18 +8,16 @@ use CuisineHelper\Http\Models\Tag;
 use CuisineHelper\Http\Models\Ingredient;
 use CuisineHelper\Http\Models\ManyToMany\IngredientRecipe;
 use CuisineHelper\Http\Models\ManyToMany\RecipeTag;
-
+use CuisineHelper\Http\Models\Auth;
 
 class RecipeController extends BaseController {
 
     public function index($request) {
         $recipes = Recipe::findMany();
-        print_r($request->cookies());
         return view('recipes.index', ['recipes' => $recipes]);
     }
 
     public function show($request) {
-        print_r($request->cookies());
         $recipeId = $request->paramsNamed()->get('id');
 
         $recipe = Recipe::findOne($recipeId);
