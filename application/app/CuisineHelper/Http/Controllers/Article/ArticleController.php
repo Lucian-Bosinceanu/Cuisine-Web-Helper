@@ -6,8 +6,11 @@ use CuisineHelper\Library\Http\Controller\BaseController;
 use CuisineHelper\Http\Models\Article;
 
 class ArticleController extends BaseController {
+    
     public function index($request) {
-        $articles = Article::findMany();
+        $articles = Article::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
+        //print_r($request->cookies());
+        
         return view('articles.index', ['articles' => $articles]);
     }
 
@@ -47,7 +50,8 @@ class ArticleController extends BaseController {
     private function insertIntoArticles($article, $request) {
         $params = $request->paramsPost()->all();
         
-        unlink($article->image);
+        if ($article->image != null)
+            unlink($article->getImagePath());
 
         $articleTitle = $params['add'];
 
@@ -67,13 +71,13 @@ class ArticleController extends BaseController {
         if ($anotherSameArticle)
             return null;
 
-        move_uploaded_file($imageTmpName,$imagePath);
         $article->title = $articleTitle;
-        $article->image = $imagePath;
-        $article->site = $site;
+        $article->image = $imageName;
+        $article->url = $site;
         $article->description = $description;
         
         $article->save();
+        move_uploaded_file($imageTmpName,$imagePath);
 
         return $article;
     }

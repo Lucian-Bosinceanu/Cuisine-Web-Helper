@@ -53,7 +53,7 @@
 
                     <ul class="recipe_ingredients_list">
                         @foreach ($ingredients as $ingredient)
-                            <li> {{$ingredient}} </li>
+                            <li> {{$ingredient[1]}} {{$ingredient[0]}} </li>
                         @endforeach
                     </ul>
                 </div>
