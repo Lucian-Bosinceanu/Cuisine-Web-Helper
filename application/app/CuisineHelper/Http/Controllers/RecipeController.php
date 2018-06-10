@@ -102,7 +102,6 @@ class RecipeController extends BaseController {
         unlink($recipe->image);
 
         $recipeTitle = $params['add'];
-        $description = $params['description'];
         $dificulty = $params['difficulty'];
         $time = $params['time'];
 
@@ -118,7 +117,6 @@ class RecipeController extends BaseController {
 
         $anotherSameRecipe = Recipe::where([
             'title' => $recipeTitle,
-            'description' => $description,
             'dificulty' => $dificulty,
             'time' => $time,
             'instructions' => $instructions
@@ -128,7 +126,6 @@ class RecipeController extends BaseController {
 
         move_uploaded_file($imageTmpName,$imagePath);
         $recipe->title = $recipeTitle;
-        $recipe->description = $description;
         $recipe->dificulty = $dificulty;
         $recipe->time = $time;
         $recipe->instructions = $instructions;
