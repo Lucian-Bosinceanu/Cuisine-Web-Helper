@@ -14,12 +14,11 @@ class RecipeController extends BaseController {
 
     public function index($request) {
         $recipes = Recipe::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
-        //print_r($request->cookies());
-        
-        print_r(Recipe::exportRSS());
-        exit;
-
-        return view('recipes.index', ['recipes' => $recipes]);  
+        $tags = Tag::findArray();
+        $tags = array_map(function ($tag) {
+            return $tag['name']; 
+        }, $tags);
+        return view('recipes.index', ['recipes' => $recipes, 'tags' => json_encode($tags)]);  
     }
 
     public function show($request) {

@@ -5,9 +5,11 @@
 @section('head')
 @endsection
 
-@php
-$logged = 0;
-@endphp
+@section('footer')
+	<script type="text/javascript">
+		var tags = {!! $tags !!};
+	</script>
+@endsection
 
 @section('content')
 	@include('partials.sidemenu')
@@ -29,7 +31,7 @@ $logged = 0;
 							<h3>{{$recipe->title}}</h3>
 							<ul class="actions">
 								<li><a href="{{ route("recipes.show", ['id' => $recipe->id]) }}" class="button">More</a></li>
-								@if ($logged)
+								@if (isAuth())
 									<li><a href="#" class="button">Report</a></li>
 									<li><a href="#" class="button">Add to Favorites</a></li>
 								@endif
