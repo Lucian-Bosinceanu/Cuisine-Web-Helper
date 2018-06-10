@@ -14,17 +14,22 @@ class RecipeController extends BaseController {
 
     public function index($request) {
         $recipes = Recipe::findMany();
-        return view('recipes.index', ['recipes' => $recipes]);
+        print_r($request->cookies());
+        return view('recipes.index', ['recipes' => $recipes]);  
     }
 
     public function show($request) {
         $recipeId = $request->paramsNamed()->get('id');
 
         $recipe = Recipe::findOne($recipeId);
-        $tags = $recipe->getTags();
+        $tags = RecipeTag::where('recipe_id',$recipe->id)->findMany();//$recipe->getTagNames();    
         $ingredients = $recipe->getIngredients();
+        $instructions = explode('##', $recipe->instructions);
+        
+        //print_r($recipe);
+        //exit;
 
-        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients]);
+        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions]);
     }
 
     public function create() {
@@ -110,8 +115,9 @@ class RecipeController extends BaseController {
 
         $instructions = '';
 
-        foreach ( $params['how-to-steps'] as $insturction )
-            $instructions = $instructions . $insturction . '\n';
+        $step = 1;
+        foreach ( $params['how-to-steps'] as $instruction )
+            $instructions = $instructions .  $instruction . '##';
 
         $anotherSameRecipe = Recipe::where(['title' => $recipeTitle, 'dificulty' => $dificulty, 'time' => $time,
                                             'instructions' => $instructions ])->findOne();
