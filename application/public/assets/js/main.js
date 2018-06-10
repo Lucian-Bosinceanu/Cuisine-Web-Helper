@@ -34,14 +34,17 @@ $(document).ready(function() {
     $("#search-button").on("click", function() {
         if ($("#sidebar").hasClass("visible")) {
             $("#sidebar").removeClass("visible");
-            $("#menu-button").css("margin-left", "-17em");
+            $("#sidebar-menu").toggle();
         }
         else {
             $("#sidebar").addClass("visible");
-            $("#menu-button").css("margin-left", "0em");
+            $("#sidebar-menu").toggle();
         }
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of f0ba992... Added article controller and views and solved some other things
     $("#menu-button").on("click", function() {
         if ($("#sidebar-menu").hasClass("visible")) {
             $("#sidebar-menu").removeClass("visible");
