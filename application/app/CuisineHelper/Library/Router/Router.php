@@ -10,6 +10,8 @@ class Router {
     private $ext             = 'php';
     private $klein           = null;
     private $controllersPath = "\\CuisineHelper\\Http\\Controllers\\";
+    private $middlewaresPath = "\\CuisineHelper\\Http\\Middlewares\\";
+    private $middlewares     = [];
 
     private function __construct() {
     }
@@ -25,7 +27,7 @@ class Router {
      * @return \Klein\Route|null
      * @throws \Exception
      */
-    public static function route( $method, $path, $callback ) {
+    public static function route( $method, $path, $callback, $options = [] ) {
         try {
             $router = Router::getInstance();
             $klein  = $router->klein;
@@ -46,8 +48,16 @@ class Router {
             print $ex->getMessage();
             exit;
         }
-
+        if (isset($options['middleware'])) {
+            $router->addMiddleware($route->getMethod() . $route->getPath(), $options['middleware']);
+        }
         return $route;
+    }
+
+    public function addMiddleware($route, $middleware = []) {
+        if (isset($route) && ! empty($route)) {
+            $this->middlewares[$route] = $middleware;
+        }
     }
 
     /**
@@ -69,7 +79,22 @@ class Router {
             $this->klein = new Klein();
             $this->addRoutes();
             $this->notFoundRoute();
+            $this->klein->afterDispatch([$this, 'runMiddlewares']);
             $this->klein->dispatch();
+        }
+    }
+
+    public function runMiddlewares($klein) {
+        $request = $klein->request();
+        $response = $klein->response();
+        $path = $request->pathname();
+        $method = strtolower($request->method());
+        if (isset($this->middlewares[$method . $path])) {
+            $middlewares = $this->middlewares[$method . $path];
+            foreach ($middlewares as $middleware) {
+                $class = $this->middlewaresPath . $middleware;
+                call_user_func([ new $class(), "handle" ], $request, $response);
+            }
         }
     }
 
@@ -103,16 +128,16 @@ class Router {
         } );
     }
 
-    public static function get($method, $callback) {
-        return self::route('get', $method, $callback);
+    public static function get($method, $callback, $options = []) {
+        return self::route('get', $method, $callback, $options);
     }
 
-    public static function post($method, $callback) {
-        return self::route('post', $method, $callback);
+    public static function post($method, $callback, $options = []) {
+        return self::route('post', $method, $callback, $options);
     }
 
-    public static function delete($method, $callback) {
-        return self::route('delete', $method, $callback);
+    public static function delete($method, $callback, $options = []) {
+        return self::route('delete', $method, $callback, $options);
     }
 
     public static function response() {
