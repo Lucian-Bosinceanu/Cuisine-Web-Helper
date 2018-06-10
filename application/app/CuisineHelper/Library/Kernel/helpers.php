@@ -139,3 +139,16 @@ if ( ! function_exists( 'env' ) ) {
         return $var == '' ? $default : $var;
     }
 }
+
+if ( ! function_exists( 'response' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function response($redirect = '/', $params = []) {
+        Router::getInstance()->getResponse()->redirect(route($redirect, $params))->send();
+        exit;
+    }
+}

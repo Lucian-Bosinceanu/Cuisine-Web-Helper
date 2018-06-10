@@ -119,6 +119,14 @@ class Router {
         return $this->klein;
     }
 
+    public function getResponse() {
+        return $this->klein->response();
+    }
+
+    public function getRequest() {
+        return $this->klein->request();
+    }
+
     private function __clone() {
     }
 }
