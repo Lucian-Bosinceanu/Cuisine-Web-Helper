@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Recipes')
+@section('title', 'Articles')
 
 @section('head')
+@endsection
+
+@section('footer')
+	<script type="text/javascript">
+		var tags = [];
+	</script>
 @endsection
 
 @section('content')
@@ -30,5 +36,5 @@
             </section>
         </div>
     </div>
-    @include('partials.search')
+    @include('partials.search_article')
 @endsection
