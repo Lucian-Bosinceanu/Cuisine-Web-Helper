@@ -3,6 +3,7 @@
 @section('title', 'Recipe viewer')
 
 @section('head')
+    <script src="{{ js('main') }}"></script>
 @endsection
 
 @section('content')
@@ -20,9 +21,9 @@
 
                         <ul class="tags">
                             <li><strong>Tags:</strong></li>
-                            <li>#veganism</li>
-                            <li>#grill</li>
-                            <li>#potato</li>
+                            @foreach ($tags as $tag)
+                                <li> #{{$tag}} </li>
+                            @endforeach
                         </ul>
 
                     <ul>
@@ -42,7 +43,7 @@
 
                 </div>
                 <span class="image">
-                    <img src="{{$recipe->image}}" alt="potato" class="recipe_picture">
+                    <img src="data:image/png;base64,<?php echo base64_encode(file_get_contents("{{$recipe->image}}")) ?>" alt="potato" class="recipe_picture">
                 </span>
             </section>
 
@@ -63,9 +64,9 @@
                 <div class="content">
                     <h2>How to make</h2>
                     <ol class="recipe_howto_steps">
-                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
-                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
-                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                        @foreach ($instructions as $instruction)
+                            <li>{{$instruction}}</li>
+                        @endforeach
                     </ol>
                 </div>
             </section>
