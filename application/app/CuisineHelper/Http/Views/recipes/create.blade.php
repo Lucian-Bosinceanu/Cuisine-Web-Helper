@@ -18,10 +18,10 @@
                         <input type="text" name="add" id="recipe-title-add" placeholder="Enter recipe title" required>
 
                         <label for="recipe-tags-add">Tags:</label>
-                        <textarea name="tags" id="recipe-tags-add" placeholder="Enter #tags" required></textarea>
+                        <textarea name="tags" id="recipe-tags-add" placeholder="e.g. potatoes, pizza, ..." required></textarea>
                     
                         <label for="recipe-time-add">Time to make:</label>
-                        <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
+                        <input type="text" name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe, in minutes" required></input>
 
                         <label>Difficulty:</label>
                         <!-- <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea> -->

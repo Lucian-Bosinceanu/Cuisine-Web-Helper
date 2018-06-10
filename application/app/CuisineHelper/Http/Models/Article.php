@@ -3,7 +3,6 @@
 namespace CuisineHelper\Http\Models;
 
 use \Model;
-use CuisineHelper\Http\Models\User as User;
 
 /**
  * @property int    $id
@@ -16,8 +15,4 @@ use CuisineHelper\Http\Models\User as User;
 class Article extends Model {
 
     public static $_table = 'articles';
-
-    public function getUser() {
-        return $this->belongs_to( MODELPATH . 'User','user_id','id');
-    }
 }
