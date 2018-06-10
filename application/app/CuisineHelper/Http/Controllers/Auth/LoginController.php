@@ -39,4 +39,8 @@ class LoginController extends BaseController {
             return error_view( 'auth.login', $params, 'Wrong Credentials!' );
         }
     }
+
+    public function logout() {
+        return view('recipes.index');
+    }
 }
