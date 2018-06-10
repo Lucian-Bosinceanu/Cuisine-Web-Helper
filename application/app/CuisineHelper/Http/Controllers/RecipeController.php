@@ -102,6 +102,7 @@ class RecipeController extends BaseController {
         unlink($recipe->image);
 
         $recipeTitle = $params['add'];
+        $description = $params['description'];
         $dificulty = $params['difficulty'];
         $time = $params['time'];
 
@@ -115,13 +116,19 @@ class RecipeController extends BaseController {
         foreach ( $params['how-to-steps'] as $instruction )
             $instructions = $instructions . $instruction . '\n';
 
-        $anotherSameRecipe = Recipe::where(['title' => $recipeTitle, 'dificulty' => $dificulty, 'time' => $time,
-                                            'instructions' => $instructions ])->findOne();
+        $anotherSameRecipe = Recipe::where([
+            'title' => $recipeTitle,
+            'description' => $description,
+            'dificulty' => $dificulty,
+            'time' => $time,
+            'instructions' => $instructions
+        ])->findOne();
         if ($anotherSameRecipe)
             return null;
 
         move_uploaded_file($imageTmpName,$imagePath);
         $recipe->title = $recipeTitle;
+        $recipe->description = $description;
         $recipe->dificulty = $dificulty;
         $recipe->time = $time;
         $recipe->instructions = $instructions;
