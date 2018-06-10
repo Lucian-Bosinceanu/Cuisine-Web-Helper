@@ -40,7 +40,8 @@ class LoginController extends BaseController {
         }
     }
 
-    public function logout() {
-        return view('recipes.index');
+    public function logout($request, $response) {
+        Auth::deleteLoginCookie();
+        return redirect(route('recipes.index'));
     }
 }
