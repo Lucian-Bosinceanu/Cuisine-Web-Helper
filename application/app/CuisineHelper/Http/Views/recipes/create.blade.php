@@ -21,7 +21,7 @@
                         <textarea name="tags" id="recipe-tags-add" placeholder="Enter #tags" required></textarea>
                     
                         <label for="recipe-time-add">Time to make:</label>
-                        <textarea name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required></textarea>
+                        <input type="text" name="time" id="recipe-time-add" placeholder="Enter the time to make the recipe in minutes" required>
 
                         <label>Difficulty:</label>
                         <!-- <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea> -->

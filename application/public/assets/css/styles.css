@@ -171,6 +171,7 @@
 
 	textarea {
 		padding: 0.4em 1em;
+		min-height: 4em;
 		resize: none;
 	}
 
@@ -1036,11 +1037,16 @@
 /* Recipe section */
 
 	.recipe-section {
-		padding: 6em 0 4em 0;
+		padding: 4em 0 4em 0;
 		display: flex;
 		max-width: 60em;
 		margin: 0 auto;
+		border-bottom: solid 1px #9fa3a6;
 	}
+
+		.recipe-section:last-child {
+			border-bottom: none;
+		}
 
 		.recipe-section h1 {
 			margin-top: -0.125em;
