@@ -18,7 +18,7 @@ class Auth extends Model {
 
     public static $_table = 'auth_tokens';
 
-    public static $expires = 60;
+    private static $expires = 60;
 
     private static $loginCookieName = 'login';
 
@@ -47,8 +47,12 @@ class Auth extends Model {
         return self::checkAuthenticated();
     }
 
-    private static function getLoginCookie() {
-        return json_decode(Router::getInstance()->getKlein()->request()->cookies()->get(self::$loginCookieName), true);
+    public static function getLoginCookie() {
+        return json_decode(Router::request()->cookies()->get(self::$loginCookieName), true);
+    }
+
+    public static function deleteLoginCookie() {
+        Router::response()->cookie('login', "", 1, "/");
     }
 
     public static function user() {

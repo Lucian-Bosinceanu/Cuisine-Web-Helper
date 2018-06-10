@@ -9,6 +9,7 @@
                 <li><a href="{{ route("auth.login") }}">Login</a></li>
             @else
                 <li><a href="">Account</a></li>
+                <li><a href="{{ route("auth.logout") }}">Logout</a></li>
             @endif
         </ul>
     </div>

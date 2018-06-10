@@ -115,6 +115,14 @@ class Router {
         return self::route('delete', $method, $callback);
     }
 
+    public static function response() {
+        return self::getInstance()->getResponse();
+    }
+
+    public static function request() {
+        return self::getInstance()->getRequest();
+    }
+
     public function getKlein() {
         return $this->klein;
     }

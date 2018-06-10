@@ -19,7 +19,7 @@ Router::get("/login", "Auth/LoginController@index")->setName('auth.login_index')
 Router::get("/register", "Auth/RegisterController@index")->setName('auth.register_index');
 Router::post("/register", "Auth/RegisterController@register")->setName('auth.register');
 Router::post("/login", "Auth/LoginController@login")->setName('auth.login');
-Router::post("/logout", "Auth/LoginController@logout")->setName('auth.logout');
+Router::get("/logout", "Auth/LoginController@logout")->setName('auth.logout');
 
 // User
 // Router::get("/account", "User/UserController@account")->setName('user.account');
