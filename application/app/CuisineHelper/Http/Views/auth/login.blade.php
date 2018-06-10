@@ -23,6 +23,9 @@
                 <button type="submit" formmethod="POST" form="login-form">Login</button>
             </form>
         </section>
+        @if ($has_error)
+            <p style="font-size: 18px; color:#f56a6a;">{{ $error_message }}</p>
+        @endif
     </div>
 </div>
 @endsection

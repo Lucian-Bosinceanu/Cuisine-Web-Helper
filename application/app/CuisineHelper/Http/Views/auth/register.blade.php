@@ -14,13 +14,13 @@
             <section>
                 <form action="{{ route('auth.register') }}" method="POST" id="register-form">
                     <label for="username_create_input">Username:</label>
-                    <input type="text" name="username" id="username_create_input" placeholder="username" required>
+                    <input type="text" name="username" id="username_create_input" placeholder="username" required value="{{ $username or '' }}">
             
                     <label for="password_create_input">Password:</label>
                     <input type="password" name="password" id="password_create_input" placeholder="********" required>
             
                     <label for="email_create_input">Email:</label>
-                    <input type="email" name="email" id="email_create_input" placeholder="user@site.com" required>
+                    <input type="email" name="email" id="email_create_input" placeholder="user@site.com" required value="{{ $email or '' }}">
             
                     <!-- <a href="../logged-index.html" class="button" type="submit">Register</a> -->
                     <button type="submit" formmethod="POST" form="register-form">Register</button>
