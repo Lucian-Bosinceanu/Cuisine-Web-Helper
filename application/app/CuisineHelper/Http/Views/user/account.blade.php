@@ -19,11 +19,11 @@
                     <form action="#" method="POST" id="change-credentials">
                         <label for="change-old-username">Change username:</label>
                         <input type="text" name="old-username" id="change-old-username" placeholder="current username" required>
-                        <input type="text" name="new-username" id="change-new-username" placeholder="new username" disabled="disabled">
+                        <input type="text" name="new-username" id="change-new-username" placeholder="new username">
                 
                         <label for="change-old-password">Change password:</label>
                         <input type="password" name="old-password" id="change-old-password" placeholder="old password" required>
-                        <input type="password" name="new-password" id="change-new-password" placeholder="new password" disabled="disabled">
+                        <input type="password" name="new-password" id="change-new-password" placeholder="new password">
                 
                         <button class="pref-button" type="submit" formmethod="POST" form="change-credentials" id="submit-changes-button">Submit changes</button>
                     </form>

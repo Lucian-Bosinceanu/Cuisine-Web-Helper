@@ -45,6 +45,20 @@ $(document).ready(function() {
         );
     }
 
+    $("#tag-search").keypress(function(e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            const tag = $(this).val();
+
+            $("#selected-tags").append(`
+                <li>
+                    <input type="checkbox" id=${tag} name=${tag} checked>
+                    <label for=${tag}>${tag}</label>
+                </li>
+            `);
+            $(this).val("");
+        }
+    });
 
     $("#search-button").on("click", function() {
         if ($("#sidebar").hasClass("visible")) {

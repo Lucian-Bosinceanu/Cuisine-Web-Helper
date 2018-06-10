@@ -22,18 +22,6 @@
                 <input type="text" name="tag-search" id="tag-search" placeholder="e.g. salami" />
 
                 <ul id="selected-tags">
-                    <li>
-                        <input type="checkbox" id="pineapple" name="pineapple" checked>
-                        <label for="pineapple">Pineapple</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="salami" name="salami" checked>
-                        <label for="salami">Salami</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="potatoes" name="potatoes" checked>
-                        <label for="potatoes">Potaotes</label>
-                    </li>
                 </ul>
 
                 <ul id="tags-menu">

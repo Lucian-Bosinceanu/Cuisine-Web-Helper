@@ -13,5 +13,6 @@
     <div id="wrapper">
         @yield('content')
     </div>
+    @yield('footer')
 </body>
 </html>
