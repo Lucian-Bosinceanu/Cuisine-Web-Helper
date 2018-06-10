@@ -1,50 +1,61 @@
 $(document).ready(function() {
-    $(recipeSearchInput).on('input', function() {
-		const searchText = $(this).val();
+    $("#recipe-search").keypress(function(e) {
+        if(e.which === 13) {
+            const searchText = $(this).val();
 
-		if (searchText.length !== 0){
-			const array = getRecipes(searchText);
+            if (searchText.length !== 0){
+                const array = getRecipes(searchText);
 
-			if (array.length !== 0){
-				renderRecipes(array);
-			}
-		}
+                if (array.length !== 0){
+                    // renderRecipes(array);
+                }
+            }
+        }
     });
     
-    function getSuggestions(value) {
+    function getRecipes(value) {
         const inputValue = value.trim().toLowerCase();
-        const inputLength = inputValue.length;
-      
-        return inputLength <= 1 ? [] : usersData.filter(user =>
-          user.fullName.toLowerCase().slice(0, inputLength) === inputValue
+        console.log(inputValue);
+
+        return inputValue.length <= 1 ? [] : recipesData.filter(recipe =>
+            recipe.title.toLowerCase().indexOf(inputValue) >= 0
         );
     }
 
-    function getSuggestions_subjects(value){
+    $("#article-search").keypress(function(e) {
+        if(e.which === 13) {
+            const searchText = $(this).val();
 
-		const inputValue = value.trim().toLowerCase();
-        const inputLength = inputValue.length;
-      	
-      	// console.log(subjectsData);
-        return inputLength <= 1 ? [] : subjectsData.filter(subj =>
-          subj.name.toLowerCase().slice(0, inputLength) === inputValue
+            if (searchText.length !== 0){
+                const array = getArticles(searchText);
+
+                if (array.length !== 0){
+                    // renderRecipes(array);
+                }
+            }
+        }
+    });
+    
+    function getArticles(value) {
+        const inputValue = value.trim().toLowerCase();
+        console.log(inputValue);
+
+        return inputValue.length <= 1 ? [] : articlesData.filter(article =>
+            article.title.toLowerCase().indexOf(inputValue) >= 0
         );
-	}
+    }
+
 
     $("#search-button").on("click", function() {
         if ($("#sidebar").hasClass("visible")) {
             $("#sidebar").removeClass("visible");
-            $("#sidebar-menu").toggle();
+            $("#sidebar-menu").css("margin-left", "-17em");
         }
         else {
             $("#sidebar").addClass("visible");
-            $("#sidebar-menu").toggle();
+            $("#sidebar-menu").css("margin-left", "0em");
         }
     });
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of f0ba992... Added article controller and views and solved some other things
     $("#menu-button").on("click", function() {
         if ($("#sidebar-menu").hasClass("visible")) {
             $("#sidebar-menu").removeClass("visible");

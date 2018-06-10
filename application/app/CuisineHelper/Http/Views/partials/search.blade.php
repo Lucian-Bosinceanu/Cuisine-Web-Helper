@@ -8,9 +8,9 @@
                 <h2>Search by title</h2>
             </header>
 
-            <form method="post" action="#">
-                <input type="text" name="recipe-search" id="recipe-search" placeholder="e.g. pizza" />
-            </form>
+            <!-- <form method="post" action="#"> -->
+                <input type="text" name="recipeSearch" id="recipe-search" placeholder="e.g. pizza" />
+            <!-- </form> -->
         </section>
 
         <nav id="menu">
@@ -70,7 +70,7 @@
             </header>
 
             <form method="post" action="#">
-                <input type="text" name="recipe-search" id="article-search" placeholder="e.g. 5 ways to.." />
+                <input type="text" name="recipeSearch" id="article-search" placeholder="e.g. 5 ways to.." />
             </form>
         </section>
     </div>
