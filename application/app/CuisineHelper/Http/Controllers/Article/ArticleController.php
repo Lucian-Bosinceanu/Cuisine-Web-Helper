@@ -54,15 +54,15 @@ class ArticleController extends BaseController {
 
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
-        $imageName = $uploadedImage['name'];
-        $imagePath = /*base_path() .*/ '../storage/app/img/' . time() . '_' . random_int(1,100000) . '_'. $imageName ;
+        $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+        $imagePath = /*base_path() .*/ '../storage/app/img/' .  $imageName ;
 
         $description = $params['description'];
         $site = $params['site'];
 
         $anotherSameArticle = Article::where([
             'title' => $articleTitle, 
-            'site' => $site
+            'url' => $site
         ])->findOne();
 
         if ($anotherSameArticle)

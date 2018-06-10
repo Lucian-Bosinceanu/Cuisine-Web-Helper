@@ -40,7 +40,18 @@ class RecipeController extends BaseController {
     }
 
     public function create() {
-        return view('recipes.create');
+        $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
+        $recipeId = $request->paramsNamed()->get('id');
+
+        $recipe = Recipe::findOne($recipeId);
+        
+        $tags = $recipe->getTagNames();    
+        $ingredients = $recipe->getIngredientNames();        
+        $instructions = $recipe->getInstructionList();
+        $difficulty = $difficulties[$recipe->dificulty];
+        $imageSrc = $recipe->getImageSourceLink();
+
+        return view('recipes.create', ['recipe' => $recipe]);
     }
 
     public function store($request) {
@@ -63,7 +74,7 @@ class RecipeController extends BaseController {
     }
 
     public function edit() {
-        return view('recipes.edit');
+        return view('recipes.create');
     }
 
     public function update($request) {
@@ -101,7 +112,7 @@ class RecipeController extends BaseController {
         $params = $request->paramsPost()->all();
         $recipeId = $params['id'];
         $recipe = Recipe::find_one($recipeId);
-        unlink($recipe->image);
+        unlink($recipe->getImagePath);
         $recipe->delete();
     }
 
@@ -121,7 +132,7 @@ class RecipeController extends BaseController {
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
         $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
-        $imagePath = /*base_path() .*/ IMAGEPATH . $imageName ;
+        $imagePath = /*base_path() .*/ config('app')['imagepath'] . $imageName ;
 
         $instructions = '';
 
