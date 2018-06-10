@@ -18,11 +18,13 @@
                 <h2>Search by tags</h2>
             </header>
 
-            <form method="post" action="#" id="tags-form">
-                <input type="text" name="tag-search" id="tag-search" placeholder="e.g. salami" />
+            <form id="tags-form">
+                <!-- <input type="text" name="tag-search" id="tag-search" placeholder="e.g. salami" />
 
                 <ul id="selected-tags">
-                </ul>
+                </ul> -->
+                <select class="form-control" multiple="multiple" id="tag-search">
+                </select>
 
                 <ul id="tags-menu">
                     <li>
@@ -52,7 +54,7 @@
                         </ul>
                     </li>
                 </ul>
-                <button type="submit">Search</button>
+                <button id="tag-search-button">Search</button>
             </form>
         </nav>
 

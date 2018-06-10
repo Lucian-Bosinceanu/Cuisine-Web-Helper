@@ -45,19 +45,30 @@ $(document).ready(function() {
         );
     }
 
-    $("#tag-search").keypress(function(e) {
-        if (e.which === 13) {
-            e.preventDefault();
-            const tag = $(this).val();
+    // $("#tag-search").keypress(function(e) {
+    //     if (e.which === 13) {
+    //         e.preventDefault();
+    //         const tag = $(this).val();
 
-            $("#selected-tags").append(`
-                <li>
-                    <input type="checkbox" id=${tag} name=${tag} checked>
-                    <label for=${tag}>${tag}</label>
-                </li>
-            `);
-            $(this).val("");
-        }
+    //         $("#selected-tags").append(`
+    //             <li>
+    //                 <input type="checkbox" id=${tag} name=${tag} checked>
+    //                 <label for=${tag}>${tag}</label>
+    //             </li>
+    //         `);
+    //         $(this).val("");
+    //     }
+    // });
+
+    $("#tag-search").select2({
+        data: tags,
+        tags: true,
+        tokenSeparators: [',', ' ']
+    });
+
+    $("#tag-search-button").on("click", function(e) {
+        e.preventDefault();
+        console.log($('#tag-search').select2('data'));
     });
 
     $("#search-button").on("click", function() {

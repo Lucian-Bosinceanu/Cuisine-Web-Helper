@@ -43,5 +43,5 @@
 		</div>
 	</div>
 
-    @include('partials.search')
+    @include('partials.search', ['tags' => $tags])
 @endsection

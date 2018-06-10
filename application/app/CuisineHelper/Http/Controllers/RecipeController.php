@@ -15,9 +15,13 @@ class RecipeController extends BaseController {
     public function index($request) {
         $recipes = Recipe::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         $tags = Tag::findArray();
-        $tags = array_map(function ($tag) {
-            return $tag['name']; 
+        $index = 0;
+        $tags = array_map(function ($tag) use (&$index) {
+            return ["id" => $index++,
+                    "text" => $tag['name']];
         }, $tags);
+        // print_r(json_encode($tags));
+        // exit;
         return view('recipes.index', ['recipes' => $recipes, 'tags' => json_encode($tags)]);  
     }
 
