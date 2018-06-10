@@ -40,18 +40,7 @@ class RecipeController extends BaseController {
     }
 
     public function create() {
-        $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
-        $recipeId = $request->paramsNamed()->get('id');
-
-        $recipe = Recipe::findOne($recipeId);
-        
-        $tags = $recipe->getTagNames();    
-        $ingredients = $recipe->getIngredientNames();        
-        $instructions = $recipe->getInstructionList();
-        $difficulty = $difficulties[$recipe->dificulty];
-        $imageSrc = $recipe->getImageSourceLink();
-
-        return view('recipes.create', ['recipe' => $recipe]);
+        return view('recipes.create');
     }
 
     public function store($request) {
@@ -73,8 +62,19 @@ class RecipeController extends BaseController {
         $this->insertIntoRecipeTags($createdRecipe,$tagList);
     }
 
-    public function edit() {
-        return view('recipes.create');
+    public function edit($request) {
+        $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
+        $recipeId = $request->paramsNamed()->get('id');
+
+        $recipe = Recipe::findOne($recipeId);
+        
+        $tags = $recipe->getTagNames();    
+        $ingredients = $recipe->getIngredientNames();        
+        $instructions = $recipe->getInstructionList();
+        $difficulty = $difficulties[$recipe->dificulty];
+        $imageSrc = $recipe->getImageSourceLink();
+
+        return view('recipes.create', ['recipe' => $recipe]);
     }
 
     public function update($request) {

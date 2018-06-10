@@ -15,7 +15,7 @@
                 <section class="recipe-section">
                     <div class="content">
                         <label for="recipe-title-add">Recipe Title:</label>
-                        <input type="text" name="add" id="recipe-title-add" placeholder="Enter recipe title" required>
+                        <input type="text" name="add" id="recipe-title-add" placeholder="Enter recipe title" required value="{{$recipe->title}}">
 
                         <label for="recipe-tags-add">Tags:</label>
                         <textarea name="tags" id="recipe-tags-add" placeholder="e.g. potatoes pizza ..." required></textarea>
