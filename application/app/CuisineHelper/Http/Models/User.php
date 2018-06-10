@@ -65,8 +65,7 @@ class User extends Model {
         return User::create( $params )->save();
     }
 
-    public static function getUser( $params = '' ) {
-        $uOrEmail = $params['username-email'];
+    public static function getUser( $uOrEmail ) {
         $user     = User::whereAnyIs( [
                                           [ 'username' => $uOrEmail ],
                                           [ 'email' => $uOrEmail ]

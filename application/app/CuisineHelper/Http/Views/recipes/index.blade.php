@@ -14,6 +14,9 @@ $recipes = [];
 	@include('partials.sidemenu')
     <div id="main">
 		<div class="inner">
+		@if ($has_error)
+			{{ $error_message }}
+		@endif
 			<header id="header">
 				<h1 class="title"><strong>Recipes</strong></h1>
 				@include('partials.menu')
