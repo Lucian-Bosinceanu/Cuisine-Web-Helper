@@ -19,11 +19,8 @@ class RecipeController extends BaseController {
     }
 
     public function show($request) {
-<<<<<<< HEAD
         //print_r($request->cookies());
         $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
-=======
->>>>>>> 3cc2b419ae0e0813a85412ad67c10faaeecaa8d0
         $recipeId = $request->paramsNamed()->get('id');
 
         $recipe = Recipe::findOne($recipeId);
