@@ -73,10 +73,76 @@ class Recipe extends Model {
     }
 
     public function getImageSourceLink() {
-        $imgUrl = base64_encode(file_get_contents($this->image));
+        $imgUrl = base64_encode(file_get_contents( IMAGEPATH . $this->image));
         $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
         $imageSrc = "data:image/" . $type . " ;base64," . $imgUrl;
         return $imageSrc;
+    }
+
+    public static function exportRSS() {
+        $allRecipes = Recipe::findMany();
+        $rss = <<<EOT
+<rss version="2.0">
+    <channel>
+        <title>Cuisine Web Helper</title>
+        <link>http://localhost</link>
+        <description>Cuisine Web Helper recipes</description>
+        <language>en-us</language>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+EOT;
+    
+        foreach($allRecipes as $recipe) {
+            $rss .= <<<EOT
+
+        <item>
+            <title>{$recipe->title}</title>
+            <link>http://localhost/recipes/{$recipe->id}</link>
+            <guid>{$recipe->id}</guid>
+            <pubDate>{$recipe->created_at}</pubDate>
+        </item>
+EOT;
+        }
+
+        $rss .= <<<EOT
+    
+    </channel>
+</rss>
+EOT;
+
+        return $rss;
+    }
+
+    public function exportJSON() {
+        $recipe = $this->asArray();
+        $json = json_encode($recipe);
+        return $json;
+    }
+
+    public function exportCSV() {
+        $result = null;
+        $tags = $this->getTagNames();
+        $ingredients = $this->getIngredientNames();
+
+        $result = $result . '"' . $this->id . '", ';
+        $result = $result . '"' . $this->title . '", ';
+        $result = $result . '"' . $this->dificulty . '", ';
+        $result = $result . '"' . $this->time . '", ';
+
+        $result = $result . '"';
+        foreach ($tags as $tag)
+            $result = $result . $tag . ", ";
+        $result = $result . '",';
+
+        $result = $result . '"';
+        foreach ($ingredients as $ingredient)
+            $result = $result . $ingredient . ", ";
+        $result = $result . '",';
+
+        $result = $result . '"' . $this->instructions . '", ';
+        $result = $result . '"' . $this->image . '", ';
+        $result = $result . '"' . $this->created_at . '"';
+
+        return $result;
     }
     
 }
