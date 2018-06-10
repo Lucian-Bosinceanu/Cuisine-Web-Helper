@@ -13,10 +13,9 @@ use CuisineHelper\Http\Models\Auth;
 class RecipeController extends BaseController {
 
     public function index($request) {
-        $recipes = Recipe::order_by_desc('created_at')->offset(0)->limit(5)->findMany();
+        $recipes = Recipe::order_by_desc('created_at')->offset(0)->limit(15)->findMany();
         //print_r($request->cookies());
-        //print_r($recipes);
-        //exit;
+        
         return view('recipes.index', ['recipes' => $recipes]);  
     }
 
@@ -108,7 +107,9 @@ class RecipeController extends BaseController {
     private function insertIntoRecipes($recipe, $request) {
         $params = $request->paramsPost()->all();
         
-        unlink($recipe->image);
+        if ($recipe->image != null)
+            unlink($recipe->image);
+        
         $createdAtDB = $recipe->created_at;
 
         $recipeTitle = $params['add'];
@@ -117,8 +118,8 @@ class RecipeController extends BaseController {
 
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
-        $imageName = $uploadedImage['name'];
-        $imagePath = /*base_path() .*/ '../storage/app/img/' . time() . '_' . random_int(1,100000) . '_'. $imageName ;
+        $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+        $imagePath = /*base_path() .*/ IMAGEPATH . $imageName ;
 
         $instructions = '';
 
@@ -140,7 +141,7 @@ class RecipeController extends BaseController {
         $recipe->dificulty = $dificulty;
         $recipe->time = $time;
         $recipe->instructions = $instructions;
-        $recipe->image = $imagePath;
+        $recipe->image = $imageName;
         
         if ($createdAtDB == null)
             $recipe->created_at = time();
