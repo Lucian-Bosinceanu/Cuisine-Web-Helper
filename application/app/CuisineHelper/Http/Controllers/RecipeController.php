@@ -126,8 +126,12 @@ class RecipeController extends BaseController {
         foreach ( $params['how-to-steps'] as $instruction )
             $instructions = $instructions .  $instruction . '##';
 
-        $anotherSameRecipe = Recipe::where(['title' => $recipeTitle, 'dificulty' => $dificulty, 'time' => $time,
-                                            'instructions' => $instructions ])->findOne();
+        $anotherSameRecipe = Recipe::where([
+            'title' => $recipeTitle,
+            'dificulty' => $dificulty,
+            'time' => $time,
+            'instructions' => $instructions
+        ])->findOne();
         if ($anotherSameRecipe)
             return null;
 

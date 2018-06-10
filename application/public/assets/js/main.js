@@ -1,12 +1,59 @@
 $(document).ready(function() {
+    $("#recipe-search").keypress(function(e) {
+        if(e.which === 13) {
+            const searchText = $(this).val();
+
+            if (searchText.length !== 0){
+                const array = getRecipes(searchText);
+
+                if (array.length !== 0){
+                    // renderRecipes(array);
+                }
+            }
+        }
+    });
+    
+    function getRecipes(value) {
+        const inputValue = value.trim().toLowerCase();
+        console.log(inputValue);
+
+        return inputValue.length <= 1 ? [] : recipesData.filter(recipe =>
+            recipe.title.toLowerCase().indexOf(inputValue) >= 0
+        );
+    }
+
+    $("#article-search").keypress(function(e) {
+        if(e.which === 13) {
+            const searchText = $(this).val();
+
+            if (searchText.length !== 0){
+                const array = getArticles(searchText);
+
+                if (array.length !== 0){
+                    // renderRecipes(array);
+                }
+            }
+        }
+    });
+    
+    function getArticles(value) {
+        const inputValue = value.trim().toLowerCase();
+        console.log(inputValue);
+
+        return inputValue.length <= 1 ? [] : articlesData.filter(article =>
+            article.title.toLowerCase().indexOf(inputValue) >= 0
+        );
+    }
+
+
     $("#search-button").on("click", function() {
         if ($("#sidebar").hasClass("visible")) {
             $("#sidebar").removeClass("visible");
-            $("#sidebar-menu").toggle();
+            $("#sidebar-menu").css("margin-left", "-17em");
         }
         else {
             $("#sidebar").addClass("visible");
-            $("#sidebar-menu").toggle();
+            $("#sidebar-menu").css("margin-left", "0em");
         }
     });
     $("#menu-button").on("click", function() {

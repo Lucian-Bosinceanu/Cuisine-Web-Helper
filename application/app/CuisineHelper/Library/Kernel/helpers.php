@@ -2,6 +2,7 @@
 
 use CuisineHelper\Library\Http\View\View as View;
 use CuisineHelper\Library\Router\Router;
+use CuisineHelper\Http\Models\Auth;
 
 if ( ! function_exists( 'base_path' ) ) {
 
@@ -148,7 +149,31 @@ if ( ! function_exists( 'response' ) ) {
      * @return string The path of the route
      */
     function response($redirect = '/', $params = []) {
-        Router::getInstance()->getResponse()->redirect(route($redirect, $params))->send();
+        Router::response()->redirect(route($redirect, $params))->send();
         exit;
+    }
+}
+
+if ( ! function_exists( 'isAuth' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function isAuth() {
+        return Auth::check();
+    }
+}
+
+if ( ! function_exists( 'redirect' ) ) {
+
+    /**
+     * @param string $name   The name of the route
+     *
+     * @return string The path of the route
+     */
+    function redirect($route) {
+        return Router::response()->redirect($route);
     }
 }

@@ -39,4 +39,9 @@ class LoginController extends BaseController {
             return error_view( 'auth.login', $params, 'Wrong Credentials!' );
         }
     }
+
+    public function logout($request, $response) {
+        Auth::deleteLoginCookie();
+        return redirect(route('recipes.index'));
+    }
 }
