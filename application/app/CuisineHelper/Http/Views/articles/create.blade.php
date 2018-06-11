@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Add article')
+@section('title')
+    {{$operation}} Article
+@endsection
 
 @section('content')
     @include('partials.sidemenu')
@@ -11,19 +13,19 @@
                 @include('partials.menu')
             </header>
 
-            <form action="{{ route("articles.store") }}" method="POST" id="articles-form" enctype="multipart/form-data">
+            <form action="{{ $redirect }}" method="POST" id="articles-form" enctype="multipart/form-data">
                 <section class="recipe-section">
                     <div class="content">
                         <label for="articles-title-add">Article Title:</label>
-                        <input type="text" name="add" id="articles-title-add" placeholder="Enter articles title" required value="{{$article->title}}">
+                        <input type="text" name="add" id="articles-title-add" placeholder="Enter articles title" required value="{{$article->title OR ''}}">
 
                         <label for="articles-site-add">Link:</label>
-                        <input type="url" name="site" id="articles-site-add" placeholder="Enter article URL" required value="{{$article->url}}">
+                        <input type="url" name="site" id="articles-site-add" placeholder="Enter article URL" required value="{{$article->url OR ''}}">
 
                         <label for="articles-description-add">Description:</label>
-                        <textarea name="description" id="articles-description-add" placeholder="Enter a description" required>{{$article->description}}</textarea>
+                        <textarea name="description" id="articles-description-add" placeholder="Enter a description" required>{{$article->description OR ''}}</textarea>
 
-                        <label for="image-upload" id="image-upload-button" class="button" value="{{$image}}">
+                        <label for="image-upload" id="image-upload-button" class="button">
                             <span>Choose image to upload (PNG, JPG)</span>
                         </label>
                         <input type="file" id="image-upload" name="image-upload" accept=".jpg, .jpeg, .png">

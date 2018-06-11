@@ -57,7 +57,7 @@ class RecipeController extends BaseController {
 
         $createdRecipe = $this->insertIntoRecipes(Recipe::create(),$request);
         if ($createdRecipe == null)
-            exit;
+            return redirect(route('defaults.error_view'));
 
         $this->insertIntoTags($tagList);
         $this->insertIntoIngredients($ingredients);
@@ -65,6 +65,8 @@ class RecipeController extends BaseController {
 
         $this->insertIntoIngredientsRecipes($createdRecipe,$ingredients,$quantities);
         $this->insertIntoRecipeTags($createdRecipe,$tagList);
+
+        return redirect(route('recipes.index'));
     }
 
     public function edit($request) {
@@ -117,6 +119,8 @@ class RecipeController extends BaseController {
 
         $this->deleteFromRecipeTags($recipe,array_dif($oldTags,$newTags));
         $this->deleteFromIngredientsRecipes($recipe,array_diff($oldIngredients,$newIngredients));
+
+        return redirect(route('recipes.index'));
     }
 
     public function delete($request) {
@@ -125,6 +129,7 @@ class RecipeController extends BaseController {
         $recipe = Recipe::find_one($recipeId);
         unlink($recipe->getImagePath);
         $recipe->delete();
+        return redirect(route('recipes.index'));
     }
 
     
