@@ -44,7 +44,15 @@ $(document).ready(function() {
 
     $("#tag-search-button").on("click", function(e) {
         e.preventDefault();
-        console.log($('#tag-search').select2('data'));
+        var tags = $('#tag-search').select2('data').map(function(item) {
+            return item.text;
+        });
+        var form = $("#tags-form").serializeArray().map(function(item) {
+            return item.name;
+        });
+        $.post(searchRecipeTitleUrl, {tags: tags, form:form}, function (data) {
+            console.log(data);
+        });
     });
 
     $("#search-button").on("click", function() {

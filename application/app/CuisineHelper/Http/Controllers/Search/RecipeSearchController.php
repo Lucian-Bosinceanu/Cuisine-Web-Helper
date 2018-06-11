@@ -7,8 +7,14 @@ use CuisineHelper\Http\Models\Recipe;
 use CuisineHelper\Http\Models\Tag;
 
 class RecipeSearchController extends BaseController {
+    protected $reqParams = ['title', 'tags', 'form', 'restrictions'];
+
     public function searchTitle($request) {
-        $title = $request->paramsPost()->get('title');
+        $params = $this->getSearchParams($request->paramsPost());
+        return json_encode($recipes = Recipe::searchRecipes($params));
+        
+        $tags = $params['tags'];
+        return json_encode($params);
         $recipes = Recipe::searchByTitle($title);
         $recipes = $recipes == null ? [] : $recipes;
         $tags = Tag::findArray();
@@ -18,5 +24,14 @@ class RecipeSearchController extends BaseController {
                     "text" => $tag['name']];
         }, $tags);
         return view('partials.recipe_list', ['recipes' => $recipes]);
+    }
+
+    private function getSearchParams($postParams) {
+        $result = [];
+        $params = $postParams;
+        foreach ($this->reqParams as $key) {
+            $result[$key] = $params->get($key);
+        }
+        return $result;
     }
 }

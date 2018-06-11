@@ -87,6 +87,13 @@ class Recipe extends Model {
         return $imageSrc;
     }
 
+    public static function searchRecipes($params) {
+        if (!isset($params['title'])) {
+            return Recipe::findArray();
+        }
+        return $recipes = Recipe::where('title', $params['title']);
+    }
+
     public static function searchByTitle($title, $toArray = false) {
         if (isset($title) && !empty($title)) {
             $recipes = Recipe::where_like('title', "%{$title}%");
