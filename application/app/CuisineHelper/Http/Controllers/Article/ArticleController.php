@@ -15,7 +15,8 @@ class ArticleController extends BaseController {
     }
 
     public function create() {
-        return view('articles.create');
+        $operation = "Add";
+        return view('articles.create', ['operation' => $operation]);
     }
 
     public function store($request) {
@@ -26,8 +27,14 @@ class ArticleController extends BaseController {
             exit;
     }
 
-    public function edit() {
-        return view('articles.edit');
+    public function edit($request) {
+        $operation = "Edit";
+        $articleId = $request->paramsNamed()->get('id');
+
+        $article = Article::findOne($articleId);
+        $imageSrc = $article->getImageSourceLink();
+
+        return view('articles.create', ['operation' => $operation, 'article' => $article]);
     }
 
     public function update($request) {

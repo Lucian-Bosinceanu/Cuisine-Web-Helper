@@ -7,6 +7,8 @@
 @php
 if (!isset($difficulty)) {
     $difficulty = 1;
+    $ingredients = [];
+    $instructions = [];
 }
 @endphp
 @section('content')
