@@ -52,17 +52,13 @@ $(document).ready(function() {
 
     $("#json-button").on("click", function(e) {
         e.preventDefault();
-        $.post(exportJsonUrl, 
-            function(data) {
-
-            });
+        var location = window.location.hostname;
+        window.open("http://" + location + window.exportJsonUrl, '_blank');
     });
 
     $("#csv-button").on("click", function(e) {
         e.preventDefault();
-        $.post(exportCsvUrl,
-            function(data) {
-
-            });
+        var location = window.location.hostname;
+        window.open("http://" + location + window.exportCsvUrl, '_blank');
     });
 });

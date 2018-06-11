@@ -35,5 +35,5 @@ Router::post("/searchArticleTitle", "Search/ArticleSearchController@searchTitle"
 
 // Export
 Router::get("/export/rss", "ExportController@rss")->setName('export.rss');
-Router::post("/export/json", "ExportController@json")->setName('export.json');
-Router::post("/export/csv", "ExportController@csv")->setName('export.csv');
+Router::get("/export/[i:id]/json", "ExportController@json")->setName('export.json');
+Router::get("/export/[i:id]/csv", "ExportController@csv")->setName('export.csv');

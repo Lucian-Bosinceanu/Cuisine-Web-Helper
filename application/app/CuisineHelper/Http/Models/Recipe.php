@@ -141,6 +141,14 @@ EOT;
         return $json;
     }
 
+    public function exportJSONAsFile() {
+        $json = $this->exportJSON();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("json-" . time()) . ".json";
+        @file_put_contents($path, $json);
+        return $path;
+    }
+
     public function exportCSV() {
         $result = null;
         $tags = $this->getTagNames();
@@ -168,4 +176,11 @@ EOT;
         return $result;
     }
     
+    public function exportCSVAsFile() {
+        $csv = $this->exportCSV();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("csv-" . time()) . ".csv";
+        @file_put_contents($path, $csv);
+        return $path;
+    }
 }
