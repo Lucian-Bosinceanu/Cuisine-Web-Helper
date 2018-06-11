@@ -48,7 +48,7 @@
 
                 </div>
                 <span class="image">
-                    <img src="{{ $image }}" alt="potato" class="recipe_picture">
+                    <img src="{{ $imageSrc }}" alt="potato" class="recipe_picture">
                 </span>
             </section>
 

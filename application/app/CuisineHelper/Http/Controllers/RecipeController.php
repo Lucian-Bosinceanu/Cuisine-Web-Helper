@@ -36,11 +36,14 @@ class RecipeController extends BaseController {
         $ingredients = $recipe->getIngredientNames();        
         $instructions = $recipe->getInstructionList();
         $difficulty = $difficulties[$recipe->dificulty];
-        $imageSrc = $recipe->getImageSourceLink();
+        $imageSrc = $recipe->getImagePath();
         //print_r($ingredients->findMany());
         //exit;
 
-        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty, 'image' => $imageSrc]);
+        // print_r($imageSrc);
+        // exit;
+
+        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty, 'imageSrc' => $imageSrc]);
     }
 
     public function create() {
@@ -129,7 +132,7 @@ class RecipeController extends BaseController {
         $params = $request->paramsNamed()->all();
         $recipeId = $params['id'];
         $recipe = Recipe::find_one($recipeId);
-        unlink($recipe->getImagePath);
+        unlink($recipe->getImagePath());
         $recipe->delete();
         return $response->json(["succes" => true]);
     }

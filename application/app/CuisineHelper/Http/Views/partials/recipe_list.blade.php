@@ -2,7 +2,7 @@
     <div class="posts">        
         @foreach ($recipes as $recipe)
             <article data-id="{{ $recipe->id }}">
-                <a href="{{ route("recipes.show", ['id' => $recipe->id]) }}" class="image"><img src="{{$recipe->getImageSourceLink()}}" alt=""/></a>
+                <a href="{{ route("recipes.show", ['id' => $recipe->id]) }}" class="image"><img src="{{$recipe->getImagePath()}}" alt=""/></a>
                 <h3>{{$recipe->title}}</h3>
                 <ul class="actions">
                     <li><a href="{{ route("recipes.show", ['id' => $recipe->id]) }}" class="button">More</a></li>
