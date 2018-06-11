@@ -4,6 +4,11 @@
     {{$operation}} Recipe
 @endsection
 
+@php
+if (!isset($difficulty)) {
+    $difficulty = 1;
+}
+@endphp
 @section('content')
     @include('partials.sidemenu')
     <div id="main">
@@ -27,12 +32,12 @@
 
                         <label>Difficulty:</label>
                         <!-- <textarea name="difficulty" id="difficulty-add" placeholder="Enter the difficulty" required></textarea> -->
-                        <select name="difficulty" id="difficulty-add" selected="{{$difficulty OR ''}}">
-                            <option value="1">Very easy</option>
-                            <option value="2">Easy</option>
-                            <option value="3">Medium</option>
-                            <option value="4">Hard</option>
-                            <option value="5">Very hard</option>
+                        <select name="difficulty" id="difficulty-add">
+                            <option value="1" {{ $difficulty == 1 ? 'selected' : '' }}>Very easy</option>
+                            <option value="2" {{ $difficulty == 2 ? 'selected' : '' }}>Easy</option>
+                            <option value="3" {{ $difficulty == 3 ? 'selected' : '' }}>Medium</option>
+                            <option value="4" {{ $difficulty == 4 ? 'selected' : '' }}>Hard</option>
+                            <option value="5" {{ $difficulty == 5 ? 'selected' : '' }}>Very hard</option>
                         </select>
 
                         <label for="image-upload" id="image-upload-button" class="button">

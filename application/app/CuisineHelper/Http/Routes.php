@@ -17,6 +17,7 @@ Router::delete("/recipes/[i:id]", "RecipeController@delete")->setName('recipes.d
 Router::get("/articles", "Article/ArticleController@index")->setName("articles.index");
 Router::get("/articles/create", "Article/ArticleController@create")->setName("articles.create");
 Router::post("/articles", "Article/ArticleController@store")->setName('articles.store');
+Router::get("/articles/[i:id]/edit", "Article/ArticleController@edit")->setName('articles.edit');
 Router::post("/articles/[i:id]/update", "Article/ArticleController@update")->setName('articles.update');
 Router::delete("/articles/[i:id]", "Article/ArticleController@delete")->setName('articles.delete');
 

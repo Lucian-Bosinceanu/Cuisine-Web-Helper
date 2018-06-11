@@ -29,6 +29,10 @@
                             <p>{{$article->description}}</p>
                             <ul class="actions">
                                 <li><a href="{{$article->url}}" class="button" target="_blank">More</a></li>
+                                @if (isAdmin())
+									<li><a href="{{ route("articles.delete", ['id' => $article->id]) }}" class="button">Delete</a></li>
+									<li><a href="{{ route("articles.edit", ['id' => $article->id]) }}" class="button">Edit</a></li>
+								@endif
                             </ul>
                         @endforeach
                     </article>

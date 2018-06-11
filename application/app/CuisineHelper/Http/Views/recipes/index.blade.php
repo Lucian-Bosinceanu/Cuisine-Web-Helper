@@ -31,9 +31,9 @@
 							<h3>{{$recipe->title}}</h3>
 							<ul class="actions">
 								<li><a href="{{ route("recipes.show", ['id' => $recipe->id]) }}" class="button">More</a></li>
-								@if (isAuth())
-									<li><a href="#" class="button">Report</a></li>
-									<li><a href="#" class="button">Add to Favorites</a></li>
+								@if (isAdmin())
+									<li><a href="{{ route("recipes.delete", ['id' => $recipe->id]) }}" class="button">Delete</a></li>
+									<li><a href="{{ route("recipes.edit", ['id' => $recipe->id]) }}" class="button">Edit</a></li>
 								@endif
 							</ul>
 						</article>

@@ -156,7 +156,7 @@
 	input[type="email"],
 	input[type="url"],
 	textarea,
-	.select {
+	select {
 		appearance: none;
 		background: #ffffff;
 		border-radius: 0.375em;
