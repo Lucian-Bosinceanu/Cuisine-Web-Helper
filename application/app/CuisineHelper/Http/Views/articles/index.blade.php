@@ -24,7 +24,7 @@
                 <div class="posts">
                     <article>
                         @foreach($articles as $article)
-                            <a href="{{$article->url}}" class="image" target="_blank"><img src="{{$article->getImageSourceLink()}}" alt="" /></a>
+                            <a href="{{$article->url}}" class="image" target="_blank"><img src="{{$article->getImagePath()}}" alt="" /></a>
                             <h3>{{$article->title}}</h3>
                             <p>{{$article->description}}</p>
                             <ul class="actions">
