@@ -11,7 +11,7 @@ class ArticleController extends BaseController {
         $articles = Article::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         //print_r($request->cookies());
         
-        return view('articles.index', ['articles' => $articles]);
+        return view('articles.index', ['articles' => $articles, 'ajaxUrls' => ['searchArticle' => route("search.article_title")]]);
     }
 
     public function create() {

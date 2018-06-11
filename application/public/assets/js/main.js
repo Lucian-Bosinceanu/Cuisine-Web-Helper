@@ -8,69 +8,40 @@ $(document).ready(function() {
             }
         }
     });
-    
-    function getRecipes(value) {
-        const inputValue = value.trim().toLowerCase();
-        console.log(inputValue);
-        $.post(searcRecipeTitleUrl, {title: inputValue}, newRecipes);
-        //postAjax(searcRecipeTitleUrl, inputValue, newRecipes, errorRecipe);
-    }
-
-    function newRecipes(data) {
-        $('#main .inner').children().remove('section');
-        $('#main .inner').append(data);
-    }
-
-    function errorRecipe() {
-
-    }
-
-    function postAjax(url, data, success, fail) {
-        $.ajax({
-            url: url,
-            data: {title: data}
-
-        }).done(success)
-          .fail(fail);
-    }
 
     $("#article-search").keypress(function(e) {
         if(e.which === 13) {
             const searchText = $(this).val();
 
             if (searchText.length !== 0){
-                const array = getArticles(searchText);
-
-                if (array.length !== 0){
-                    // renderRecipes(array);
-                }
+                getArticles(searchText);
             }
         }
     });
     
-    function getArticles(value) {
+    function getRecipes(value) {
         const inputValue = value.trim().toLowerCase();
-        console.log(inputValue);
-
-        return inputValue.length <= 1 ? [] : articlesData.filter(article =>
-            article.title.toLowerCase().indexOf(inputValue) >= 0
-        );
+        $.post(searchRecipeTitleUrl, {title: inputValue}, newData);
     }
 
-    // $("#tag-search").keypress(function(e) {
-    //     if (e.which === 13) {
-    //         e.preventDefault();
-    //         const tag = $(this).val();
+    function getArticles(value) {
+        const inputValue = value.trim().toLowerCase();
+        $.post(searchArticleTitleUrl, {title: inputValue}, newData);
+    }
 
-    //         $("#selected-tags").append(`
-    //             <li>
-    //                 <input type="checkbox" id=${tag} name=${tag} checked>
-    //                 <label for=${tag}>${tag}</label>
-    //             </li>
-    //         `);
-    //         $(this).val("");
-    //     }
-    // });
+    function newData(data) {
+        $('#main .inner').children().remove('section');
+        $('#main .inner').append(data);
+    }
+
+    // function postAjax(url, data, success, fail) {
+    //     $.ajax({
+    //         url: url,
+    //         data: {title: data}
+
+    //     }).done(success)
+    //       .fail(fail);
+    // }
 
     if(typeof tags !== 'undefined') {
         $("#tag-search").select2({

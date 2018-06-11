@@ -125,6 +125,7 @@ class RecipeController extends BaseController {
         $recipe = Recipe::find_one($recipeId);
         unlink($recipe->getImagePath);
         $recipe->delete();
+        return $response->json(["succes" => true]);
     }
 
     
