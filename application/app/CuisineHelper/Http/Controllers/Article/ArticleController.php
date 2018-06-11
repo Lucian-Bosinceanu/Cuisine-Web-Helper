@@ -46,7 +46,7 @@ class ArticleController extends BaseController {
     }
 
     public function delete($request) {
-        $params = $request->paramsPost()->all();
+        $params = $request->paramsNamed()->all();
         $articleId = $params['id'];
         $article = Article::find_one($articleId);
 

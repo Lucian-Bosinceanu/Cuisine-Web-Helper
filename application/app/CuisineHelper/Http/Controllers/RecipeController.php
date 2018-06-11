@@ -119,8 +119,8 @@ class RecipeController extends BaseController {
         $this->deleteFromIngredientsRecipes($recipe,array_diff($oldIngredients,$newIngredients));
     }
 
-    public function delete($request) {
-        $params = $request->paramsPost()->all();
+    public function delete($request, $response) {
+        $params = $request->paramsNamed()->all();
         $recipeId = $params['id'];
         $recipe = Recipe::find_one($recipeId);
         unlink($recipe->getImagePath);

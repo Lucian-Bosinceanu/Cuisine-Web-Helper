@@ -135,4 +135,22 @@ $(document).ready(function() {
     $("textarea").on("keydown", function() {
         $(this).css("height", `${this.scrollHeight + 2}px`);
     });
+
+    $.delete = function(url, article){
+        $(`article[data-id=${article}]`).remove();
+        console.log(url);
+        console.log(article);
+        return $.ajax({
+          url: url,
+          type: 'DELETE',
+          data: article,
+        });
+    };
+
+    $(".delete-article-button").on("click", function(e) {
+        e.preventDefault();
+        console.log($(this).prop("href"));
+        console.log($(this).attr("data-id"));
+        $.delete($(this).prop("href"), $(this).attr("data-id"));
+    });
 });
