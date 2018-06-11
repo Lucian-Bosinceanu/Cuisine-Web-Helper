@@ -127,6 +127,14 @@ EOT;
         return $rss;
     }
 
+    public static function exportRSSAsFile() {
+        $rss = self::exportRSS();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("rss-" . time()) . ".xml";
+        @file_put_contents($path, $rss);
+        return $path;
+    }
+
     public function exportJSON() {
         $recipe = $this->asArray();
         $json = json_encode($recipe);

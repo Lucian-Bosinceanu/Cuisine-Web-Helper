@@ -11,6 +11,7 @@
 	<script type="text/javascript">
 		var tags = {!! $tags !!};
 		var searchRecipeTitleUrl = "{{ $ajaxUrls['searchRecipe'] }}";
+		var exportRssUrl = "{{ $ajaxUrls['exportRss'] }}";
 	</script>
 @endsection
 

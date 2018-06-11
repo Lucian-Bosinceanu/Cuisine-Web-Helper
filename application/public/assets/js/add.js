@@ -50,13 +50,19 @@ $(document).ready(function() {
         $(this).css("height", `${this.scrollHeight + 2}px`);
     });
 
-    $("#rss-button").on("click", function(e) {
-        e.preventDefault();
-    });
     $("#json-button").on("click", function(e) {
         e.preventDefault();
+        $.post(exportJsonUrl, 
+            function(data) {
+
+            });
     });
+
     $("#csv-button").on("click", function(e) {
         e.preventDefault();
+        $.post(exportCsvUrl,
+            function(data) {
+
+            });
     });
 });

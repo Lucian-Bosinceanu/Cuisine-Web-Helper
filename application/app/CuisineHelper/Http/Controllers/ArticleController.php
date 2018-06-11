@@ -1,6 +1,6 @@
 <?php
 
-namespace CuisineHelper\Http\Controllers\Article;
+namespace CuisineHelper\Http\Controllers;
 
 use CuisineHelper\Library\Http\Controller\BaseController;
 use CuisineHelper\Http\Models\Article;

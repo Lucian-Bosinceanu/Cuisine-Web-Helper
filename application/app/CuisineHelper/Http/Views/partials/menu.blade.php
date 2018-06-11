@@ -5,6 +5,7 @@
         <li><a href="{{ route("recipes.create") }}">Add recipe</a></li>
         <li><a href="{{ route("articles.create") }}">Add article</a></li>
     @endif
+    <li><a class="rss-button" href="{{ route("export.rss") }}">Export to RSS</a></li>
     @if (!isAuth())
         <li><a href="{{ route("auth.register") }}">Register</a></li>
         <li><a href="{{ route("auth.login") }}">Login</a></li>
