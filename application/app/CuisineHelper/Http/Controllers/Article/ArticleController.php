@@ -11,13 +11,7 @@ class ArticleController extends BaseController {
         $articles = Article::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         //print_r($request->cookies());
         
-<<<<<<< HEAD
-
-
-        return view('articles.index', ['articles' => $articles]);
-=======
         return view('articles.index', ['articles' => $articles, 'ajaxUrls' => ['searchArticle' => route("search.article_title")]]);
->>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
     }
 
     public function create() {
@@ -58,12 +52,7 @@ class ArticleController extends BaseController {
     }
 
     public function delete($request) {
-<<<<<<< HEAD
-        
-        $params = $request->paramsPost()->all();
-=======
         $params = $request->paramsNamed()->all();
->>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
         $articleId = $params['id'];
         $article = Article::find_one($articleId);
 
@@ -76,18 +65,18 @@ class ArticleController extends BaseController {
     private function insertIntoArticles($article, $request) {
         $params = $request->paramsPost()->all();
 
-        if ($article->image != null)
-            unlink($article->getImagePath());
-
         $articleTitle = $params['add'];
 
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
 
-        if ($uploadedImage == null)
+        if ($imageTmpName == null)
             $imageName = $article->image;
             else
-            $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+             {
+                 unlink($article->getImagePath());
+                 $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+             }
         $imagePath = /*base_path() .*/ config('app')['imagepath'] .  $imageName ;
 
         $description = $params['description'];
@@ -108,12 +97,8 @@ class ArticleController extends BaseController {
         $article->description = $description;
 
         $article->save();
-        
-        print_r($imageTmpName);
-        print_r($imagePath);
-        exit;
 
-        if ($uploadedImage != null)
+        if ($imageTmpName != null)
             move_uploaded_file($imageTmpName,$imagePath);
 
         return $article;

@@ -45,7 +45,8 @@ class RecipeController extends BaseController {
 
     public function create() {
         $operation = "Add";
-        return view('recipes.create', ['operation' => $operation]);
+        $redirect = route("recipes.store");
+        return view('recipes.create', ['operation' => $operation, 'redirect' => $redirect]);
     } 
 
     public function store($request) {
@@ -73,6 +74,7 @@ class RecipeController extends BaseController {
         $difficulties= array(0, "Very Easy", "Easy", "Medium", "Hard", "Very Hard"); 
         $operation = "Edit";
         $recipeId = $request->paramsNamed()->get('id');
+        $redirect = route("recipes.update",['id' => $recipeId]);
 
         $recipe = Recipe::findOne($recipeId);
         
@@ -87,7 +89,7 @@ class RecipeController extends BaseController {
         foreach($tags as $tag) 
             $tagString .= $tag . ' ';
 
-        return view('recipes.create', ['ingredients' => $ingredients,'instructions' => $instructions,'operation' => $operation,'recipe' => $recipe, 'tagString' => $tagString, 'difficulty' => $difficulty]);
+        return view('recipes.create', ['ingredients' => $ingredients,'instructions' => $instructions,'operation' => $operation,'recipe' => $recipe, 'tagString' => $tagString, 'difficulty' => $difficulty, 'redirect' => $redirect]);
     }
 
     public function update($request) {
@@ -129,19 +131,12 @@ class RecipeController extends BaseController {
         $recipe = Recipe::find_one($recipeId);
         unlink($recipe->getImagePath);
         $recipe->delete();
-<<<<<<< HEAD
-        return redirect(route('recipes.index'));
-=======
         return $response->json(["succes" => true]);
->>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
     }
 
     
     private function insertIntoRecipes($recipe, $request) {
         $params = $request->paramsPost()->all();
-        
-        if ($recipe->image != null)
-            unlink($recipe->getImagePath());
         
         $createdAtDB = $recipe->created_at;
 
@@ -151,7 +146,15 @@ class RecipeController extends BaseController {
 
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
-        $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+
+        if ($imageTmpName == null)
+            $imageName = $recipe->image;
+            else
+            {
+                unlink($recipe->getImagePath());
+                $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
+            }
+        
         $imagePath = /*base_path() .*/ config('app')['imagepath'] . $imageName ;
 
         $instructions = '';
@@ -181,7 +184,9 @@ class RecipeController extends BaseController {
             $recipe->created_at = $createdAtDB;
         
         $recipe->save();
-        move_uploaded_file($imageTmpName,$imagePath);
+
+        if ($imageTmpName != null)
+            move_uploaded_file($imageTmpName,$imagePath);
 
         return $recipe;
     }
