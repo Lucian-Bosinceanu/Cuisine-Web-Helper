@@ -4,11 +4,7 @@ $(document).ready(function() {
             const searchText = $(this).val();
 
             if (searchText.length !== 0){
-                const array = getRecipes(searchText);
-
-                if (array.length !== 0){
-                    // renderRecipes(array);
-                }
+                getRecipes(searchText);
             }
         }
     });
@@ -16,10 +12,26 @@ $(document).ready(function() {
     function getRecipes(value) {
         const inputValue = value.trim().toLowerCase();
         console.log(inputValue);
+        $.post(searcRecipeTitleUrl, {title: inputValue}, newRecipes);
+        //postAjax(searcRecipeTitleUrl, inputValue, newRecipes, errorRecipe);
+    }
 
-        return inputValue.length <= 1 ? [] : recipesData.filter(recipe =>
-            recipe.title.toLowerCase().indexOf(inputValue) >= 0
-        );
+    function newRecipes(data) {
+        $('#main .inner').children().remove('section');
+        $('#main .inner').append(data);
+    }
+
+    function errorRecipe() {
+
+    }
+
+    function postAjax(url, data, success, fail) {
+        $.ajax({
+            url: url,
+            data: {title: data}
+
+        }).done(success)
+          .fail(fail);
     }
 
     $("#article-search").keypress(function(e) {
@@ -60,11 +72,13 @@ $(document).ready(function() {
     //     }
     // });
 
-    $("#tag-search").select2({
-        data: tags,
-        tags: true,
-        tokenSeparators: [',', ' ']
-    });
+    if(typeof tags !== 'undefined') {
+        $("#tag-search").select2({
+            data: tags,
+            tags: true,
+            tokenSeparators: [',', ' ']
+        }); 
+    }
 
     $("#tag-search-button").on("click", function(e) {
         e.preventDefault();
@@ -101,18 +115,20 @@ $(document).ready(function() {
     });
 
     var input = document.getElementById("image-upload");
-    var label	 = input.previousElementSibling,
-        labelVal = label.innerHTML;
+    if (input) {
+        var label	 = input.previousElementSibling,
+            labelVal = label.innerHTML;
 
-    input.addEventListener('change', function(e) {
-        var fileName = '';
-        fileName = e.target.value.split( '\\' ).pop();
+        input.addEventListener('change', function(e) {
+            var fileName = '';
+            fileName = e.target.value.split( '\\' ).pop();
 
-        if( fileName )
-            label.querySelector('span').innerHTML = fileName;
-        else
-            label.innerHTML = labelVal;
-    });
+            if( fileName )
+                label.querySelector('span').innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
+    }
 
     $(".delete-button").on("click", function() {
         $(this).parent().remove();
