@@ -15,7 +15,7 @@ Router::delete("/recipes/[i:id]", "RecipeController@delete", ['middleware' => [ 
 Router::get("/articles", "Article/ArticleController@index")->setName("articles.index");
 Router::get("/articles/create", "Article/ArticleController@create", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName("articles.create");
 Router::post("/articles", "Article/ArticleController@store", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.store');
-Router::post("/articles/[i:id]/edit", "Article/ArticleController@edit", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.edit');
+Router::get("/articles/[i:id]/edit", "Article/ArticleController@edit", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.edit');
 Router::post("/articles/[i:id]/update", "Article/ArticleController@update", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.update');
 Router::delete("/articles/[i:id]", "Article/ArticleController@delete", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.delete');
 

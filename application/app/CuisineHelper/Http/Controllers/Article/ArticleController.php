@@ -32,15 +32,19 @@ class ArticleController extends BaseController {
         $articleId = $request->paramsNamed()->get('id');
 
         $article = Article::findOne($articleId);
-        $imageSrc = $article->getImageSourceLink();
+        $imageSrc = $article->getImagePath();
 
-        return view('articles.create', ['operation' => $operation, 'article' => $article]);
+        return view('articles.create', ['operation' => $operation, 'article' => $article, 'image' => $imageSrc]);
     }
 
     public function update($request) {
         $params = $request->paramsPost()->all();
         $articleId = $params['id'];
         $article = Article::find_one($articleId);
+
+        print 123;
+        print_r($request);
+        exit;
 
         $this->insertIntoArticles($article, $request);
     }
@@ -56,7 +60,7 @@ class ArticleController extends BaseController {
 
     private function insertIntoArticles($article, $request) {
         $params = $request->paramsPost()->all();
-        
+
         if ($article->image != null)
             unlink($article->getImagePath());
 
@@ -65,7 +69,7 @@ class ArticleController extends BaseController {
         $uploadedImage = $request->files()->get('image-upload');
         $imageTmpName = $uploadedImage['tmp_name'];
         $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
-        $imagePath = /*base_path() .*/ '../storage/app/img/' .  $imageName ;
+        $imagePath = /*base_path() .*/ config('app')['imagepath'] .  $imageName ;
 
         $description = $params['description'];
         $site = $params['site'];
