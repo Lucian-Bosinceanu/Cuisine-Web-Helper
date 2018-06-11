@@ -11,9 +11,13 @@ class ArticleController extends BaseController {
         $articles = Article::order_by_asc('created_at')->offset(0)->limit(15)->findMany();
         //print_r($request->cookies());
         
+<<<<<<< HEAD
 
 
         return view('articles.index', ['articles' => $articles]);
+=======
+        return view('articles.index', ['articles' => $articles, 'ajaxUrls' => ['searchArticle' => route("search.article_title")]]);
+>>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
     }
 
     public function create() {
@@ -54,8 +58,12 @@ class ArticleController extends BaseController {
     }
 
     public function delete($request) {
+<<<<<<< HEAD
         
         $params = $request->paramsPost()->all();
+=======
+        $params = $request->paramsNamed()->all();
+>>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
         $articleId = $params['id'];
         $article = Article::find_one($articleId);
 

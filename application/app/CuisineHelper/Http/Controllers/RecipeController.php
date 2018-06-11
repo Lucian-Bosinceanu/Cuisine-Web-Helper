@@ -123,13 +123,17 @@ class RecipeController extends BaseController {
         return redirect(route('recipes.index'));
     }
 
-    public function delete($request) {
-        $params = $request->paramsPost()->all();
+    public function delete($request, $response) {
+        $params = $request->paramsNamed()->all();
         $recipeId = $params['id'];
         $recipe = Recipe::find_one($recipeId);
         unlink($recipe->getImagePath);
         $recipe->delete();
+<<<<<<< HEAD
         return redirect(route('recipes.index'));
+=======
+        return $response->json(["succes" => true]);
+>>>>>>> eaf6fd76d7dff89c983511bb6c409ca44866c9d9
     }
 
     

@@ -7,7 +7,8 @@
 
 @section('footer')
 	<script type="text/javascript">
-		var tags = [];
+        var tags = [];
+        var searchArticleTitleUrl = "{{ $ajaxUrls['searchArticle'] }}";
 	</script>
 @endsection
 
@@ -20,24 +21,7 @@
                 @include('partials.menu')
             </header>
 
-            <section>
-                <div class="posts">
-                    <article>
-                        @foreach($articles as $article)
-                            <a href="{{$article->url}}" class="image" target="_blank"><img src="{{$article->getImagePath()}}" alt="" /></a>
-                            <h3>{{$article->title}}</h3>
-                            <p>{{$article->description}}</p>
-                            <ul class="actions">
-                                <li><a href="{{$article->url}}" class="button" target="_blank">More</a></li>
-                                @if (isAdmin())
-									<li><a href="{{ route("articles.delete", ['id' => $article->id]) }}" class="button">Delete</a></li>
-									<li><a href="{{ route("articles.edit", ['id' => $article->id]) }}" class="button">Edit</a></li>
-								@endif
-                            </ul>
-                        @endforeach
-                    </article>
-                </div>
-            </section>
+			@include('partials.article_list', ['articles' => $articles])
         </div>
     </div>
     @include('partials.search_article')

@@ -31,4 +31,11 @@ class Article extends Model {
     public function getImagePath() {
         return config('app')['imagepath'] . $this->image;
     }
+
+    public static function searchByTitle($title, $toArray = false) {
+        if (isset($title) && !empty($title)) {
+            $articles = Article::where_like('title', "%{$title}%");
+            return $toArray ? $articles->findArray() : $articles->findMany();
+        }
+    }
 }
