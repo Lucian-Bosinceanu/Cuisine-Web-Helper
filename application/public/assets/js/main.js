@@ -137,20 +137,20 @@ $(document).ready(function() {
     });
 
     $.delete = function(url, article){
-        $(`article[data-id=${article}]`).remove();
-        console.log(url);
-        console.log(article);
         return $.ajax({
-          url: url,
-          type: 'DELETE',
-          data: article,
+            url: url,
+            type: 'DELETE',
+            contentType: 'application/json'
+        }).done(function(response) {
+            console.log(response);
+            $(`article[data-id=${article}]`).remove();
+        }).fail(function(response) {
+            console.log(response);
         });
     };
 
     $(".delete-article-button").on("click", function(e) {
         e.preventDefault();
-        console.log($(this).prop("href"));
-        console.log($(this).attr("data-id"));
         $.delete($(this).prop("href"), $(this).attr("data-id"));
     });
 });

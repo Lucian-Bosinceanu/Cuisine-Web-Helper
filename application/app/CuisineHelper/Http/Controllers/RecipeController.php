@@ -129,8 +129,12 @@ class RecipeController extends BaseController {
         $params = $request->paramsNamed()->all();
         $recipeId = $params['id'];
         $recipe = Recipe::find_one($recipeId);
-        unlink($recipe->getImagePath);
-        $recipe->delete();
+        try {
+            unlink($recipe->getImagePath());
+            $recipe->delete();
+        } catch(\Exception $ex) {
+            return $response->json(["succes" => false, "message" => $ex->getMessage()]);    
+        }
         return $response->json(["succes" => true]);
     }
 
