@@ -3,6 +3,8 @@
 @section('title', 'Recipes')
 
 @section('head')
+    <script src="{{ js('index') }}"></script>
+    <script src="{{ js('search') }}"></script>
 @endsection
 
 @section('footer')

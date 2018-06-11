@@ -4,6 +4,10 @@
     {{$operation}} Article
 @endsection
 
+@section('head')
+    <script src="{{ js('add') }}"></script>
+@endsection
+
 @section('content')
     @include('partials.sidemenu')
     <div id="main">

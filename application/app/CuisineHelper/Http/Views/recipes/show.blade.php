@@ -3,7 +3,6 @@
 @section('title', 'Recipe viewer')
 
 @section('head')
-    <script src="{{ js('main') }}"></script>
 @endsection
 
 @section('content')
@@ -72,6 +71,15 @@
                             <li>{{$instruction}}</li>
                         @endforeach
                     </ol>
+                </div>
+            </section>
+
+            <section class="recipe-section">
+                <div class="content">
+                    <h2>Export to file</h2>
+                    <button id="rss-button" class="export-button">RSS</button>
+                    <button id="json-button" class="export-button">JSON</button>
+                    <button id="csv-button" class="export-button">CSV</button>
                 </div>
             </section>
         </div>

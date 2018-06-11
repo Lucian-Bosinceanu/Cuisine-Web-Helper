@@ -4,6 +4,10 @@
     {{$operation}} Recipe
 @endsection
 
+@section('head')
+    <script src="{{ js('add') }}"></script>
+@endsection
+
 @php
 if (!isset($difficulty)) {
     $difficulty = 1;
@@ -54,14 +58,14 @@ if (!isset($difficulty)) {
                     <div class="content">
                         <h3>Ingredients</h3>
                         @foreach($ingredients as $ingredient) 
-                        <div class="ingredient">
-                            <label for="ingredient-name-1">Ingredient name | Quantity</label>
-                            <input type="text" name="ingredients[]" id="ingredient-name-1" class="" required="" value="{{$ingredient[0]}}">
-                            <input type="text" name="quantity[]" id="ingredient-quantity-1" class="" required="" value="{{$ingredient[1]}}">
-                            <button class="delete-button" type="button">Delete</button>
-                        </div>
+                            <div class="ingredient">
+                                <label>Ingredient name | Quantity</label>
+                                <input type="text" name="ingredients[]" required="" value="{{$ingredient[0]}}">
+                                <input type="text" name="quantity[]" required="" value="{{$ingredient[1]}}">
+                                <button class="delete-button" type="button">Delete</button>
+                            </div>
                         @endforeach
-                        <button id="add-ingredients-button" type="button">Add ingredient</button>
+                        <button id="add-ingredient-button" type="button">Add ingredient</button>
                         <!--<div class="ingredient">
                             <textarea name="how-to-steps[]" id="add-how-to-step-1" required=""></textarea>
                             <button class="delete-button" type="button">Delete</button>
@@ -74,7 +78,7 @@ if (!isset($difficulty)) {
                         <h3>How to make</h3>
                         @foreach($instructions as $instruction)
                             <div class="ingredient">
-                                <textarea name="how-to-steps[]" id="add-how-to-step-1" required="">{{$instruction}}</textarea>
+                                <textarea name="how-to-steps[]" required="">{{$instruction}}</textarea>
                                 <button class="delete-button" type="button">Delete</button>
                             </div>
                         @endforeach
