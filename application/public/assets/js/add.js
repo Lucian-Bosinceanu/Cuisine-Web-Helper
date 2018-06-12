@@ -50,13 +50,15 @@ $(document).ready(function() {
         $(this).css("height", `${this.scrollHeight + 2}px`);
     });
 
-    $("#rss-button").on("click", function(e) {
-        e.preventDefault();
-    });
     $("#json-button").on("click", function(e) {
         e.preventDefault();
+        var location = window.location.hostname;
+        window.open("http://" + location + window.exportJsonUrl, '_blank');
     });
+
     $("#csv-button").on("click", function(e) {
         e.preventDefault();
+        var location = window.location.hostname;
+        window.open("http://" + location + window.exportCsvUrl, '_blank');
     });
 });

@@ -12,12 +12,12 @@ Router::post("/recipes/[i:id]/update", "RecipeController@update", ['middleware' 
 Router::delete("/recipes/[i:id]", "RecipeController@delete", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('recipes.delete');
 
 // Articles
-Router::get("/articles", "Article/ArticleController@index")->setName("articles.index");
-Router::get("/articles/create", "Article/ArticleController@create", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName("articles.create");
-Router::post("/articles", "Article/ArticleController@store", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.store');
-Router::get("/articles/[i:id]/edit", "Article/ArticleController@edit", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.edit');
-Router::post("/articles/[i:id]/update", "Article/ArticleController@update", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.update');
-Router::delete("/articles/[i:id]", "Article/ArticleController@delete", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.delete');
+Router::get("/articles", "ArticleController@index")->setName("articles.index");
+Router::get("/articles/create", "ArticleController@create", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName("articles.create");
+Router::post("/articles", "ArticleController@store", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.store');
+Router::get("/articles/[i:id]/edit", "ArticleController@edit", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.edit');
+Router::post("/articles/[i:id]/update", "ArticleController@update", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.update');
+Router::delete("/articles/[i:id]", "ArticleController@delete", ['middleware' => [ 'CheckAuth', 'CheckAdmin']])->setName('articles.delete');
 
 // Auth
 Router::get("/login", "Auth/LoginController@index", ['middleware' => [ 'CheckGuest']])->setName('auth.login_index');
@@ -30,5 +30,10 @@ Router::get("/logout", "Auth/LoginController@logout", ['middleware' => [ 'CheckA
 Router::get("/account", "UserController@account", ['middleware' => [ 'CheckAuth']])->setName('user.account');
 
 // Search
-Router::post("/searchRecipeTitle", "Search/RecipeSearchController@searchTitle")->setName('search.recipe_title');
+Router::post("/searchRecipe", "Search/RecipeSearchController@search")->setName('search.recipe');
 Router::post("/searchArticleTitle", "Search/ArticleSearchController@searchTitle")->setName('search.article_title');
+
+// Export
+Router::get("/export/rss", "ExportController@rss")->setName('export.rss');
+Router::get("/export/[i:id]/json", "ExportController@json")->setName('export.json');
+Router::get("/export/[i:id]/csv", "ExportController@csv")->setName('export.csv');

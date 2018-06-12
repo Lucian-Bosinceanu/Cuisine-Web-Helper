@@ -23,7 +23,9 @@ class RecipeController extends BaseController {
         }, $tags);
         // print_r(json_encode($tags));
         // exit;
-        return view('recipes.index', ['recipes' => $recipes, 'tags' => json_encode($tags), 'ajaxUrls' => ['searchRecipe' => route("search.recipe_title")]]);  
+        return view('recipes.index', ['recipes' => $recipes, 'tags' => json_encode($tags),
+            'ajaxUrls' => ['searchRecipe' => route("search.recipe"), 'exportRss' => route("export.rss")]
+        ]);  
     }
 
     public function show($request) {
@@ -39,7 +41,9 @@ class RecipeController extends BaseController {
         $difficulty = $difficulties[$recipe->dificulty];
         $imageSrc = $recipe->getImagePath();
 
-        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients, 'instructions' => $instructions, 'difficulty' => $difficulty, 'imageSrc' => $imageSrc]);
+        return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients,
+            'instructions' => $instructions, 'difficulty' => $difficulty, 'imageSrc' => $imageSrc,
+            'ajaxUrls' => ['exportJson' => route("export.json", ["id" => $recipeId]), 'exportCsv' => route("export.csv", ["id" => $recipeId])]]);
     }
 
     public function create() {

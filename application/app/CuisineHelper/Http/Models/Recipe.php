@@ -91,11 +91,79 @@ class Recipe extends Model {
         return $imageSrc;
     }
 
-    public static function searchByTitle($title, $toArray = false) {
-        if (isset($title) && !empty($title)) {
-            $recipes = Recipe::where_like('title', "%{$title}%");
-            return $toArray ? $recipes->findArray() : $recipes->findMany();
+    public static function searchRecipes($params) {
+        $recipes = $params['title'] == null ? Recipe::orderByAsc('created_at')->findArray() : Recipe::where_like('title', "%{$params['title']}%")->findArray();
+        
+        if (isset($params['tags']) && !empty($params['tags'])) {
+            $recipes = array_filter($recipes, function ($recipe) use ($params) {
+                $tags = Recipe::findOne($recipe['id'])->getTags()->findArray();
+                $tags = array_map(function ($tag) {
+                    return $tag['name'];
+                }, $tags);
+                $resultTags = array_filter($params['tags'], function ($tag) use ($tags) {
+                    return in_array($tag, $tags);
+                });
+                return ($params['tags'] == $resultTags);
+            });
         }
+
+        if (isset($params['form']) && !empty($params['form'])) {
+            $formValues = array_map(function ($item) {
+                $expl = explode('-', $item);
+                return [$expl[0] => $expl[1]];
+            }, $params['form']);
+
+
+            $newRecipes = [];
+            foreach ($recipes as $recipe) {
+                $a = $b = 0;
+                $fa = $fb = 0;
+                foreach ($formValues as $value) {
+                    $key = key($value);
+                    switch ($key) {
+                        case 'time':
+                            $fa = 1;
+                            $recipeTime = $recipe['time'];
+                            $a = $a || ((int)$value[$key] == 180 ? (int)$recipeTime >= (int)$value[$key] : (int)$recipeTime <= (int)$value[$key]);
+                            break;
+                        case 'difficulty':
+                            $fb = 1;
+                            $b = $b || ($recipe['dificulty'] == $value[$key]);
+                    }
+                }
+                if (($a && $b) || (!$fb && $a) || (!$fa && $b)) {
+                    $newRecipes[] = $recipe;
+                }
+            }
+            $recipes = $newRecipes;
+        }
+
+        if (isset($params['restrictions']) && !empty($params['restrictions'])) {
+            return $recipes = array_filter($recipes, function ($recipe) use ($params) {
+                $tags = Recipe::findOne($recipe['id'])->getTags()->findArray();
+                $tags = array_map(function ($tag) {
+                    return $tag['name'];
+                }, $tags);
+                $resultTags = array_filter($params['restrictions'], function ($tag) use ($tags) {
+                    return in_array($tag, $tags);
+                });
+
+                return count(array_intersect($resultTags, $params['restrictions'])) == 0;
+            });
+        }
+        
+        return $recipes;
+    }
+
+    public static function createFromArrayList($arrayList = []) {
+        if (empty($arrayList)) {
+            return [];
+        }
+        $result = [];
+        foreach ($arrayList as $recipe) {
+            $result[] = Recipe::create($recipe);
+        }
+        return $result;
     }
 
     public static function exportRSS() {
@@ -131,10 +199,26 @@ EOT;
         return $rss;
     }
 
+    public static function exportRSSAsFile() {
+        $rss = self::exportRSS();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("rss-" . time()) . ".xml";
+        @file_put_contents($path, $rss);
+        return $path;
+    }
+
     public function exportJSON() {
         $recipe = $this->asArray();
         $json = json_encode($recipe);
         return $json;
+    }
+
+    public function exportJSONAsFile() {
+        $json = $this->exportJSON();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("json-" . time()) . ".json";
+        @file_put_contents($path, $json);
+        return $path;
     }
 
     public function exportCSV() {
@@ -164,4 +248,11 @@ EOT;
         return $result;
     }
     
+    public function exportCSVAsFile() {
+        $csv = $this->exportCSV();
+        $tmpPath = config('app')['tmpPath'];
+        $path = $tmpPath . uniqid("csv-" . time()) . ".csv";
+        @file_put_contents($path, $csv);
+        return $path;
+    }
 }

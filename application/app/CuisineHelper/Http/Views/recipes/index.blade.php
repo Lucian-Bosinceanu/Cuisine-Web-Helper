@@ -10,7 +10,8 @@
 @section('footer')
 	<script type="text/javascript">
 		var tags = {!! $tags !!};
-		var searchRecipeTitleUrl = "{{ $ajaxUrls['searchRecipe'] }}";
+		var searchRecipeUrl = "{{ $ajaxUrls['searchRecipe'] }}";
+		var exportRssUrl = "{{ $ajaxUrls['exportRss'] }}";
 	</script>
 @endsection
 

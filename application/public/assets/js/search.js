@@ -1,14 +1,4 @@
 $(document).ready(function() {
-    $("#recipe-search").keypress(function(e) {
-        if(e.which === 13) {
-            const searchText = $(this).val();
-
-            if (searchText.length !== 0){
-                getRecipes(searchText);
-            }
-        }
-    });
-
     $("#article-search").keypress(function(e) {
         if(e.which === 13) {
             const searchText = $(this).val();
@@ -18,11 +8,6 @@ $(document).ready(function() {
             }
         }
     });
-    
-    function getRecipes(value) {
-        const inputValue = value.trim().toLowerCase();
-        $.post(searchRecipeTitleUrl, {title: inputValue}, newData);
-    }
 
     function getArticles(value) {
         const inputValue = value.trim().toLowerCase();
@@ -40,21 +25,44 @@ $(document).ready(function() {
             tags: true,
             tokenSeparators: [',', ' ']
         }); 
+        $("#restrictions-search").select2({
+            data: tags,
+            tags: true,
+            tokenSeparators: [',', ' ']
+        }); 
     }
 
-    $("#tag-search-button").on("click", function(e) {
+    $("#search-button").on("click", function(e) {
         e.preventDefault();
-        console.log($('#tag-search').select2('data'));
+        var title = $("#recipe-search").val().trim().toLowerCase();
+        var tags = $('#tag-search').select2('data').map(function(item) {
+            return item.text;
+        });
+        var form = $("#tags-form").serializeArray().map(function(item) {
+            return item.name;
+        });
+        var restrictions = $("#restrictions-search").select2('data').map(function(item) {
+            return item.text;
+        });
+        $.post(searchRecipeUrl, {title: title, tags: tags, form: form, restrictions: restrictions}, newData);
     });
 
-    $("#search-button").on("click", function() {
+    $("#toggle-search").on("click", function() {
+        var hidden = 0;
         if ($("#sidebar").hasClass("visible")) {
             $("#sidebar").removeClass("visible");
-            $("#sidebar-menu").css("margin-left", "-17em");
+            if (!hidden)
+                $("#menu-button").show();
         }
         else {
             $("#sidebar").addClass("visible");
-            $("#sidebar-menu").css("margin-left", "0em");
+            if ($("#sidebar-menu").css("display") !== "none") {
+                $("#menu-button").hide();
+                hidden = 0;
+            }
+            else {
+                hidden = 1;
+            }
         }
     });
 
