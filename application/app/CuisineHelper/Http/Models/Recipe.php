@@ -80,6 +80,10 @@ class Recipe extends Model {
         return config('app')['imagepath'] . $this->image;
     }
 
+    public function getImageAbsolutePath() {
+        return base_path() . "public" . config('app')['imagepath'] . $this->image;
+    }
+
     public function getImageSourceLink() {
         $imgUrl = base64_encode(file_get_contents( config('app')['imagepath'] . $this->image));
         $type = pathinfo($imgUrl, PATHINFO_EXTENSION);
