@@ -35,14 +35,6 @@
               <li><a href="#admin-delete-article"><span>4.9. </span>Delete article</a></li>
               <li><a href="#admin-export-recipes"><span>4.10. </span>Export recipes</a></li>
           </ol>
-        <li><a href="#user"><span>5. </span>User functionalities</a></li>
-        <ol role="directory">
-            <li><a href="#user-menu"><span>5.1. </span>Menu</a></li>
-            <li><a href="#user-all-recipes"><span>5.2. </span>All recipes</a></li>
-            <li><a href="#user-all-articles"><span>5.3. </span>All articles</a></li>
-            <li><a href="#user-profile"><span>5.4. </span>Profile configuration</a></li>
-            <li><a href="#user-search-recipe"><span>5.5. </span>Search recipes</a></li>
-        </ol>  
         <li><a href="#conclusion"><span>6. </span>Conclusion</a></li>
           
       <dl>
@@ -71,7 +63,7 @@
       </p>
     </section>
     <section id="introduction" role="doc-introduction">
-      <!-- review? -->
+       
       <h2>2. Introduction</h2>
       <p>
           Cuisine Web Helper is a Web application that allows people to quickly find cooking recipes 
@@ -84,59 +76,70 @@
     </section>
 
     <section id="main">
-      <!-- review? -->
+       
       <h2>3. Main functionalities</h2>
       <p>
         Cuisine Web Helper has two types of users: normal users and administrators. Both of them have a set
-        of common functionalities such as login and search for resources (recipes or articles), as described below.
-        In addition, admins are responsible with content management. They can create, update and delete resources.  
-        A normal user cannot modify application's content, but it has access to a profile page where special food
-        restrictions and lifestyles can be checked in order to get appropriate recipes. A common usage flow for a
-        normal user is as its follows: open application page, go to register and create account, go to profile and
-        set preferences, return to main page and search for recipes.
+        of common functionalities such as searching of resources (recipes or articles), as described below.
+        In addition, admins are responsible with content management. They can create, view, search, 
+        update and delete resources.  
+        
       </p>
     </section>
 
     <section id="main-register">
-        <!-- review? -->
-        <h3>4.1. Register</h3>
+         
+        <!--<h3>4.1. Register</h3>
         <p>
           Anyone can register to the application and become normal users. From the main page, locate the menu in the 
-          upper right. Press the Register button and go to register page. Instert your desired username, email and
+          upper right. Press the Register button and go to register page. Insert your desired username, email and
           password, then click "Register". You will be redirected to home page. Please note that admin accounts cannot
           be created through this method. To add a new admin to the system, upgrade a normal user account to admin 
           status directly from database by switching the is_admin flag from 0 to 1.
-        </p>
+        </p> -->
     </section>
 
     <section id="main-login">
-        <!-- review? -->
+         
         <h3>4.2. Login</h3>
         <p>
-          From the main page, locate the login button from the 
+          This functionality is reserved only for admin users. From the main page, locate the login 
+          button from the upper right corner. Press it and go to login page. Insert your admin credentials,
+          then click "Login". You will be redirected to Home Page where you will be able to see the last 15
+          recipes introduced in the system.
         </p>
     </section>
 
     <section id="main-search-recipe">
-        <!-- review? -->
+         
         <h3>4.3. Search recipes</h3>
         <p>
-          The document must be encoded in UTF-8 and transmitted with a media type of
-          <code>text/html</code>.
+          From the Recipes page, click on the search button from the upper left corner. A search sidebar
+          will be visible, offering multiple options for recipe filtering, such as Search by title, Search by tags,
+          Required Time, Difficulty or Food restrictions. Fill in the desired fields and click the Search button at
+          the bottom of the search sidebar. 
         </p>
+        <ol>
+          <li>Search by title: filter recipes by their title</li>
+          <li>Search by tags: filter recipes by their associated tags. Only suggested tags are available.</li>
+          <li>Required time: filter recipes by the time it takes to cook the meal. Select one or more options.</li>
+          <li>Difficulty: filter recipes by the amount of skill required to prepare the meal. Select from Very easy to Very hard.</li>
+          <li>Food restrictions: filter recipes by inserting associated tags. Only recipes that do not contain those tags will be displayed.</li>
+        </ol>
     </section>
 
     <section id="maine-search-articles">
-        <!-- review? -->
+         
         <h3>4.4. Search articles</h3>
         <p>
-          The document must be encoded in UTF-8 and transmitted with a media type of
-          <code>text/html</code>.
+          From the Articles page, click on the search button from the upper left corner. A search sidebar
+          will be visible. In the search field, insert a text and press the search button. All articles that
+          have the inserted text in their name will be displayed on the page.
         </p>
     </section>
 
       <section id="admin">
-          <!-- review? -->
+           
           <h2>4. Admin functionalities</h2>
           <p>
             A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows
@@ -149,163 +152,89 @@
       </section>
 
       <section id="admin-menu">
-          <!-- review? -->
+           
           <h3>4.1. Menu</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-all-recipes">
-          <!-- review? -->
+           
           <h3>4.2. All recipes</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-add-recipe">
-          <!-- review? -->
+           
           <h3>4.3. Add recipe</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-edit-recipe">
-          <!-- review? -->
+           
           <h3>4.4. Edit recipe</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+          
           </p>
       </section>
 
       <section id="admin-delete-recipe">
-          <!-- review? -->
+           
           <h3>4.5. Delete recipe</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-all-articles">
-          <!-- review? -->
+           
           <h3>4.6. All articles</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+           
           </p>
       </section>
 
       <section id="admin-add-article">
-          <!-- review? -->
+           
           <h3>4.7. Add article</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-edit-article">
-          <!-- review? -->
+           
           <h3>4.8. Edit article</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-delete-article">
-          <!-- review? -->
+           
           <h3>4.9. Delete article</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="admin-export-recipes">
-          <!-- review? -->
+           
           <h3>4.10. Export recipes</h3>
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-          </p>
-      </section>
-
-      <section id="user">
-          <!-- review? -->
-          <h2>5. User functionalities</h2>
-          <p>
-            A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows
-            some additional rules to specialize its meaning and make it predictable to processors
-            wishing to produce or consume scholarly articles. These rules are outlined in the following
-            sections. While valuable on its own, the content structure defined here is simply a stepping
-            stone to enable semantic enrichment, detailed in <a href="#semantics">Semantics
-            Overlays</a>. If you would like to write a validation tool, please join us on GitHub.
-          </p>
-      </section>
-
-      <section id="user-menu">
-          <!-- review? -->
-          <h3>5.1. Menu</h3>
-          <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-          </p>
-      </section>
-
-      <section id="user-all-recipes">
-          <!-- review? -->
-          <h3>5.2. All recipes</h3>
-          <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-          </p>
-      </section>
-
-      <section id="user-all-articles">
-          <!-- review? -->
-          <h3>5.3. All articles</h3>
-          <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-          </p>
-      </section>
-
-      <section id="user-profile">
-          <!-- review? -->
-          <h3>5.4. Profile configuration</h3>
-          <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-          </p>
-      </section>
-
-      <section id="user-search-recipe">
-          <!-- review? -->
-          <h3>5.5. Search recipes</h3>
-          <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            
           </p>
       </section>
 
       <section id="conclusion">
-          <!-- review? -->
+           
           <h2>6. Conclusion</h2>
           <p>
-            A Scholarly HTML document is a valid <a role="doc-biblioref">HTML</a> document that follows
-            some additional rules to specialize its meaning and make it predictable to processors
-            wishing to produce or consume scholarly articles. These rules are outlined in the following
-            sections. While valuable on its own, the content structure defined here is simply a stepping
-            stone to enable semantic enrichment, detailed in <a href="#semantics">Semantics
-            Overlays</a>. If you would like to write a validation tool, please join us on GitHub.
           </p>
       </section>
       
