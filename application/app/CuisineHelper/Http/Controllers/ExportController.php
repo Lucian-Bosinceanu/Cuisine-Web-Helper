@@ -14,7 +14,7 @@ class ExportController extends BaseController {
     }
 
     public function csv($request, $response) {
-        $id = $request->paramsGet()->get('id');
+        $id = $request->paramsNamed()->get('id');
         $recipe = Recipe::findOne($id);
         $csvPath = $recipe->exportCSVAsFile();
         $response->file($csvPath, "CSV-export.csv");
@@ -22,7 +22,7 @@ class ExportController extends BaseController {
     }
 
     public function json($request, $response) {
-        $id = $request->paramsGet()->get('id');
+        $id = $request->paramsNamed()->get('id');
         $recipe = Recipe::findOne($id); 
         $jsonPath = $recipe->exportJSONAsFile();
         $response->file($jsonPath, "JSON-export.json");
