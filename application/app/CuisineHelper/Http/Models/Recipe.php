@@ -88,9 +88,22 @@ class Recipe extends Model {
     }
 
     public static function searchRecipes($params) {
-        if (!isset($params['title'])) {
-            return Recipe::findArray();
-        }
+        $recipes = $params['title'] == null ? Recipe::orderByAsc('created_at')->findArray() : Recipe::where_like('title', "%{$params['title']}%")->findArray();
+        //foreach($recipes as $recipe) {
+        $recipes = array_filter($recipes, function ($recipe) use ($params) {
+            $tags = Recipe::findOne($recipe['id'])->getTags()->findArray();
+            $tags = array_map(function ($tag) {
+                return $tag['name'];
+            }, $tags);
+            $resultTags = array_filter($params['tags'], function ($tag) use ($tags) {
+                return in_array($tag, $tags);
+            });
+            return ($params['tags'] == $resultTags);
+        });
+            
+        //}
+        return $params['tags'];
+        
         return $recipes = Recipe::where('title', $params['title']);
     }
 
@@ -98,7 +111,10 @@ class Recipe extends Model {
         if (isset($title) && !empty($title)) {
             $recipes = Recipe::where_like('title', "%{$title}%");
             return $toArray ? $recipes->findArray() : $recipes->findMany();
+        } else {
+            return $toArray ? $recipes->findArray() : $recipes->findMany();
         }
+    
     }
 
     public static function exportRSS() {
