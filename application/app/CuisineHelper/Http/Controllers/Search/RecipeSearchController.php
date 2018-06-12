@@ -9,21 +9,11 @@ use CuisineHelper\Http\Models\Tag;
 class RecipeSearchController extends BaseController {
     protected $reqParams = ['title', 'tags', 'form', 'restrictions'];
 
-    public function searchTitle($request) {
+    public function search($request) {
         $params = $this->getSearchParams($request->paramsPost());
-        return json_encode($recipes = Recipe::searchRecipes($params));
+        $recipes = Recipe::searchRecipes($params);
         
-        $tags = $params['tags'];
-        return json_encode($params);
-        $recipes = Recipe::searchByTitle($title);
-        $recipes = $recipes == null ? [] : $recipes;
-        $tags = Tag::findArray();
-        $index = 0;
-        $tags = array_map(function ($tag) use (&$index) {
-            return ["id" => $index++,
-                    "text" => $tag['name']];
-        }, $tags);
-        return view('partials.recipe_list', ['recipes' => $recipes]);
+        return view('partials.recipe_list', ['recipes' => Recipe::createFromArrayList($recipes)]);
     }
 
     private function getSearchParams($postParams) {

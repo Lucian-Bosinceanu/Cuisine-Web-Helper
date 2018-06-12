@@ -30,7 +30,7 @@ Router::get("/logout", "Auth/LoginController@logout", ['middleware' => [ 'CheckA
 Router::get("/account", "UserController@account", ['middleware' => [ 'CheckAuth']])->setName('user.account');
 
 // Search
-Router::post("/searchRecipeTitle", "Search/RecipeSearchController@searchTitle")->setName('search.recipe_title');
+Router::post("/searchRecipe", "Search/RecipeSearchController@search")->setName('search.recipe');
 Router::post("/searchArticleTitle", "Search/ArticleSearchController@searchTitle")->setName('search.article_title');
 
 // Export

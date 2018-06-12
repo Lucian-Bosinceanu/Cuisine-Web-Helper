@@ -2,11 +2,11 @@ $(document).ready(function() {
     $("#menu-button").on("click", function() {
         if ($("#sidebar-menu").hasClass("visible")) {
             $("#sidebar-menu").removeClass("visible");
-            $("#sidebar").toggle();
+            $("#sidebar").show();
         }
         else {
             $("#sidebar-menu").addClass("visible");
-            $("#sidebar").toggle();
+            $("#sidebar").hide();
         }
     });
 

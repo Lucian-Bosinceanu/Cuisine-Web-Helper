@@ -1,5 +1,5 @@
 <div id="sidebar">
-    <button id="search-button">Search</button>
+    <button id="toggle-search">Search</button>
 
     <div class="inner">
 
@@ -8,9 +8,7 @@
                 <h2>Search by title</h2>
             </header>
 
-            <!-- <form method="post" action="#"> -->
-                <input type="text" name="recipeSearch" id="recipe-search" placeholder="e.g. pizza" />
-            <!-- </form> -->
+            <input type="text" name="recipeSearch" id="recipe-search" placeholder="e.g. pizza" />
         </section>
 
         <nav class="menu">
@@ -78,7 +76,7 @@
                         </ul>
                     </li>
                 </ul>
-                <button id="tag-search-button">Search</button>
+                <!-- <button id="search-button">Search</button> -->
             </form>
         </nav>
 
@@ -90,9 +88,11 @@
             <form id="restrictions-form">
                 <select class="form-control" multiple="multiple" id="restrictions-search">
                 </select>
-
-                <button id="restrictions-search-button">Search</button>
             </form>
         </nav>
+
+        <section class="search">
+            <button id="search-button">Search</button>
+        </section>
     </div>
 </div>

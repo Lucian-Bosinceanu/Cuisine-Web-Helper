@@ -23,7 +23,7 @@ class RecipeController extends BaseController {
         // print_r(json_encode($tags));
         // exit;
         return view('recipes.index', ['recipes' => $recipes, 'tags' => json_encode($tags),
-            'ajaxUrls' => ['searchRecipe' => route("search.recipe_title"), 'exportRss' => route("export.rss")]
+            'ajaxUrls' => ['searchRecipe' => route("search.recipe"), 'exportRss' => route("export.rss")]
         ]);  
     }
 
