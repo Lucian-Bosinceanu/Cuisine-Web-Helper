@@ -77,7 +77,7 @@ class ArticleController extends BaseController {
                  unlink($article->getImagePath());
                  $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
              }
-        $imagePath = /*base_path() .*/ config('app')['imagepath'] .  $imageName ;
+        $imagePath = base_path() . "public" . config('app')['imagepath'] .  $imageName ;
 
         $description = $params['description'];
         $site = $params['site'];
@@ -95,6 +95,7 @@ class ArticleController extends BaseController {
         $article->image = $imageName;
         $article->url = $site;
         $article->description = $description;
+
 
         $article->save();
 
