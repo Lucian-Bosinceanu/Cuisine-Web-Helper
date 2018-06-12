@@ -28,6 +28,10 @@ class Article extends Model {
         return $imageSrc;
     }
 
+    public function getImageAbsolutePath() {
+        return base_path() . "public" . config('app')['imagepath'] . $this->image;
+    }
+
     public function getImagePath() {
         return config('app')['imagepath'] . $this->image;
     }

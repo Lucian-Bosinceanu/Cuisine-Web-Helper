@@ -56,10 +56,13 @@ class ArticleController extends BaseController {
         $articleId = $params['id'];
         $article = Article::find_one($articleId);
 
-        unlink($article->image);
-        $article->delete();
-
-        return redirect(route('articles.index'));
+        try {
+            unlink($article->getImageAbsolutePath());
+            $article->delete();
+        } catch(\Exception $ex) {
+            return $response->json(["succes" => false, "message" => $ex->getMessage()]);    
+        }
+        return $response->json(["succes" => true]);
     }
 
     private function insertIntoArticles($article, $request) {
