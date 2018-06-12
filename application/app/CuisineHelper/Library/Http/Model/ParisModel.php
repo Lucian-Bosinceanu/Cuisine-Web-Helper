@@ -38,6 +38,9 @@ class ParisModel {
             Database::configure( "mysql:host={$config['host']};dbname={$config['db_name']}" );
             Database::configure( 'username', $config['username'] );
             Database::configure( 'password', $config['password'] );
+            Database::configure('id_column_overrides', array(
+                'tags_recipes' => array('tag_id', 'recipe_id')
+            ));
             Model::$short_table_names = true;
             //Model::$auto_prefix_models = 'CuisineHelper\Http\Models\\';
             
