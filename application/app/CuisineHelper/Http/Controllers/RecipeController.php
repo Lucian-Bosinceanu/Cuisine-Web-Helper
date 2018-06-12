@@ -85,7 +85,7 @@ class RecipeController extends BaseController {
         $ingredients = $recipe->getIngredientNames();        
         $instructions = $recipe->getInstructionList();
         $difficulty = $recipe->dificulty;
-        $imageSrc = $recipe->getImageSourceLink();
+        $imageSrc = $recipe->getImagePath();
 
         $tagString = "";
 
@@ -122,7 +122,7 @@ class RecipeController extends BaseController {
         $this->insertIntoRecipeTags($recipe,array_diff($newTags,$oldTags));
         $this->insertIntoIngredientsRecipes($recipe,$ingredientsToInsert,$quantitiesToInsert);
 
-        $this->deleteFromRecipeTags($recipe,array_dif($oldTags,$newTags));
+        $this->deleteFromRecipeTags($recipe,array_diff($oldTags,$newTags));
         $this->deleteFromIngredientsRecipes($recipe,array_diff($oldIngredients,$newIngredients));
 
         return redirect(route('recipes.index'));
@@ -162,7 +162,7 @@ class RecipeController extends BaseController {
                 $imageName = time() . '_' . random_int(1,100000) . '_' . $uploadedImage['name'];
             }
         
-        $imagePath = /*base_path() .*/ config('app')['imagepath'] . $imageName ;
+        $imagePath = base_path() . "public" . config('app')['imagepath'] . $imageName ;
 
         $instructions = '';
 
@@ -174,7 +174,8 @@ class RecipeController extends BaseController {
             'title' => $recipeTitle,
             'dificulty' => $dificulty,
             'time' => $time,
-            'instructions' => $instructions
+            'instructions' => $instructions,
+            'image' => $imageName
         ])->findOne();
         if ($anotherSameRecipe)
             return null;
@@ -185,10 +186,10 @@ class RecipeController extends BaseController {
         $recipe->instructions = $instructions;
         $recipe->image = $imageName;
         
-        if ($createdAtDB == null)
+        /*if ($createdAtDB == null)
             $recipe->created_at = date("D, d M y H:i:s O");
             else
-            $recipe->created_at = $createdAtDB;
+            $recipe->created_at = $createdAtDB;*/
         
         $recipe->save();
 
