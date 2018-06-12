@@ -57,11 +57,12 @@
       <!-- review? -->
       <h2>2. Introduction</h2>
       <p>
-        Scholarly articles are still primarily published as unstructured data in which most of the
-        information created by the research and the practice of authoring is lost. Document
-        technology has reached a level of maturity and universality that makes this situation no
-        longer tenable. Information cannot be disseminated if it is destroyed before even having
-        left its creator’s laptop.
+          Cuisine Web Helper is a Web application that allows people to quickly find cooking recipes 
+          for their next delicious meal. Each recipe has multiple tags associated with it in regard to 
+          the ingredients used, cooking methods and tools, food restrictions, life style etc. The search 
+          engine is based on providing recipes that satisfies a list of tags provided by the user. In addition
+          to this, the users have access to a series of articles that they can read in order to hone their cooking 
+          skills or learn something new.
       </p>
     </section>
 
@@ -127,25 +128,27 @@
           <h3>5.2. Use case diagram</h3>
           <img src="img/Use-Case-Diagram.png" alt="">
           <p>
-            This diagram presents the functionalities.
+            This diagram presents all actions both types of users can do. The current solution only allows the admin user
+            to manage content (recipes and articles), while the normal user can only view and search it.
           </p>
       </section>
 
       <section id="model-diagram">
           <!-- review? -->
           <h3>5.3. Model Diagram</h3>
+          <img src="img/Diagrama_model.png" alt="">
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            Model Diagram presents an abstract Model (offered by an ORM) from which all other models are derived. The
+            main models are User and Recipe, both having rich interactions with other models such as Tag, Article or Ingredient.
           </p>
       </section>
 
       <section id="database-diagram">
           <!-- review? -->
-          <h3>5.4. Master Diagram</h3>
+          <h3>5.4. Database Diagram</h3>
+          <img src="img/database.png" alt="">
           <p>
-            The document must be encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
+            The Database Diagram contains 16 tables that depicts the rich interaction between Recipes, Users and Tags.
           </p>
       </section>
 

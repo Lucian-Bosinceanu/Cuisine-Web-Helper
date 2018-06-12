@@ -9,6 +9,7 @@ use CuisineHelper\Http\Models\Ingredient;
 use CuisineHelper\Http\Models\ManyToMany\IngredientRecipe;
 use CuisineHelper\Http\Models\ManyToMany\RecipeTag;
 use CuisineHelper\Http\Models\Auth;
+use ORM;
 
 class RecipeController extends BaseController {
 
@@ -39,11 +40,6 @@ class RecipeController extends BaseController {
         $instructions = $recipe->getInstructionList();
         $difficulty = $difficulties[$recipe->dificulty];
         $imageSrc = $recipe->getImagePath();
-        //print_r($ingredients->findMany());
-        //exit;
-
-        // print_r($imageSrc);
-        // exit;
 
         return view('recipes.show', [ 'recipe' => $recipe, 'tags' => $tags, 'ingredients' => $ingredients,
             'instructions' => $instructions, 'difficulty' => $difficulty, 'imageSrc' => $imageSrc,
@@ -99,6 +95,8 @@ class RecipeController extends BaseController {
         foreach($tags as $tag) 
             $tagString .= $tag . ' ';
 
+        $tagString = trim($tagString);
+
         return view('recipes.create', ['ingredients' => $ingredients,'instructions' => $instructions,'operation' => $operation,'recipe' => $recipe, 'tagString' => $tagString, 'difficulty' => $difficulty, 'redirect' => $redirect]);
     }
 
@@ -107,29 +105,56 @@ class RecipeController extends BaseController {
         $recipeId = $request->paramsNamed()->get('id');
         $recipe = Recipe::find_one($recipeId);
 
-        $oldTags = $recipe->getTags();
+
+        $oldTags = $recipe->getTagNames();
         $newTags = explode(' ', $params['tags']);
 
-        $oldIngredients = $recipe->getIngredients();
+        $ingrs = $recipe->getIngredientNames();
+
+        $oldIngredients[] = null;
+        array_pop($oldIngredients);
+        foreach($ingrs as $ingredient )
+            array_push($oldIngredients,$ingredient[0]);
+
+
         $newIngredients = $params['ingredients'];
 
         $quantities = $params['quantity'];
 
-
         $ingredientsToInsert = array_diff($newIngredients,$oldIngredients);
-        $quantitiesToInsert = null;
+        $quantitiesToInsert[] = null;
+        array_pop($quantitiesToInsert);
+        $tagsToInsert = array_diff($newTags,$oldTags);
+
+        // print_r(array_diff($oldIngredients,$newIngredients));
+        // exit;
 
         foreach ($ingredientsToInsert as $ingredient) {
             $position = array_search($ingredient,$newIngredients);
             array_push($quantitiesToInsert, $quantities[$position]);
         }
 
+        
+
         $this->insertIntoRecipes($recipe,$request);
 
-        $this->insertIntoRecipeTags($recipe,array_diff($newTags,$oldTags));
+        if (count($tagsToInsert))
+            $this->insertIntoTags($tagsToInsert);
+
+        if (count($ingredientsToInsert) > 0)
+            $this->insertIntoIngredients($ingredientsToInsert);
+        
+
+        $this->insertIntoRecipeTags($recipe,$tagsToInsert);
+        
+        
         $this->insertIntoIngredientsRecipes($recipe,$ingredientsToInsert,$quantitiesToInsert);
 
-        $this->deleteFromRecipeTags($recipe,array_diff($oldTags,$newTags));
+
+        if ( count(array_diff($oldTags,$newTags)) > 0 )
+            $this->deleteFromRecipeTags($recipe,array_diff($oldTags,$newTags));
+
+        if (count(array_diff($oldIngredients,$newIngredients)) > 0)
         $this->deleteFromIngredientsRecipes($recipe,array_diff($oldIngredients,$newIngredients));
 
         return redirect(route('recipes.index'));
@@ -212,22 +237,41 @@ class RecipeController extends BaseController {
         foreach ($tags as $tag) {
             $tagDB = Tag::where('name',$tag)->findOne();
             $tagId = $tagDB->id;
-            RecipeTag::where(['recipe_id' => $recipeId, 'tag_id' => $tagId])->delete();
+
+            $entriesToDelete = RecipeTag::where(['recipe_id' => $recipeId, 'tag_id' => $tagId])->findMany();
+            //$entriesToDelete = RecipeTag::findOne( array('tag_id' => $tagId, 'recipe_id' =>$recipeId) );
+
+            foreach($entriesToDelete as $entry)
+                {
+                    ORM::for_table('tags_recipes')->rawQuery('DELETE FROM tags_recipes where recipe_id = :recipe and tag_id = :tag', 
+                                        array('recipe' => $entry->recipe_id, 'tag' => $entry->tag_id) )->findMany();
+                }
+
         }
     }
 
     private function deleteFromIngredientsRecipes($recipe,$ingredients){
         $recipeId = $recipe->id;
         
+
         foreach ($ingredients as $ingredient) {
             $ingredientDB = Ingredient::where('name',$ingredient)->findOne();
             $ingredientId = $ingredientDB->id;
-            RecipeTag::where(['recipe_id' => $recipeId, 'ingredient_id' => $ingredientId])->delete();
+            $entriesToDelete = IngredientRecipe::where(['recipe_id' => $recipeId, 'ingredient_id' => $ingredientId])->findMany();
+
+            foreach($entriesToDelete as $entry)
+            {
+                try {
+                ORM::for_table('ingredients_recipes')->rawQuery('DELETE FROM ingredients_recipes where recipe_id = :recipe and ingredient_id = :ingredient', 
+                                    array('recipe' => $entry->recipe_id, 'ingredient' => $entry->ingredient_id) )->findOne();
+                }
+                catch(\Exception $ex) {print_r($ex->getMessage());}
+
+            }
         }
     }
 
     private function insertIntoTags($tagList) {
-
         foreach($tagList as $tag){
             $dbTag = Tag::where('name',$tag)->find_one();
             if ($dbTag == null) {
@@ -253,25 +297,33 @@ class RecipeController extends BaseController {
 
     private function insertIntoIngredientsRecipes($recipe,$ingredients,$quantities){
         $recipeId = $recipe->id;
-        for ($i = 0; $i < count($ingredients); $i++) {
+
+        $i = 0;
+
+        foreach($ingredients as $ingredient) {
             $ingredientRecipe = IngredientRecipe::create();
-            $ingredientRecipe->ingredient_id = Ingredient::where('name',$ingredients[$i])->find_one()->id;
+            $ingredientDB = Ingredient::where('name',$ingredient)->find_one();
+            $ingredientRecipe->ingredient_id = $ingredientDB->id;
             $ingredientRecipe->recipe_id = $recipeId;
             $ingredientRecipe->quantity = $quantities[$i];
             $ingredientRecipe->save();
+            $i += 1;
         }
+
     }
 
     private function insertIntoRecipeTags($recipe,$insertedTags){
         
         $recipeId = $recipe->id;
         
-        for ($i = 0; $i < count($insertedTags); $i++) {
+        foreach($insertedTags as $tag) {
             $recipeTag = RecipeTag::create();
-            $recipeTag->tag_id = Tag::where('name',$insertedTags[$i])->find_one()->id;
+            $dbTag = Tag::where('name',$tag)->findOne();
+            $recipeTag->tag_id = $dbTag->id;
             $recipeTag->recipe_id = $recipeId;
             $recipeTag->save();
         }
+
     }
 
     private function lowercaseElements($array) {
