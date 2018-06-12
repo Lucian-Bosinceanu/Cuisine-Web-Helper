@@ -238,7 +238,7 @@ EOT;
 
         $result = $result . '"';
         foreach ($ingredients as $ingredient)
-            $result = $result . $ingredient . ", ";
+            $result = $result . $ingredient[1] . ' ' . $ingredient[0] . ", ";
         $result = $result . '",';
 
         $result = $result . '"' . $this->instructions . '", ';
