@@ -24,7 +24,7 @@
                     <h1>{{$recipe->title}}</h1>
 
                     @if (isAdmin())
-                        <a href="{{ route("recipes.delete", ['id' => $recipe->id]) }}" class="button">Delete</a>
+                        <!-- <a href="{{ route("recipes.delete", ['id' => $recipe->id]) }}" class="button">Delete</a> -->
                         <a href="{{ route("recipes.edit", ['id' => $recipe->id]) }}" class="button">Edit</a>
                     @endif
 

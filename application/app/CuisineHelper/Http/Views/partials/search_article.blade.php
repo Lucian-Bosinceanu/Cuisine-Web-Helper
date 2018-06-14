@@ -1,5 +1,5 @@
 <div id="sidebar">
-    <button id="search-button">Search</button>
+    <button id="toggle-search">Search</button>
 
     <div class="inner">
         <section class="search" class="alt">

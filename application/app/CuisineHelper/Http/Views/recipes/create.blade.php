@@ -49,7 +49,7 @@ if (!isset($difficulty)) {
                         <label for="image-upload" id="image-upload-button" class="button">
                             <span>Choose image to upload (PNG, JPG)</span>
                         </label>
-                        <input type="file" id="image-upload" name="image-upload" accept=".jpg, .jpeg, .png" required >
+                        <input type="file" id="image-upload" name="image-upload" accept=".jpg, .jpeg, .png">
                         <!-- <button id="recipe-upload-button">Upload</button> -->
                     </div>
                 </section>

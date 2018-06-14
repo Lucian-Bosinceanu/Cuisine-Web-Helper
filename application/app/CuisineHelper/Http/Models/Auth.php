@@ -18,7 +18,7 @@ class Auth extends Model {
 
     public static $_table = 'auth_tokens';
 
-    private static $expires = 60 * 15;
+    private static $expires = 60 * 60 * 24;
 
     private static $loginCookieName = 'login';
 
