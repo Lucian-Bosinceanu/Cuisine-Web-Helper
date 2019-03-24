@@ -44,7 +44,7 @@ $(document).ready(function() {
         var restrictions = $("#restrictions-search").select2('data').map(function(item) {
             return item.text;
         });
-        $.post(searchRecipeUrl, {title: title, tags: tags, form: form, restrictions: restrictions}, newData);
+        $.post(searchRecipeUrl, {title, tags, form, restrictions}, newData);
     });
 
     $("#toggle-search").on("click", function() {
